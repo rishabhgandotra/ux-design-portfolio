@@ -1,0 +1,1299 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Workload Mobility — Rishabh Gandotra</title>
+<meta name="description" content="Unifying legacy migration workflows to simplify VM mobility. A VMware case study by Rishabh Gandotra." />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #ECEEF1; }
+body { font-family: 'Inter', system-ui, sans-serif; }
+#root { display: flex; justify-content: center; }
+
+.cs {
+  --bg: #ECEEF1;
+  --ink: #181B20;
+  --ink-2: #373B41;
+  --muted: #7E828A;
+  --hair: #D2D6DC;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+  width: 100%;
+  max-width: 1280px;
+  border-left: 1px solid var(--hair);
+  border-right: 1px solid var(--hair);
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+}
+.cs a { color: inherit; text-decoration: none; }
+.cs em { font-style: italic; }
+.cs .narrow { max-width: 1040px; margin: 0 auto; }
+
+/* Top nav */
+.cs .topbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 80px;
+  border-bottom: 1px solid var(--hair);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.cs .topbar .name {
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+
+/* Slim prev/next strip (top) */
+.cs .pn-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--hair);
+}
+.cs .pn-strip > a {
+  padding: 20px 80px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+.cs .pn-strip > a:hover { color: var(--ink); background: rgba(0,0,0,.02); }
+.cs .pn-strip > a.next {
+  justify-content: flex-end;
+  border-left: 1px solid var(--hair);
+}
+.cs .pn-strip .dir { color: var(--muted); }
+.cs .pn-strip .ttl {
+  font-family: 'Lora', serif;
+  font-size: 17px;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  text-transform: none;
+}
+.cs .pn-strip > a:hover .ttl { font-style: italic; }
+
+/* Title block */
+.cs .titleblock {
+  padding: 96px 80px 40px;
+  border-bottom: 1px solid var(--hair);
+}
+.cs .eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+.cs .cs-title {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: 72px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+  max-width: 22ch;
+}
+.cs .meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin: 64px -80px 0;
+  padding: 40px 80px 0;
+  border-top: 1px solid var(--hair);
+}
+.cs .meta > div { text-align: center; }
+.cs .meta .label {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.cs .meta .val {
+  font-family: 'Lora', serif;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
+
+/* Hero image */
+.cs .hero-img {
+  border-bottom: 1px solid var(--hair);
+  overflow: hidden;
+  background: var(--bg);
+}
+.cs .hero-img img { display: block; width: 100%; height: auto; }
+
+/* Metrics strip */
+.cs .metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid var(--hair);
+  text-align: center;
+}
+.cs .metrics > div {
+  padding: 56px 32px;
+  border-right: 1px solid var(--hair);
+}
+.cs .metrics > div:last-child { border-right: none; }
+.cs .metrics .label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.cs .metrics .stat {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.cs .metrics .stat em { font-style: italic; }
+.cs .metrics .caption {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+/* Content blocks */
+.cs section.block { padding: 96px 80px; border-bottom: 1px solid var(--hair); }
+.cs .section-label {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+  text-align: left;
+}
+.cs .section-title {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin: 0 0 48px;
+  max-width: 22ch;
+  text-align: left;
+}
+.cs .lede {
+  font-family: 'Lora', serif;
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 56ch;
+  margin: 0;
+  letter-spacing: -0.005em;
+}
+.cs .sub { margin-top: 80px; }
+.cs .sub:first-child { margin-top: 0; }
+.cs .sub h3 {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0 0 20px;
+}
+.cs .sub p {
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  color: var(--ink-2);
+  margin: 0 0 24px;
+  max-width: 64ch;
+}
+.cs .sub p strong { color: var(--ink); font-weight: 500; }
+.cs .figure {
+  margin-top: 32px;
+  border: 1px solid var(--hair);
+  overflow: hidden;
+}
+.cs .figure img { display: block; width: 100%; height: auto; }
+.cs .figure-caption {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 14px;
+  text-align: center;
+}
+
+/* User validation grid */
+.cs .validation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  margin-top: 56px;
+}
+.cs .validation-figure {
+  border: 1px solid var(--hair);
+  overflow: hidden;
+  aspect-ratio: 3/2;
+  background: var(--bg);
+}
+.cs .validation-figure img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cs .validation-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+  text-align: center;
+}
+.cs .validation-stats .item {
+  padding: 48px 32px;
+  border-right: 1px solid var(--hair);
+}
+.cs .validation-stats .item:last-child { border-right: none; }
+.cs .validation-stats .item .num {
+  font-family: 'Lora', serif;
+  font-size: 56px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.cs .validation-stats .item .desc {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Research insights — sticky notes by category */
+.cs .insights-grid {
+  max-width: 1040px;
+  margin: 64px auto 0;
+}
+.cs .insights-grid .category { margin-top: 56px; }
+.cs .insights-grid .category:first-child { margin-top: 0; }
+.cs .insights-grid .category-label {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 28px;
+}
+.cs .insights-grid .notes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  padding: 12px 0;
+}
+.cs .insights-grid .notes .note {
+  padding: 28px 24px;
+  background: #F3EAC8;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+}
+.cs .insights-grid .category[data-color="pink"] .note { background: #F9D8DC; }
+.cs .insights-grid .category[data-color="blue"] .note { background: #D8E8F2; }
+.cs .insights-grid .category[data-color="yellow"] .note { background: #F6E8B4; }
+.cs .insights-grid .category[data-color="green"] .note { background: #D6E6CE; }
+.cs .insights-grid .category[data-color="purple"] .note { background: #DDD3EC; }
+.cs .insights-grid .category[data-color="paleblue"] .note { background: #C8E0EE; }
+.cs .insights-grid .notes .note:nth-child(4n+1) { transform: rotate(-1.2deg); }
+.cs .insights-grid .notes .note:nth-child(4n+2) { transform: rotate(0.9deg); }
+.cs .insights-grid .notes .note:nth-child(4n+3) { transform: rotate(-0.6deg); }
+.cs .insights-grid .notes .note:nth-child(4n+4) { transform: rotate(1.1deg); }
+.cs .insights-grid .notes .note:hover {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+  z-index: 1;
+}
+.cs .insights-grid .notes .note p {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin: 0;
+}
+.cs .insights-grid .notes .note p em { font-style: italic; }
+
+/* Before/After slider */
+/* Before/After — toggle treatment */
+.cs .ba-toggle { margin-top: 32px; position: relative; }
+.cs .ba-toggle .ba-toggle-bar {
+  display: inline-flex;
+  border: 1px solid var(--ink);
+  margin-bottom: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.cs .ba-toggle .ba-toggle-bar button {
+  appearance: none;
+  background: transparent;
+  border: none;
+  padding: 11px 24px;
+  cursor: pointer;
+  color: var(--ink-2);
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.cs .ba-toggle .ba-toggle-bar button + button { border-left: 1px solid var(--ink); }
+.cs .ba-toggle .ba-toggle-bar button:hover { color: var(--ink); }
+.cs .ba-toggle .ba-toggle-bar button.active {
+  background: var(--ink);
+  color: var(--bg);
+}
+.cs .ba-toggle .img-frame {
+  position: relative;
+  border: 1px solid var(--hair);
+  overflow: hidden;
+  aspect-ratio: 6/5;
+  background: var(--bg);
+}
+.cs .ba-toggle .img-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.cs .ba-toggle .img-frame img.active { opacity: 1; }
+
+.cs .ba {
+  position: relative;
+  margin-top: 32px;
+  border: 1px solid var(--hair);
+  overflow: hidden;
+  user-select: none;
+  background: var(--bg);
+  aspect-ratio: 4/3;
+  cursor: ew-resize;
+}
+.cs .ba-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top left;
+}
+.cs .ba-after-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.cs .ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--ink);
+  transform: translateX(-1px);
+  pointer-events: none;
+}
+.cs .ba-knob {
+  position: absolute;
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  transform: translate(-50%, -50%);
+}
+.cs .ba-knob svg { display: block; }
+.cs .ba-label {
+  position: absolute;
+  top: 16px;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  padding: 6px 14px;
+  background: var(--bg);
+  border: 1px solid var(--hair);
+  color: var(--ink-2);
+  pointer-events: none;
+  z-index: 2;
+}
+.cs .ba-label.before { left: 16px; }
+.cs .ba-label.after { right: 16px; }
+
+/* Scaling to a Global Service — stacked uniform dashboards */
+.cs .vision-list { margin-top: 64px; }
+.cs .vision-item { margin-top: 96px; }
+.cs .vision-item:first-child { margin-top: 0; }
+.cs .vision-heading {
+  max-width: 1040px;
+  margin: 0 auto 32px;
+}
+.cs .vision-heading .num {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 16px;
+}
+.cs .vision-heading h3 {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 0 0 16px;
+}
+.cs .vision-heading p {
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 64ch;
+  margin: 0;
+}
+.cs .vision-img {
+  margin: 0 -80px;
+  border: 1px solid var(--hair);
+  background: var(--bg);
+  overflow: hidden;
+}
+.cs .vision-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+/* Testimonials */
+.cs .quotes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  margin-top: 56px;
+}
+.cs .quote { display: flex; flex-direction: column; }
+.cs .quote .mark {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 64px;
+  line-height: 0.6;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.cs .quote blockquote {
+  font-family: 'Lora', serif;
+  font-size: 19px;
+  line-height: 1.45;
+  color: var(--ink);
+  margin: 0 0 24px;
+  letter-spacing: -0.005em;
+}
+.cs .quote .attr {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--hair);
+}
+.cs .quote .attr strong { color: var(--ink-2); font-weight: 500; }
+
+/* Takeaways */
+.cs .takeaways {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  margin-top: 56px;
+}
+.cs .takeaway .num {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.cs .takeaway h4 {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.25;
+  margin: 0 0 14px;
+  letter-spacing: -0.01em;
+}
+.cs .takeaway p {
+  font-family: 'Lora', serif;
+  font-size: 17px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  color: var(--ink-2);
+  margin: 0;
+}
+
+/* Prev/Next cards (bottom) */
+.cs .prevnext {
+  padding: 80px 80px 96px;
+  border-bottom: 1px solid var(--ink);
+}
+.cs .prevnext .label {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 40px;
+  text-align: center;
+}
+.cs .prevnext-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+.cs .pn-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 28px;
+  cursor: pointer;
+  padding: 24px 0;
+}
+.cs .pn-card.prev { text-align: left; }
+.cs .pn-card.next { text-align: right; }
+.cs .pn-card .dir {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.cs .pn-card .num {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.cs .pn-card .ttl {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 14px;
+  display: inline-block;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding-bottom: 4px;
+}
+.cs .pn-card.next .ttl { background-position: 100% 100%; }
+.cs .pn-card:hover .ttl { background-size: 100% 1px; }
+.cs .pn-card .sub {
+  font-family: 'Lora', serif;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 42ch;
+  margin-bottom: 20px;
+}
+.cs .pn-card.next .sub { margin-left: auto; }
+.cs .pn-card .yr {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.cs .pn-card .image {
+  aspect-ratio: 4/3;
+  border: 1px solid var(--hair);
+  overflow: hidden;
+}
+.cs .pn-card .image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+
+/* Footer */
+.cs .footer {
+  padding: 24px 80px;
+  text-align: center;
+}
+.cs .footer .colophon {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ============ TABLET (<= 1279px) ============ */
+@media (max-width: 1279px) {
+  .cs .topbar { padding: 20px 48px; }
+  .cs .titleblock { padding: 80px 48px 36px; }
+  .cs .cs-title { font-size: 56px; }
+  .cs .meta { margin: 56px -48px 0; padding: 36px 48px 0; }
+  .cs .metrics > div { padding: 44px 24px; }
+  .cs .metrics .stat { font-size: 52px; }
+  .cs section.block { padding: 72px 48px; }
+  .cs .section-title { font-size: 38px; }
+  .cs .lede { font-size: 20px; }
+  .cs .sub h3 { font-size: 24px; }
+  .cs .sub p { font-size: 17px; }
+  .cs .narrow { max-width: 100%; }
+  /* Full-bleed figures: match new padding */
+  .cs .titleblock + .hero-img,
+  .cs .hero-img img { max-width: 100%; }
+  .cs section.block div[style*="-80px"] { margin-left: -48px !important; margin-right: -48px !important; }
+  .cs .meta[style*="-80px"], .cs .validation-stats[style*="-80px"] { margin-left: -48px !important; margin-right: -48px !important; padding-left: 48px !important; padding-right: 48px !important; }
+  .cs .validation-stats { margin-left: -48px !important; margin-right: -48px !important; }
+  .cs .validation-stats .item { padding: 36px 24px; }
+  .cs .validation-stats .item .num { font-size: 44px; }
+  .cs .prevnext { padding: 64px 48px 80px; }
+  .cs .pn-card .ttl { font-size: 36px; }
+  .cs .footer { padding: 20px 48px; }
+  /* Galleries */
+  .cs .gallery-3 { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .cs .gallery-2 { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .cs .wire-grid { gap: 24px; }
+  /* Strip slides */
+  .cs .strip { padding: 0 48px 20px; }
+  .cs .strip .slide { flex-basis: 640px; }
+  /* Insights sticky-note grid 3 -> 3 (tablet still 3 cols, smaller) */
+  .cs .insights-grid .notes { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .cs .insights-grid .notes .note { padding: 22px 18px; min-height: 120px; }
+  .cs .insights-grid .notes .note p { font-size: 14px; }
+  /* Vision grid */
+  .cs .vision-img { margin: 0 -48px; }
+  /* Toggle */
+  .cs .ba-toggle .img-frame, .cs .ba-side { /* keep as-is */ }
+}
+
+/* ============ MOBILE (<= 767px) ============ */
+@media (max-width: 767px) {
+  body { background: var(--bg, #ECEEF1); }
+  .cs {
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+  }
+
+  /* Top bar */
+  .cs .topbar { padding: 16px 20px; }
+  .cs .topbar .name { font-size: 14px; }
+
+  /* Title block */
+  .cs .titleblock { padding: 48px 20px 24px; }
+  .cs .eyebrow { font-size: 10px; letter-spacing: 0.16em; margin-bottom: 20px; }
+  .cs .cs-title { font-size: 32px; line-height: 1.1; }
+  .cs .meta {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 36px -20px 0;
+    padding: 28px 20px 0;
+  }
+  .cs .meta > div { text-align: left; }
+  .cs .meta .label { font-size: 10px; margin-bottom: 4px; }
+  .cs .meta .val { font-size: 18px; }
+
+  /* Metrics — 3-col to 1-col */
+  .cs .metrics { grid-template-columns: 1fr; }
+  .cs .metrics > div {
+    border-right: none;
+    border-bottom: 1px solid var(--hair);
+    padding: 28px 20px;
+  }
+  .cs .metrics > div:last-child { border-bottom: none; }
+  .cs .metrics .label { font-size: 10px; margin-bottom: 12px; }
+  .cs .metrics .stat { font-size: 44px; margin-bottom: 10px; }
+  .cs .metrics .caption { font-size: 14px; }
+
+  /* Sections */
+  .cs section.block { padding: 48px 20px; }
+  .cs .section-label { font-size: 10px; letter-spacing: 0.16em; margin-bottom: 14px; }
+  .cs .section-title { font-size: 26px; line-height: 1.15; margin-bottom: 28px; }
+  .cs .lede { font-size: 17px; line-height: 1.5; }
+  .cs .sub { margin-top: 48px; }
+  .cs .sub h3 { font-size: 22px; }
+  .cs .sub p { font-size: 16px; line-height: 1.55; }
+  .cs .figure-caption { font-size: 10px; }
+
+  /* Full-bleed figures: match new mobile padding */
+  .cs section.block div[style*="-80px"] { margin-left: -20px !important; margin-right: -20px !important; }
+  .cs .validation-stats { margin-left: -20px !important; margin-right: -20px !important; }
+  .cs .vision-img { margin: 0 -20px; }
+
+  /* Validation stats — 3-col to 1-col */
+  .cs .validation-stats { grid-template-columns: 1fr; }
+  .cs .validation-stats .item {
+    padding: 24px 20px;
+    border-right: none;
+    border-bottom: 1px solid var(--hair);
+  }
+  .cs .validation-stats .item:last-child { border-bottom: none; }
+  .cs .validation-stats .item .num { font-size: 38px; }
+  .cs .validation-stats .item .desc { font-size: 11px; }
+
+  /* Quotes — 2 cols to 1 */
+  .cs .quotes { grid-template-columns: 1fr; gap: 32px; }
+  .cs .quote blockquote { font-size: 19px; }
+  .cs .quote .mark { font-size: 48px; margin-bottom: 12px; }
+
+  /* Takeaways — collapse */
+  .cs .takeaways { grid-template-columns: 1fr; gap: 28px; }
+  .cs .takeaway h4 { font-size: 20px; }
+  .cs .takeaway p { font-size: 16px; }
+
+  /* Prev/next cards — stack */
+  .cs .prevnext { padding: 48px 20px 56px; }
+  .cs .prevnext-grid { grid-template-columns: 1fr; gap: 32px; }
+  .cs .pn-card { padding: 12px 0; gap: 18px; }
+  .cs .pn-card.prev, .cs .pn-card.next { text-align: left; }
+  .cs .pn-card.next .sub { margin-left: 0; }
+  .cs .pn-card .ttl { font-size: 28px; }
+  .cs .pn-card .sub { font-size: 15px; }
+
+  /* Footer — stack colophon */
+  .cs .footer { padding: 18px 20px; }
+  .cs .footer .colophon {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+    align-items: center;
+    font-size: 10px;
+  }
+
+  /* Galleries — single column */
+  .cs .gallery-3, .cs .gallery-2, .cs .wire-grid { grid-template-columns: 1fr; gap: 20px; }
+
+  /* Insights sticky-note grid */
+  .cs .insights-grid { padding: 12px 0; }
+  .cs .insights-grid .category { margin-top: 36px; }
+  .cs .insights-grid .category-label { font-size: 19px; margin-bottom: 20px; }
+  .cs .insights-grid .notes { grid-template-columns: 1fr; gap: 18px; padding: 8px 0; }
+  .cs .insights-grid .notes .note { padding: 22px 20px; min-height: 0; }
+  .cs .insights-grid .notes .note:hover { transform: rotate(0deg); }
+
+  /* Vision items */
+  .cs .vision-list { margin-top: 36px; }
+  .cs .vision-item { margin-top: 56px; }
+  .cs .vision-heading { padding: 0 20px; }
+  .cs .vision-heading h3 { font-size: 24px; }
+  .cs .vision-heading p { font-size: 16px; }
+
+  /* Strip carousel — smaller slides */
+  .cs .strip { padding: 0 20px 16px; }
+  .cs .strip .slide { flex-basis: 80vw; }
+
+  /* Toggle */
+  .cs .ba-toggle .ba-toggle-bar button { padding: 10px 18px; font-size: 10px; }
+
+  /* Before/After slider — smaller knob (still finger-friendly at 36px) */
+  .cs .ba-knob { width: 40px; height: 40px; }
+  .cs .ba-label { font-size: 12px; padding: 4px 10px; top: 12px; }
+  .cs .ba-label.before { left: 12px; }
+  .cs .ba-label.after { right: 12px; }
+
+  /* Video play button */
+  .cs .video-cover .play-btn { width: 72px; height: 72px; }
+  .cs .video-cover .play-btn svg { width: 22px; height: 22px; }
+
+  /* Overview 3-col features (Nexus) */
+  .cs .overview-grid { grid-template-columns: 1fr; gap: 28px; margin-top: 36px; padding: 0 20px; }
+}
+</style>
+</head>
+<body>
+
+<div id="root">
+  <div class="cs">
+
+    <header class="topbar">
+      <a class="name" href="../index.html">Rishabh Gandotra</a>
+    </header>
+
+    <section class="titleblock">
+      <div class="eyebrow">— Workload Mobility · VMware · 2024–2026 —</div>
+      <h1 class="cs-title">Unifying legacy migration workflows to simplify <em>VM mobility.</em></h1>
+      <div class="meta">
+        <div>
+          <div class="label">Company</div>
+          <div class="val">VMware (by Broadcom)</div>
+        </div>
+        <div>
+          <div class="label">Role</div>
+          <div class="val">Design Lead</div>
+        </div>
+        <div>
+          <div class="label">Expertise</div>
+          <div class="val">UX Research &amp; Design</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="hero-img">
+      <img loading="eager" fetchpriority="high" src="../assets/case-workload.svg" alt="Workload Mobility — unified migration experience">
+    </div>
+
+    <section class="metrics" aria-label="Outcomes">
+      <div>
+        <div class="label">Efficiency</div>
+        <div class="stat"><em>−30%</em></div>
+        <div class="caption">Workflow steps reduced (10 → 7)</div>
+      </div>
+      <div>
+        <div class="label">Satisfaction</div>
+        <div class="stat"><em>92%</em></div>
+        <div class="caption">CSAT score, up from 65%</div>
+      </div>
+      <div>
+        <div class="label">Strategy</div>
+        <div class="stat"><em>Vision</em></div>
+        <div class="caption">Multi-year roadmap for Global Mobility Service</div>
+      </div>
+    </section>
+
+    <!-- Approach -->
+    <section class="block">
+      <div class="narrow">
+        <div class="section-label">— Approach —</div>
+        <h2 class="section-title">From a scattered legacy to a unified plane.</h2>
+        <p class="lede">Enterprise VM migration was fractured across the Network&nbsp;Operations UI and the HCX UI — operators navigated disjointed workflows with no situational awareness of their capacity or overall scope. Partnering with product and engineering, I led the strategy to <em>deprecate</em> migration planning in legacy Net&nbsp;Ops, <em>integrate</em> it directly into the modern Operations Console, and <em>modernize</em> the HCX UI for future platform consolidation.</p>
+      </div>
+
+      <div class="sub" style="max-width:1040px;margin:80px auto 0">
+        <h3>Streamlining the end-to-end workflow</h3>
+        <p>By mapping the end-to-end journey, we identified redundant handoffs and consolidated legacy capabilities — removing manual export and import steps, auto generating waves & groups, and pulling the "Commit" action across the platform boundary seamlessly into the Ops UI.</p>
+      </div>
+
+      <div style="margin: 32px -80px 0;">
+        <div class="figure">
+          <img loading="lazy" src="../assets/end-to-end-workflow.svg" alt="End-to-end workflow schema mapping every screen across Net Ops and HCX UIs">
+        </div>
+        <div class="figure-caption" style="margin-top:14px">— End-to-end workflow —</div>
+      </div>
+
+      <div class="sub" style="max-width:1040px;margin:80px auto 0">
+        <h3>Mapping the schema, screen by screen</h3>
+        <p>Once the workflow was understood, I laid out the entire user-journey schema screen-by-screen to see the full scope and the sub-steps involved. This helped compare the efficiency of the auto-generation feature — and surfaced a critical insight from research: <strong>users were unlikely to adopt auto-generation unless the underlying logic considered criteria beyond just network dependencies.</strong></p>
+      </div>
+
+      <div style="margin: 32px -80px 0;">
+        <div class="figure">
+          <img loading="lazy" src="../assets/manual-creation-schema.svg" alt="Screen-by-screen schema of the manual wave-creation flow">
+        </div>
+      </div>
+
+      <div style="margin: 48px -80px 0;">
+        <div class="figure">
+          <img loading="lazy" src="../assets/auto-generation-schema.svg" alt="Screen-by-screen schema of the auto-generation flow">
+        </div>
+      </div>
+    </section>
+
+    <!-- User Validation -->
+    <section class="block">
+      <div class="narrow">
+        <div class="section-label">— User Validation —</div>
+        <h2 class="section-title">What the enterprise operators surfaced.</h2>
+      </div>
+
+      <div class="validation-stats" style="margin:96px -80px 0">
+        <div class="item">
+          <div class="num">13</div>
+          <div class="desc">Moderated sessions</div>
+        </div>
+        <div class="item">
+          <div class="num">10</div>
+          <div class="desc">Enterprise customers</div>
+        </div>
+        <div class="item">
+          <div class="num">49</div>
+          <div class="desc">Participants across roles</div>
+        </div>
+      </div>
+
+      <div class="insights-grid">
+        <div class="category" data-color="blue">
+          <h3 class="category-label">Network Mapping</h3>
+          <div class="notes">
+            <div class="note"><p>Need global network mapping to avoid per-VM setup.</p></div>
+            <div class="note"><p>Want mapping at site &rsaquo; group &rsaquo; VM levels.</p></div>
+            <div class="note"><p>Confused by optional network mapping.</p></div>
+          </div>
+        </div>
+        <div class="category" data-color="pink">
+          <h3 class="category-label">Migration Workflow &amp; Controls</h3>
+          <div class="notes">
+            <div class="note"><p>Transfer &amp; Switchover should be separate &amp; user-controlled.</p></div>
+            <div class="note"><p>Unclear that Switchover starts automatically.</p></div>
+            <div class="note"><p>Prefer local time zone for scheduling.</p></div>
+          </div>
+        </div>
+        <div class="category" data-color="yellow">
+          <h3 class="category-label">Guidance &amp; Clarity</h3>
+          <div class="notes">
+            <div class="note"><p>Destination settings at group level are confusing — label them clearly.</p></div>
+            <div class="note"><p>Need guidance on which migration types require VM restart.</p></div>
+            <div class="note"><p>Prefer icons for reset — the circle arrow looks like refresh.</p></div>
+          </div>
+        </div>
+        <div class="category" data-color="green">
+          <h3 class="category-label">Scale &amp; Performance</h3>
+          <div class="notes">
+            <div class="note"><p>Large-scale users (10,000+ VMs) depend on API migrations. UI still helpful for smaller sets.</p></div>
+            <div class="note"><p>Need a smart system for parallel migrations (round-robin, FIFO).</p></div>
+            <div class="note"><p>Performance limits with huge vCenter environments remain a concern.</p></div>
+          </div>
+        </div>
+        <div class="category" data-color="purple">
+          <h3 class="category-label">Troubleshooting &amp; Ops Integration</h3>
+          <div class="notes">
+            <div class="note"><p>Validation errors should log to syslog.</p></div>
+            <div class="note"><p>Need in-UI timestamps to correlate with logs.</p></div>
+          </div>
+        </div>
+        <div class="category" data-color="paleblue">
+          <h3 class="category-label">Planning &amp; Capacity</h3>
+          <div class="notes">
+            <div class="note"><p>Capacity &amp; cost planning from Ops should carry into the migration plan.</p></div>
+            <div class="note"><p>Prefer integration with vR Ops and vRNI for diagnostics &amp; planning.</p></div>
+            <div class="note"><p>Users expect to start migration from the familiar inventory view.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Execution -->
+    <section class="block">
+      <div class="narrow">
+        <div class="section-label">— Execution · across 2 product releases —</div>
+        <h2 class="section-title">High value redesigns, shipped end-to-end.</h2>
+      </div>
+
+      <div style="max-width:1040px;margin:0 auto">
+        <div class="sub">
+          <h3>Global visibility at the landing page</h3>
+          <p><strong>Contextualizing the global scope.</strong> The legacy planning tool forced users to start from a blind list view. I redesigned the landing experience into a data-rich dashboard, providing immediate cross-plan metrics — such as completed vs. failed waves — before the user even initiates a new migration plan.</p>
+          <div class="ba-toggle">
+            <div class="ba-toggle-bar">
+              <button data-toggle="before">Before</button>
+              <button data-toggle="after" class="active">After</button>
+            </div>
+            <div class="img-frame" style="aspect-ratio:5760/4832">
+              <img loading="lazy" data-img="before" src="../assets/global-visibility-before.jpg" alt="Legacy blind-list landing page">
+              <img loading="lazy" data-img="after" class="active" src="../assets/global-visibility-after.svg" alt="Data-rich dashboard with cross-plan metrics">
+            </div>
+          </div>
+        </div>
+
+        <div class="sub">
+          <h3>Persistent context during execution</h3>
+          <p><strong>Persistent summary widget.</strong> During research, users reported limited visibility into the plan's capacity once they were deep inside the migration workflow. In direct response, I designed a sticky, collapsible summary widget that persists across every step of plan creation — ensuring operators always have real-time visibility into allocated resources without losing their place.</p>
+          <div class="ba-toggle">
+            <div class="ba-toggle-bar">
+              <button data-toggle="before">Before</button>
+              <button data-toggle="after" class="active">After</button>
+            </div>
+            <div class="img-frame" style="aspect-ratio:5760/4296">
+              <img loading="lazy" data-img="before" src="../assets/persistent-context-before.jpg" alt="Workflow without persistent summary widget">
+              <img loading="lazy" data-img="after" class="active" src="../assets/persistent-context-after.svg" alt="Workflow with sticky, collapsible summary widget">
+            </div>
+          </div>
+        </div>
+
+        <div class="sub">
+          <h3>Automating the tedious and error-prone</h3>
+          <p>Building migration waves manually was highly tedious and error-prone. We introduced an automated workflow that analyzes network dependencies to instantly generate optimal migration waves and mobility groups — drastically reducing time-to-value while preserving the operator's ability to review and override the system's logic.</p>
+          <div class="ba">
+            <span class="ba-label before">Before</span>
+            <span class="ba-label after">After</span>
+            <img loading="lazy" class="ba-img ba-before" src="../assets/building-migration-waves-before.jpg" alt="Manual wave construction" draggable="false">
+            <div class="ba-after-wrap">
+              <img loading="lazy" class="ba-img ba-after" src="../assets/building-migration-waves-after.svg" alt="Auto-generated waves with review controls" draggable="false">
+            </div>
+            <div class="ba-handle"></div>
+            <div class="ba-knob">
+              <svg width="16" height="14" viewBox="0 0 16 14" fill="none" aria-hidden="true">
+                <path d="M6 1L1 7L6 13" stroke="#181B20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10 1L15 7L10 13" stroke="#181B20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="figure-caption">— Drag to compare —</div>
+        </div>
+
+        <div class="sub">
+          <h3>Modernizing legacy execution workflows</h3>
+          <p>The legacy HCX execution flow buried critical settings under complex, nested interactions. When engineering decided to modernize the architecture, I redesigned the UI into a clear, linear progression — utilizing scalable inventory tables and global network destination assignments. This removed immediate friction <em>and</em> structurally prepared the interface for its eventual native integration into the Ops UI.</p>
+          <div class="ba">
+            <span class="ba-label before">Before</span>
+            <span class="ba-label after">After</span>
+            <img loading="lazy" class="ba-img ba-before" src="../assets/hcx-before.jpg" alt="Legacy HCX execution UI with nested interactions" draggable="false">
+            <div class="ba-after-wrap">
+              <img loading="lazy" class="ba-img ba-after" src="../assets/hcx-after.svg" alt="Modernized linear HCX flow with global assignments" draggable="false">
+            </div>
+            <div class="ba-handle"></div>
+            <div class="ba-knob">
+              <svg width="16" height="14" viewBox="0 0 16 14" fill="none" aria-hidden="true">
+                <path d="M6 1L1 7L6 13" stroke="#181B20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10 1L15 7L10 13" stroke="#181B20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="figure-caption">— Drag to compare —</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Global Service Vision -->
+    <section class="block">
+      <div class="narrow">
+        <div class="section-label">— Scaling to a Global Service —</div>
+        <h2 class="section-title">A unified "single pane of glass" for the next horizon.</h2>
+        <p class="lede">Following the success of the Workload Mobility unification, I defined the long-term vision for a Global Mobility Service — shifting from individual tool integration to a unified operational surface.</p>
+      </div>
+      <div class="vision-list">
+        <div class="vision-item">
+          <div class="vision-heading">
+            <span class="num">i.</span>
+            <h3>Project Dashboard</h3>
+            <p>A single pane of glass surfacing every active migration, scope, and status across all migration plans.</p>
+          </div>
+          <div class="vision-img" style="aspect-ratio: 1278/1267">
+            <img loading="lazy" src="../assets/project-dashboard.svg" alt="Project Dashboard">
+          </div>
+        </div>
+        <div class="vision-item">
+          <div class="vision-heading">
+            <span class="num">ii.</span>
+            <h3>Destination Insights</h3>
+            <p>Comparison of clusters as possible destinations, organized by capacity, cost, and compatibility.</p>
+          </div>
+          <div class="vision-img" style="aspect-ratio: 1278/1096">
+            <img loading="lazy" src="../assets/destination-insights.svg" alt="Destination Insights">
+          </div>
+        </div>
+        <div class="vision-item">
+          <div class="vision-heading">
+            <span class="num">iii.</span>
+            <h3>Capacity Analysis</h3>
+            <p>Forecasted resource utilization across waves — showing CPU, memory, and storage growth before the operator commits.</p>
+          </div>
+          <div class="vision-img" style="aspect-ratio: 1278/955">
+            <img loading="lazy" src="../assets/capacity-analysis.svg" alt="Capacity Analysis">
+          </div>
+        </div>
+        <div class="vision-item">
+          <div class="vision-heading">
+            <span class="num">iv.</span>
+            <h3>Capacity Optimization</h3>
+            <p>Recommendations to resize workloads before migration, ensuring optimal usage of available network bandwidth and resources.</p>
+          </div>
+          <div class="vision-img" style="aspect-ratio: 1278/894">
+            <img loading="lazy" src="../assets/capacity-optimization.svg" alt="Capacity Optimization">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Testimonials -->
+    <section class="block">
+      <div class="narrow">
+        <div class="section-label">— Customer Testimonials —</div>
+        <h2 class="section-title">Validated in the operator's own words.</h2>
+      </div>
+      <div class="quotes" style="max-width:1040px;margin:56px auto 0">
+        <div class="quote">
+          <div class="mark">"</div>
+          <blockquote>I'm encouraged by the direction Migration is taking. Greater integration between HCX and Net&nbsp;Ops would help create a more cohesive and streamlined workflow.</blockquote>
+          <div class="attr"><strong>Director of IT</strong><br>Citibank</div>
+        </div>
+        <div class="quote">
+          <div class="mark">"</div>
+          <blockquote>Auto-generating waves and groups could be highly beneficial for us. I'd like to see the logic incorporate additional criteria beyond just network dependencies.</blockquote>
+          <div class="attr"><strong>Systems Engineer</strong><br>Trinity Health</div>
+        </div>
+        <div class="quote">
+          <div class="mark">"</div>
+          <blockquote>I would like the planning capability to be built into Ops without having to install Net&nbsp;Ops. I'd especially like to use that collapsible widget to understand capacity needs from an HCX service-mesh standpoint.</blockquote>
+          <div class="attr"><strong>IT Architect</strong><br>VISA</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Takeaways -->
+    <section class="block">
+      <div class="narrow">
+        <div class="section-label">— Takeaways —</div>
+        <h2 class="section-title">Three lessons that travel.</h2>
+      </div>
+      <div class="takeaways" style="max-width:1040px;margin:56px auto 0">
+        <div class="takeaway">
+          <div class="num">i.</div>
+          <h4>Designing for ecosystems</h4>
+          <p>Bridging legacy tools requires solving the overarching architecture — not just localized UI fixes.</p>
+        </div>
+        <div class="takeaway">
+          <div class="num">ii.</div>
+          <h4>Balancing wins with vision</h4>
+          <p>Features like the collapsible widget addressed immediate pain points, while research set the foundation for the future Global Mobility Service.</p>
+        </div>
+        <div class="takeaway">
+          <div class="num">iii.</div>
+          <h4>Multiplying impact</h4>
+          <p>True design leadership means elevating the team. Mentoring a junior designer to independently moderate high-stakes customer sessions expanded research velocity and built lasting capability.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prev/Next -->
+    <section class="prevnext">
+      <div class="label">— Continue Reading —</div>
+      <div class="prevnext-grid">
+        <a class="pn-card prev" href="./nexus-agentic-ai.html">
+          <div class="image" style="background:#0E0E0D">
+            <img loading="lazy" src="../assets/case-nexus.jpg" alt="Nexus Agentic AI — operations dashboard">
+          </div>
+          <div>
+            <div class="dir">← Previous Case Study</div>
+            <div class="num" style="margin-top:12px">I.</div>
+            <div class="ttl">Nexus Agentic AI</div>
+            <div class="sub">Multi-agent control plane for autonomous server patching.</div>
+            <div class="yr">Independent — 2026</div>
+          </div>
+        </a>
+        <a class="pn-card next" href="./vmware-cloud-on-dell.html">
+          <div class="image" style="background:#1B1B1B">
+            <img loading="lazy" src="../assets/case-vmc.jpg" alt="VMware Cloud on Dell — global edge locations">
+          </div>
+          <div>
+            <div class="dir">Next Case Study →</div>
+            <div class="num" style="margin-top:12px">III.</div>
+            <div class="ttl">VMware Cloud on Dell</div>
+            <div class="sub">A self-service portal for managed on-premises infrastructure.</div>
+            <div class="yr">VMware — 2018 to 2020</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="colophon">
+        <span>San Jose, CA</span>
+        <span>Vibe coded with Claude</span>
+        <span>© 2026</span>
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+<script>
+// Before/After sliders
+document.querySelectorAll('.ba').forEach(function(slider) {
+  var pos = 50;
+  var dragging = false;
+
+  function setPos(p) {
+    pos = Math.max(0, Math.min(100, p));
+    slider.querySelector('.ba-after-wrap').style.clipPath = 'inset(0 0 0 ' + pos + '%)';
+    slider.querySelector('.ba-handle').style.left = pos + '%';
+    slider.querySelector('.ba-knob').style.left = pos + '%';
+  }
+
+  setPos(50);
+
+  function moveTo(clientX) {
+    var rect = slider.getBoundingClientRect();
+    setPos(((clientX - rect.left) / rect.width) * 100);
+  }
+
+  slider.addEventListener('mousedown', function(e) {
+    dragging = true;
+    moveTo(e.clientX);
+    e.preventDefault();
+  });
+  slider.addEventListener('touchstart', function(e) {
+    dragging = true;
+    moveTo(e.touches[0].clientX);
+    e.preventDefault();
+  }, { passive: false });
+
+  window.addEventListener('mousemove', function(e) {
+    if (dragging) moveTo(e.clientX);
+  });
+  window.addEventListener('mouseup', function() { dragging = false; });
+  window.addEventListener('touchmove', function(e) {
+    if (dragging) moveTo(e.touches[0].clientX);
+  }, { passive: false });
+  window.addEventListener('touchend', function() { dragging = false; });
+});
+
+// Before/After toggle
+document.querySelectorAll('.ba-toggle').forEach(function(root) {
+  var buttons = root.querySelectorAll('[data-toggle]');
+  var imgs = root.querySelectorAll('[data-img]');
+  var frame = root.querySelector('.img-frame');
+
+  function setFrameAspect() {
+    for (var idx = 0; idx < imgs.length; idx++) {
+      var img = imgs[idx];
+      if (img.classList.contains('active') && img.naturalWidth) {
+        frame.style.aspectRatio = img.naturalWidth + ' / ' + img.naturalHeight;
+        return;
+      }
+    }
+  }
+
+  imgs.forEach(function(img) {
+    if (img.complete) setFrameAspect();
+    else img.addEventListener('load', setFrameAspect);
+  });
+
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var which = btn.dataset.toggle;
+      buttons.forEach(function(b) { b.classList.toggle('active', b.dataset.toggle === which); });
+      imgs.forEach(function(i) { i.classList.toggle('active', i.dataset.img === which); });
+      setFrameAspect();
+    });
+  });
+});
+
+</script>
+
+</body>
+</html>

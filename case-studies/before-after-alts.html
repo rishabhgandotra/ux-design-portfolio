@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Before/After — Alternative Treatments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #ECEEF1; }
+body { font-family: 'Inter', system-ui, sans-serif; }
+#root { display: flex; justify-content: center; }
+
+.cs {
+  --bg: #ECEEF1;
+  --ink: #181B20;
+  --ink-2: #373B41;
+  --muted: #7E828A;
+  --hair: #D2D6DC;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+  width: 1280px;
+  border-left: 1px solid var(--hair);
+  border-right: 1px solid var(--hair);
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+}
+.cs em { font-style: italic; }
+
+.preview-title {
+  font-family: 'Lora', serif;
+  font-size: 32px;
+  font-weight: 400;
+  text-align: center;
+  padding: 56px 80px 16px;
+  letter-spacing: -0.01em;
+}
+.preview-sub {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  padding-bottom: 56px;
+}
+
+.alt {
+  padding: 80px 80px;
+  border-top: 1px solid var(--hair);
+}
+.alt-label {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.alt h3 {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0 0 12px;
+}
+.alt p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  margin: 0 0 32px;
+  max-width: 64ch;
+}
+
+/* === Treatment A: Side-by-side === */
+.ba-side {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.ba-side .ba-cell { display: flex; flex-direction: column; }
+.ba-side .ba-cell .tag {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  margin-bottom: 12px;
+}
+.ba-side .ba-cell .img-frame {
+  border: 1px solid var(--hair);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: var(--bg);
+}
+.ba-side .ba-cell .img-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+}
+
+/* === Treatment B: Stacked vertical === */
+.ba-stacked .ba-row { display: flex; flex-direction: column; }
+.ba-stacked .ba-row + .ba-row { margin-top: 32px; }
+.ba-stacked .ba-row .tag {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  margin-bottom: 12px;
+}
+.ba-stacked .ba-row .img-frame {
+  border: 1px solid var(--hair);
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  background: var(--bg);
+}
+.ba-stacked .ba-row .img-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+}
+
+/* === Treatment C: Toggle === */
+.ba-toggle {
+  position: relative;
+}
+.ba-toggle .ba-toggle-bar {
+  display: inline-flex;
+  border: 1px solid var(--ink);
+  margin-bottom: 16px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.ba-toggle .ba-toggle-bar button {
+  appearance: none;
+  background: transparent;
+  border: none;
+  padding: 10px 22px;
+  cursor: pointer;
+  color: var(--ink-2);
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+.ba-toggle .ba-toggle-bar button + button { border-left: 1px solid var(--ink); }
+.ba-toggle .ba-toggle-bar button.active {
+  background: var(--ink);
+  color: var(--bg);
+}
+.ba-toggle .img-frame {
+  position: relative;
+  border: 1px solid var(--hair);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: var(--bg);
+}
+.ba-toggle .img-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.ba-toggle .img-frame img.active { opacity: 1; }
+
+.caption {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 14px;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div id="root">
+  <div class="cs">
+
+    <div class="preview-title">Before / After — Alternative Treatments</div>
+    <div class="preview-sub">— Same content, three different presentations —</div>
+
+    <!-- A: Side-by-side -->
+    <section class="alt">
+      <div class="alt-label">— Treatment A · Side-by-side —</div>
+      <h3>Global visibility at the landing page</h3>
+      <p>The most editorial of the alternatives. Two frames sit next to each other, each labeled. No interaction required — the comparison is fully visible at a glance. Trade-off: each image is roughly half the width, so dense UI detail can suffer.</p>
+      <div class="ba-side">
+        <div class="ba-cell">
+          <div class="tag">Before</div>
+          <div class="img-frame">
+            <img loading="lazy" src="../assets/global-visibility-before.jpg" alt="Legacy blind-list landing page">
+          </div>
+        </div>
+        <div class="ba-cell">
+          <div class="tag">After</div>
+          <div class="img-frame">
+            <img loading="lazy" src="../assets/global-visibility-after.svg" alt="Data-rich dashboard with cross-plan metrics">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- B: Stacked vertical -->
+    <section class="alt">
+      <div class="alt-label">— Treatment B · Stacked vertical —</div>
+      <h3>Global visibility at the landing page</h3>
+      <p>Preserves full width for each image — best for dense enterprise UI where detail matters. Doubles the section's vertical real estate. Reads top-to-bottom like a magazine layout, with the "after" naturally landing as the conclusion.</p>
+      <div class="ba-stacked">
+        <div class="ba-row">
+          <div class="tag">Before</div>
+          <div class="img-frame">
+            <img loading="lazy" src="../assets/global-visibility-before.jpg" alt="Legacy blind-list landing page">
+          </div>
+        </div>
+        <div class="ba-row">
+          <div class="tag">After</div>
+          <div class="img-frame">
+            <img loading="lazy" src="../assets/global-visibility-after.svg" alt="Data-rich dashboard with cross-plan metrics">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- C: Toggle -->
+    <section class="alt">
+      <div class="alt-label">— Treatment C · Toggle —</div>
+      <h3>Global visibility at the landing page</h3>
+      <p>Click "Before" or "After" to swap. Compact — uses the same vertical space as one image — and full image width is preserved. Requires a small interaction; only one image is visible at a time, so direct comparison is mental rather than visual.</p>
+      <div class="ba-toggle">
+        <div class="ba-toggle-bar">
+          <button data-toggle="before">Before</button>
+          <button data-toggle="after" class="active">After</button>
+        </div>
+        <div class="img-frame">
+          <img loading="lazy" data-img="before" src="../assets/global-visibility-before.jpg" alt="Legacy blind-list landing page">
+          <img loading="lazy" data-img="after" class="active" src="../assets/global-visibility-after.svg" alt="Data-rich dashboard with cross-plan metrics">
+        </div>
+      </div>
+    </section>
+
+    <div style="padding: 56px 80px; text-align:center; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); border-top: 1px solid var(--ink);">
+      Preview only — current case study uses draggable slider
+    </div>
+
+  </div>
+</div>
+
+<script>
+// Toggle treatment
+document.querySelectorAll('.ba-toggle').forEach(function(root) {
+  var buttons = root.querySelectorAll('[data-toggle]');
+  var imgs = root.querySelectorAll('[data-img]');
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var which = btn.dataset.toggle;
+      buttons.forEach(function(b) { b.classList.toggle('active', b.dataset.toggle === which); });
+      imgs.forEach(function(i) { i.classList.toggle('active', i.dataset.img === which); });
+    });
+  });
+});
+</script>
+
+</body>
+</html>

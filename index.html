@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rishabh Gandotra — Staff Product Designer</title>
+<meta name="description" content="Staff Product Designer with over a decade of experience crafting enterprise B2B solutions. San Jose, CA." />
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #ECEEF1; }
+body { font-family: 'Inter', system-ui, sans-serif; }
+#root { display: flex; justify-content: center; }
+
+.qm {
+  --bg: #ECEEF1;
+  --ink: #181B20;
+  --ink-2: #373B41;
+  --muted: #7E828A;
+  --hair: #D2D6DC;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+  width: 100%;
+  max-width: 1280px;
+  border-left: 1px solid var(--hair);
+  border-right: 1px solid var(--hair);
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+}
+.qm a { color: inherit; text-decoration: none; }
+.qm .container { padding: 0 80px; }
+
+/* Masthead */
+.qm .masthead {
+  text-align: center;
+  padding: 56px 80px 32px;
+  border-bottom: 1px solid var(--ink);
+}
+.qm .masthead .name {
+  font-family: 'Lora', 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: 32px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.qm .masthead .sub {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: 12px;
+}
+
+/* Hero */
+.qm .hero {
+  padding: 120px 80px 80px;
+  text-align: center;
+  border-bottom: 1px solid var(--hair);
+}
+.qm .hero .eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+.qm .display {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: 88px;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  max-width: 22ch;
+  margin: 0 auto;
+}
+.qm .display em { font-style: italic; }
+.qm .lead {
+  margin: 56px auto 0;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 56ch;
+}
+
+/* Credentials strip */
+.qm .credentials {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--hair);
+  text-align: center;
+}
+.qm .credentials > div {
+  padding: 32px 24px;
+  border-right: 1px solid var(--hair);
+}
+.qm .credentials > div:last-child { border-right: none; }
+.qm .credentials .label {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.qm .credentials .val {
+  font-family: 'Lora', serif;
+  font-size: 20px;
+  letter-spacing: -0.005em;
+  line-height: 1.3;
+}
+.qm .credentials .val em { font-style: italic; }
+
+/* Work section */
+.qm .work { padding: 96px 0; }
+.qm .work-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.qm .work-header .label {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Case study rows */
+.qm .case {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 56px;
+  align-items: center;
+  padding: 48px 0;
+  cursor: pointer;
+}
+.qm .case:last-of-type { padding-bottom: 0; }
+.qm .case-text {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+}
+.qm .case-text .num {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.qm .case-text .ttl {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 14px;
+  width: fit-content;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding-bottom: 4px;
+}
+.qm .case:hover .case-text .ttl { background-size: 100% 1px; }
+.qm .case-text .sub {
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 42ch;
+  margin-bottom: 24px;
+  letter-spacing: -0.005em;
+}
+.qm .case-text .yr {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+.qm .case-text .case-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 4px;
+  align-self: flex-start;
+}
+.qm .case-image {
+  aspect-ratio: 4/3;
+  border: 1px solid var(--hair);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.qm .case-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+}
+
+/* About section */
+.qm .about {
+  padding: 96px 80px;
+  border-top: 1px solid var(--hair);
+}
+.qm .about-grid {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 64px;
+  align-items: start;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+.qm .about-photo {
+  border: 1px solid var(--hair);
+  background: #EEEAE0;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+}
+.qm .about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+}
+.qm .about-text {
+  font-family: 'Lora', serif;
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  letter-spacing: -0.005em;
+}
+.qm .about-text p { margin: 0; }
+.qm .about-text p + p { margin-top: 1em; }
+.qm .about-links {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--hair);
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.qm .about-links a {
+  border-bottom: 1px solid var(--muted);
+  padding-bottom: 4px;
+  color: var(--ink-2);
+}
+.qm .about-links a:hover { color: var(--ink); border-color: var(--ink); }
+
+/* Footer */
+.qm .footer {
+  background: var(--bg);
+  padding: 24px 80px;
+  border-top: 1px solid var(--ink);
+}
+.qm .footer .colophon {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ============ TABLET (≤ 1279px) ============ */
+@media (max-width: 1279px) {
+  .qm .container { padding: 0 48px; }
+  .qm .masthead { padding: 48px 48px 28px; }
+  .qm .hero { padding: 88px 48px 64px; }
+  .qm .display { font-size: 68px; max-width: 22ch; }
+  .qm .lead { font-size: 20px; margin-top: 44px; }
+  .qm .credentials > div { padding: 28px 20px; }
+  .qm .credentials .val { font-size: 18px; }
+  .qm .work { padding: 80px 0; }
+  .qm .work-header { margin-bottom: 48px; }
+  .qm .case { grid-template-columns: 1fr 1.4fr; gap: 40px; padding: 36px 0; }
+  .qm .case-text .ttl { font-size: 32px; }
+  .qm .case-text .sub { font-size: 17px; }
+  .qm .about { padding: 80px 48px; }
+  .qm .about-grid {
+    grid-template-columns: 340px 1fr;
+    gap: 48px;
+  }
+  .qm .about-text { font-size: 18px; }
+  .qm .footer { padding: 24px 48px; }
+}
+
+/* ============ MOBILE (≤ 767px) ============ */
+@media (max-width: 767px) {
+  body { background: var(--bg, #ECEEF1); }
+  .qm {
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+  }
+  .qm .container { padding: 0 20px; }
+
+  /* Masthead */
+  .qm .masthead { padding: 32px 20px 20px; }
+  .qm .masthead .name { font-size: 22px; letter-spacing: 0.05em; }
+  .qm .masthead .sub { font-size: 11px; letter-spacing: 0.16em; margin-top: 8px; }
+
+  /* Hero */
+  .qm .hero { padding: 48px 20px 36px; }
+  .qm .hero .eyebrow { font-size: 10px; letter-spacing: 0.16em; margin-bottom: 24px; }
+  .qm .display { font-size: 34px; line-height: 1.08; }
+  .qm .lead { font-size: 17px; margin-top: 28px; line-height: 1.5; }
+
+  /* Credentials — stack 4 → 1 */
+  .qm .credentials { grid-template-columns: 1fr; }
+  .qm .credentials > div {
+    border-right: none;
+    border-bottom: 1px solid var(--hair);
+    padding: 20px 20px;
+  }
+  .qm .credentials > div:last-child { border-bottom: none; }
+  .qm .credentials .label { font-size: 10px; margin-bottom: 6px; }
+  .qm .credentials .val { font-size: 17px; }
+
+  /* Work / case rows — stack image above text */
+  .qm .work { padding: 48px 0; }
+  .qm .work-header { margin-bottom: 32px; }
+  .qm .work-header .label { font-size: 10px; }
+  .qm .case {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 28px 0;
+  }
+  .qm .case-text { padding: 4px 0 0; }
+  .qm .case-text .num { font-size: 16px; margin-bottom: 10px; }
+  .qm .case-text .ttl { font-size: 26px; }
+  .qm .case-text .sub { font-size: 16px; margin-bottom: 16px; }
+  .qm .case-text .yr { font-size: 10px; margin-bottom: 16px; }
+  .qm .case-text .case-link { font-size: 11px; }
+
+  /* About — stack photo above text */
+  .qm .about { padding: 48px 20px; }
+  .qm .about-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .qm .about-photo {
+    max-width: 240px;
+    margin: 0 auto;
+    aspect-ratio: 4/5;
+  }
+  .qm .about-text { font-size: 17px; line-height: 1.55; }
+  .qm .about-links {
+    margin-top: 28px;
+    padding-top: 20px;
+    gap: 16px;
+    font-size: 11px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Footer — stack colophon */
+  .qm .footer { padding: 20px 20px; }
+  .qm .footer .colophon {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+  }
+}
+</style>
+</head>
+<body>
+
+<div id="root">
+  <div class="qm">
+
+    <header class="masthead">
+      <div class="name">Rishabh Gandotra</div>
+      <div class="sub">Staff Product Designer</div>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">Enterprise · B2B · SaaS · AI-driven UX</div>
+      <h1 class="display"><em>End-to-end</em> product design and strategy for enterprise systems.</h1>
+      <p class="lead">Twelve years specializing in 0-to-1 launches across hybrid cloud, infrastructure, and agentic AI — translating dense technical requirements into shipped products that scale to millions of operators.</p>
+    </section>
+
+    <section class="credentials" aria-label="Credentials">
+      <div>
+        <div class="label">Focus</div>
+        <div class="val"><em>Enterprise</em><br>B2B · SaaS · AI</div>
+      </div>
+      <div>
+        <div class="label">Scale</div>
+        <div class="val"><em>300k</em> customers,<br>millions of admins</div>
+      </div>
+      <div>
+        <div class="label">Education</div>
+        <div class="val"><em>M.S. HCI</em><br>University of Michigan</div>
+      </div>
+      <div>
+        <div class="label">Origin</div>
+        <div class="val"><em>Engineering</em><br>background</div>
+      </div>
+    </section>
+
+    <section class="work" aria-label="Selected Work">
+      <div class="container">
+        <div class="work-header">
+          <div class="label">— Selected Work —</div>
+        </div>
+
+        <a class="case" href="case-studies/nexus-agentic-ai.html" aria-label="Read case study: Nexus Agentic AI">
+          <div class="case-text">
+            <span class="num">I.</span>
+            <div class="ttl">Nexus Agentic AI</div>
+            <div class="sub">Multi-agent control plane for autonomous server patching.</div>
+            <div class="yr">Independent — 2026</div>
+            <div class="case-link">Read case study →</div>
+          </div>
+          <div class="case-image" style="background:#0E0E0D">
+            <img loading="lazy" src="assets/case-nexus.jpg" alt="Nexus Agentic AI — operations dashboard">
+          </div>
+        </a>
+
+        <a class="case" href="case-studies/workload-mobility.html" aria-label="Read case study: Workload Mobility">
+          <div class="case-text">
+            <span class="num">II.</span>
+            <div class="ttl">Workload Mobility</div>
+            <div class="sub">Unifying legacy VM migration tools across the VMware Cloud Foundation portfolio.</div>
+            <div class="yr">VMware — 2024 to 2026</div>
+            <div class="case-link">Read case study →</div>
+          </div>
+          <div class="case-image" style="background:#fff">
+            <img loading="lazy" src="assets/case-workload.jpg" alt="Workload Mobility — destination and feasibility insights">
+          </div>
+        </a>
+
+        <a class="case" href="case-studies/vmware-cloud-on-dell.html" aria-label="Read case study: VMware Cloud on Dell">
+          <div class="case-text">
+            <span class="num">III.</span>
+            <div class="ttl">VMware Cloud on Dell</div>
+            <div class="sub">A self-service portal for managed on-premises infrastructure.</div>
+            <div class="yr">VMware — 2018 to 2020</div>
+            <div class="case-link">Read case study →</div>
+          </div>
+          <div class="case-image" style="background:#1B1B1B">
+            <img loading="lazy" src="assets/case-vmc.jpg" alt="VMware Cloud on Dell — global edge locations">
+          </div>
+        </a>
+
+        <a class="case" href="case-studies/vcenter-high-availability.html" aria-label="Read case study: vCenter High Availability">
+          <div class="case-text">
+            <span class="num">IV.</span>
+            <div class="ttl">vCenter High Availability</div>
+            <div class="sub">A lifecycle workflow for millions of vSphere administrators.</div>
+            <div class="yr">VMware — 2016 to 2017</div>
+            <div class="case-link">Read case study →</div>
+          </div>
+          <div class="case-image" style="background:#fff">
+            <img loading="lazy" src="assets/case-vcha.jpg" alt="vCenter High Availability — resource settings configuration">
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="work-header" style="margin-bottom:56px">
+        <div class="label">— About Me —</div>
+      </div>
+      <div class="about-grid">
+        <div class="about-photo">
+          <img loading="lazy" src="assets/portrait.jpg" alt="Rishabh Gandotra">
+        </div>
+        <div class="about-text">
+          <p>I've spent my career in the enterprise space — designing everything from global cloud procurement platforms and complex infrastructure consoles to recent work on agentic AI workflows.</p>
+          <p>Great design happens when we stop working in silos. My approach is grounded in rapid prototyping and technical fluency — used to de-risk engineering, align executive stakeholders, and turn ambiguous problems into shipped products.</p>
+          <p>Accessibility is non-negotiable. Good design is inherently inclusive, or it isn't good design.</p>
+          <p>Outside of work, you'll find me out hiking, perfecting a new baking recipe, or spending time with my family.</p>
+          <div class="about-links">
+            <a href="mailto:rishabhgandotra@gmail.com">rishabhgandotra@gmail.com</a>
+            <a href="https://www.linkedin.com/in/rishabhgandotra" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a href="assets/Rishabh-Gandotra-Resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF) ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="colophon">
+        <span>San Jose, CA</span>
+        <span>Vibe coded with Claude</span>
+        <span>© 2026</span>
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+</body>
+</html>
