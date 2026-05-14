@@ -11,7 +11,6 @@ I've spent my career in the enterprise space — designing everything from globa
 ## What's in here
 
 - `index.html` — landing page
-- `resume.html` — résumé
 - `case-studies/` — long-form case studies:
   - Nexus Agentic AI
   - Workload Mobility
