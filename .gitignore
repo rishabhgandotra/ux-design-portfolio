@@ -3,3 +3,7 @@ node_modules/
 *.log
 .vscode/
 .idea/
+
+# Local-only resume source. Editable copy used to generate the PDF in assets/.
+# Kept out of git so it isn't redeployed to the public site.
+resume.html
