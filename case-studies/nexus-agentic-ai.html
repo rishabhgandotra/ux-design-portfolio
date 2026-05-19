@@ -171,6 +171,12 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   margin-top: 14px;
   text-align: center;
 }
+.cs .wire-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+.cs .wire-grid > div .figure { margin-top: 0; border: none; }
 
 /* Takeaways */
 .cs .takeaways {
@@ -531,6 +537,44 @@ body { font-family: 'Inter', system-ui, sans-serif; }
       </div>
     </section>
 
+    <!-- Initial Wireframes -->
+    <section class="block">
+      <div class="narrow">
+        <div class="section-label">— Initial Wireframes —</div>
+        <h2 class="section-title">Structural skeleton, before content.</h2>
+        <p class="lede">Before any visual decisions, I sketched four states as low-fidelity wireframes: the resting dashboard, the attention lane, the escalation modal, and a migration in motion. No language, no content — just where each thing lives and how state changes are depicted. These artifacts became the brief I handed to Claude Design.</p>
+      </div>
+
+      <div class="narrow" style="margin-top: 64px;">
+        <div class="wire-grid">
+          <div>
+            <div class="figure">
+              <img loading="lazy" src="../assets/default-dashboard.svg" alt="Low-fi wireframe — resting dashboard with topology and attention lane">
+            </div>
+            <div class="figure-caption">— Resting state —</div>
+          </div>
+          <div>
+            <div class="figure">
+              <img loading="lazy" src="../assets/alert.svg" alt="Low-fi wireframe — attention lane activated">
+            </div>
+            <div class="figure-caption">— Attention required —</div>
+          </div>
+          <div>
+            <div class="figure">
+              <img loading="lazy" src="../assets/alert-pop-up.svg" alt="Low-fi wireframe — escalation modal overlay">
+            </div>
+            <div class="figure-caption">— Escalation modal —</div>
+          </div>
+          <div>
+            <div class="figure">
+              <img loading="lazy" src="../assets/dashboard-migration.svg" alt="Low-fi wireframe — VM migration between hosts">
+            </div>
+            <div class="figure-caption">— Migration —</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- The Control Plane -->
     <section class="block">
       <div class="narrow">
@@ -590,8 +634,22 @@ body { font-family: 'Inter', system-ui, sans-serif; }
     <section class="block">
       <div class="narrow">
         <div class="section-label">— From Pixels to Production —</div>
-        <h2 class="section-title">From wireframes to a working prototype, in Claude Design.</h2>
-        <p class="lede">I took these workflows and wireframes to Claude Design and asked it to design the interface while keeping the happy path in the workflow intact. After iterative prompting, it produced a complete prototype — login, dashboard, and the visualization of VMs migrating between hosts.</p>
+        <h2 class="section-title">From refined wireframes to a working hi-fi prototype.</h2>
+        <p class="lede">With the structure resolved, I directed Claude Design through another pass — this time producing the final visual treatment and a working interactive front-end. Login, dashboard, escalation, and live migration animations all became clickable in a single environment, with motion, color, and density.</p>
+      </div>
+
+      <div style="margin: 64px -80px 0;">
+        <div class="figure">
+          <img loading="lazy" src="../assets/nexus-prototype-dashboard.png" alt="Working prototype — Operations Overview with topology, host health, agent activity, and live feed">
+        </div>
+        <div class="figure-caption" style="margin-top:14px">— Operations Overview, working prototype —</div>
+      </div>
+
+      <div style="margin: 64px -80px 0;">
+        <div class="figure">
+          <img loading="lazy" src="../assets/nexus-prototype-modal.png" alt="Working prototype — Critic Agent escalation modal: Workflow Halted, Critic Agent Blocked Migration, with operator options">
+        </div>
+        <div class="figure-caption" style="margin-top:14px">— Critic Agent escalation, working prototype —</div>
       </div>
 
       <div style="margin: 64px -80px 0;">
