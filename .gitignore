@@ -8,3 +8,7 @@ node_modules/
 # Kept out of git so they aren't redeployed to the public site.
 resume.html
 resume-visual.html
+
+# Reference / alternate resume PDFs kept local (not served on the public site).
+assets/Resume-old.pdf
+assets/Rishabh-Gandotra-Resume-ATS.pdf
