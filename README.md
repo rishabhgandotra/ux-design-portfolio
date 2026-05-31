@@ -6,16 +6,14 @@ Personal portfolio of **Rishabh Gandotra** — Staff Product Designer based in S
 
 ## About
 
-I've spent my career in the enterprise space — designing everything from global cloud procurement platforms and complex infrastructure consoles to recent work on agentic AI workflows. Twelve years specializing in 0-to-1 launches across hybrid cloud, infrastructure, and agentic AI — translating dense technical requirements into shipped products that scale to millions of operators. My approach is grounded in rapid prototyping and technical fluency — used to de-risk engineering, align executive stakeholders, and turn ambiguous problems into shipped products.
+I've spent my career in the enterprise space — designing everything from global cloud procurement platforms and complex infrastructure consoles to recent work on agentic AI workflows. Twelve years specializing in 0-to-1 launches across hybrid cloud, infrastructure, and agentic AI — translating dense technical requirements into shipped products that scale to millions of administrators. My approach is grounded in rapid prototyping and technical fluency — used to de-risk engineering, align executive stakeholders, and turn ambiguous problems into shipped products.
 
 ## What's in here
 
 - `index.html` — landing page
-- `case-studies/` — long-form case studies:
-  - Nexus Agentic AI
-  - Workload Mobility
-  - VMware Cloud on Dell
-  - vCenter High Availability
+- `case-studies/` — long-form case studies, grouped on the homepage as:
+  - **VMware** — Workload Mobility, VMware Cloud on Dell, vCenter High Availability
+  - **Independent** — Nexus Agentic AI
 - `assets/` — images, SVG diagrams, walkthrough videos, and the résumé PDF
 
 The site is plain HTML and CSS — no framework, no build step.
