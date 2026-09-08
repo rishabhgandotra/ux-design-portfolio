@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex" />
 <title>Workload Mobility — Rishabh Gandotra</title>
-<meta name="description" content="Unifying legacy migration workflows to simplify VM mobility. A VMware case study by Rishabh Gandotra." />
+<meta name="description" content="Unifying legacy migration workflows to simplify VM mobility. A Broadcom case study by Rishabh Gandotra." />
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="icon" sizes="any" href="../favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -144,7 +144,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 /* Metrics strip */
 .cs .metrics {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   border-bottom: 1px solid var(--hair);
   text-align: center;
 }
@@ -667,7 +667,10 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   .cs .titleblock { padding: 80px 48px 36px; }
   .cs .cs-title { font-size: 56px; }
   .cs .meta { margin: 56px -48px 0; padding: 36px 48px 0; }
+  .cs .metrics { grid-template-columns: repeat(2, 1fr); }
   .cs .metrics > div { padding: 44px 24px; }
+  .cs .metrics > div:nth-child(2n) { border-right: none; }
+  .cs .metrics > div:nth-child(-n+2) { border-bottom: 1px solid var(--hair); }
   .cs .metrics .stat { font-size: 52px; }
   .cs section.block { padding: 72px 48px; }
   .cs .section-title { font-size: 38px; }
@@ -847,16 +850,28 @@ body { font-family: 'Inter', system-ui, sans-serif; }
     </header>
 
     <section class="titleblock">
-      <div class="eyebrow">— Workload Mobility · VMware · 2024–2026 —</div>
+      <div class="eyebrow">— Workload Mobility · Broadcom · 2024–2026 —</div>
       <h1 class="cs-title">Unifying legacy migration workflows to simplify <em>VM mobility.</em></h1>
       <div class="meta">
         <div>
           <div class="label">Company</div>
-          <div class="val">VMware (by Broadcom)</div>
+          <div class="val">Broadcom</div>
         </div>
         <div>
           <div class="label">Role</div>
-          <div class="val">Design Lead</div>
+          <div class="val">Staff Product Designer</div>
+        </div>
+        <div>
+          <div class="label">Timeline</div>
+          <div class="val">~18 months · 2024–2026</div>
+        </div>
+        <div>
+          <div class="label">Product team</div>
+          <div class="val">2 PMs, ~15 engineers</div>
+        </div>
+        <div>
+          <div class="label">Design</div>
+          <div class="val">Design lead; mentored 1 junior designer</div>
         </div>
         <div>
           <div class="label">Expertise</div>
@@ -876,14 +891,19 @@ body { font-family: 'Inter', system-ui, sans-serif; }
         <div class="caption">Workflow steps reduced (10 → 7)</div>
       </div>
       <div>
+        <div class="label">Migration time</div>
+        <div class="stat"><em>−72%</em></div>
+        <div class="caption">Major bank: 3 months → 25 days</div>
+      </div>
+      <div>
+        <div class="label">Support load</div>
+        <div class="stat"><em>−28%</em></div>
+        <div class="caption">Fewer tickets, Q2 → Q4 2025</div>
+      </div>
+      <div>
         <div class="label">Satisfaction</div>
         <div class="stat"><em>92%</em></div>
         <div class="caption">CSAT score, up from 65%</div>
-      </div>
-      <div>
-        <div class="label">Strategy</div>
-        <div class="stat"><em>Vision</em></div>
-        <div class="caption">Multi-year roadmap for Global Mobility Service</div>
       </div>
     </section>
 
@@ -1058,6 +1078,11 @@ body { font-family: 'Inter', system-ui, sans-serif; }
         </div>
 
         <div class="sub">
+          <h3>One commit, not two</h3>
+          <p>As we designed the workflow bridging Net&nbsp;Ops and HCX, engineering and product proposed that migration waves be "sent" to HCX and then committed separately inside the HCX UI. I pushed back. The legacy flow, for all its friction, never made operators commit twice — they exported and re-uploaded waves by hand, but the commit itself happened once. Adding a "send, then commit again in HCX" step would have made the combined workflow longer than the one we were replacing. I advocated for committing waves directly from the Ops&nbsp;Console across the platform boundary — so the user picks up in the HCX UI from the point where the waves are already committed, establishing the connection between the two UIs and removing the manual export, import, and re-commit entirely. That's what shipped.</p>
+        </div>
+
+        <div class="sub">
           <h3>Modernizing legacy execution workflows</h3>
           <p>The legacy HCX execution flow buried critical settings under complex, nested interactions. When engineering decided to modernize the architecture, I redesigned the UI into a clear, linear progression — utilizing scalable inventory tables and global network destination assignments. This removed immediate friction <em>and</em> structurally prepared the interface for its eventual native integration into the Ops UI.</p>
           <div class="ba">
@@ -1086,6 +1111,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
         <div class="section-label">— Scaling to a Global Service —</div>
         <h2 class="section-title">A unified "single pane of glass" for the next horizon.</h2>
         <p class="lede">Following the success of the Workload Mobility unification, I defined the long-term vision for a Global Mobility Service — shifting from individual tool integration to a unified operational surface.</p>
+        <p class="lede" style="font-size:16px;font-style:italic;color:var(--muted);margin-top:20px">Status: pitched to executive leadership; on the Q3 2026 roadmap. I led the vision definition and the executive presentations end-to-end.</p>
       </div>
       <div class="vision-list">
         <div class="vision-item">
@@ -1215,7 +1241,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
     <footer class="footer">
       <div class="colophon">
         <span>San Jose, CA</span>
-        <span>Vibe coded with Claude</span>
+        <span>Portfolio site vibe coded with Claude</span>
         <span>© 2026</span>
       </div>
     </footer>
