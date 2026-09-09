@@ -912,12 +912,13 @@ body { font-family: 'Inter', system-ui, sans-serif; }
       <div class="narrow">
         <div class="section-label">— Approach —</div>
         <h2 class="section-title">From a scattered legacy to a unified plane.</h2>
-        <p class="lede">Enterprise VM migration was fractured across the Network&nbsp;Operations UI and the HCX UI — operators navigated disjointed workflows with no situational awareness of their capacity or overall scope. Partnering with product and engineering, I led the strategy to <em>deprecate</em> migration planning in legacy Net&nbsp;Ops, <em>integrate</em> it directly into the modern Operations Console, and <em>modernize</em> the HCX UI for future platform consolidation.</p>
+        <p class="lede">Enterprise VM migration was fractured across the Network&nbsp;Operations UI and the HCX UI — operators navigated disjointed workflows with no situational awareness of their capacity or overall scope. Partnering with product and engineering, I led the strategy to <em>deprecate</em> migration planning in legacy Net&nbsp;Ops — redesigning and modernizing the entire planning experience in the process — <em>integrate</em> that rebuilt workflow directly into the modern Operations Console, and <em>modernize</em> the HCX UI for future platform consolidation.</p>
       </div>
 
       <div class="sub" style="max-width:1040px;margin:80px auto 0">
         <h3>Streamlining the end-to-end workflow</h3>
-        <p>By mapping the end-to-end journey, we identified redundant handoffs and consolidated legacy capabilities — removing manual export and import steps, auto generating waves & groups, and pulling the "Commit" action across the platform boundary seamlessly into the Ops UI.</p>
+        <p>Working closely with product and engineering, I mapped the end-to-end journey to identify redundant handoffs and consolidate legacy capabilities — removing manual export and import steps, auto-generating waves and groups, and pulling the "Commit" action across the platform boundary directly into the Ops UI.</p>
+        <p>That last decision took some pushback. The product team initially proposed two actions — "send" the waves to HCX, then "commit" them separately inside the HCX UI. I argued strongly against it: the legacy flow, for all its friction, never made operators commit twice, and a send-then-commit-again handoff would have made the unified workflow longer than the one we were replacing. I pushed for a single <strong>Commit</strong> action, performed once from migration planning, that establishes the connection between the two UIs — so the operator picks up in HCX from the point where the waves are already committed, with the manual export, import, and re-commit gone entirely.</p>
       </div>
 
       <div style="margin: 32px -80px 0;">
@@ -1075,11 +1076,6 @@ body { font-family: 'Inter', system-ui, sans-serif; }
             </div>
           </div>
           <div class="figure-caption">— Drag to compare —</div>
-        </div>
-
-        <div class="sub">
-          <h3>One commit, not two</h3>
-          <p>As we designed the workflow bridging Net&nbsp;Ops and HCX, engineering and product proposed that migration waves be "sent" to HCX and then committed separately inside the HCX UI. I pushed back. The legacy flow, for all its friction, never made operators commit twice — they exported and re-uploaded waves by hand, but the commit itself happened once. Adding a "send, then commit again in HCX" step would have made the combined workflow longer than the one we were replacing. I advocated for committing waves directly from the Ops&nbsp;Console across the platform boundary — so the user picks up in the HCX UI from the point where the waves are already committed, establishing the connection between the two UIs and removing the manual export, import, and re-commit entirely. That's what shipped.</p>
         </div>
 
         <div class="sub">
