@@ -240,6 +240,32 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   text-align: center;
 }
 
+/* Emphasis callout — a decision worth not missing */
+.cs .callout {
+  max-width: 1040px;
+  margin: 48px auto 0;
+  border-left: 2px solid var(--ink);
+  padding-left: 32px;
+}
+.cs .callout .callout-label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.cs .callout p {
+  font-family: 'Lora', serif;
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin: 0;
+  max-width: 60ch;
+}
+.cs .callout p em { font-style: italic; }
+.cs .callout p strong { font-weight: 500; }
+
 /* User validation grid */
 .cs .validation-grid {
   display: grid;
@@ -672,6 +698,8 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   .cs .metrics > div:nth-child(2n) { border-right: none; }
   .cs .metrics > div:nth-child(-n+2) { border-bottom: 1px solid var(--hair); }
   .cs .metrics .stat { font-size: 52px; }
+  .cs .callout { padding-left: 24px; }
+  .cs .callout p { font-size: 19px; }
   .cs section.block { padding: 72px 48px; }
   .cs .section-title { font-size: 38px; }
   .cs .lede { font-size: 20px; }
@@ -753,6 +781,8 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   .cs .sub { margin-top: 48px; }
   .cs .sub h3 { font-size: 22px; }
   .cs .sub p { font-size: 16px; line-height: 1.55; }
+  .cs .callout { margin-top: 36px; padding-left: 18px; }
+  .cs .callout p { font-size: 17px; }
   .cs .figure-caption { font-size: 10px; }
 
   /* Full-bleed figures: match new mobile padding */
@@ -911,14 +941,18 @@ body { font-family: 'Inter', system-ui, sans-serif; }
     <section class="block">
       <div class="narrow">
         <div class="section-label">— Approach —</div>
-        <h2 class="section-title">From a scattered legacy to a unified plane.</h2>
-        <p class="lede">Enterprise VM migration was fractured across the Network&nbsp;Operations UI and the HCX UI — operators navigated disjointed workflows with no situational awareness of their capacity or overall scope. Partnering with product and engineering, I led the design strategy to <em>deprecate</em> migration planning in legacy Net&nbsp;Ops — <em>redesigning and modernizing</em> the entire planning experience in the process — <em>integrate</em> that rebuilt workflow directly into the modern Operations Console, and modernize the HCX UI for future platform consolidation.</p>
+        <h2 class="section-title">From fragmented handoffs to one connected workflow.</h2>
+        <p class="lede">Enterprise VM migration was split across two UIs — Network&nbsp;Operations and HCX — with no shared view of capacity or scope. I led the design strategy to <em>deprecate</em> migration planning in legacy Net&nbsp;Ops, <em>redesign and modernize</em> the entire planning experience, and <em>integrate</em> it into the modern Operations Console — while also modernizing the HCX UI for future platform consolidation.</p>
       </div>
 
       <div class="sub" style="max-width:1040px;margin:80px auto 0">
         <h3>Streamlining the end-to-end workflow</h3>
-        <p>Working closely with product and engineering, I mapped the end-to-end journey to identify redundant handoffs and consolidate legacy capabilities — removing manual export and import steps, auto-generating waves and groups, and pulling the "Commit" action across the platform boundary directly into the Ops UI.</p>
-        <p>That last decision took some pushback. The product team initially proposed two actions — "send" the waves to HCX, then "commit" them separately inside the HCX UI. I argued strongly against it: the legacy flow, for all its friction, never made operators commit twice, and a send-then-commit-again handoff would have made the unified workflow longer than the one we were replacing. I pushed for a single <strong>Commit</strong> action, performed once from migration planning, that establishes the connection between the two UIs — so the operator picks up in HCX from the point where the waves are already committed, with the manual export and import kept only as a fallback.</p>
+        <p>Working with product and engineering, I mapped the full journey to find redundant handoffs — then cut the manual export and import steps, auto-generated waves and groups, and pulled the "Commit" action across the platform boundary into the Ops&nbsp;UI.</p>
+      </div>
+
+      <div class="callout">
+        <div class="callout-label">— Where I pushed back —</div>
+        <p>Engineering proposed <em>two</em> actions: "send" the waves to HCX, then "commit" them again inside HCX. I argued against it — the legacy flow had no "send" step, and splitting the handoff would force operators to <em>commit a second time</em> after signing in to HCX. I pushed for a single <strong>Commit</strong>, done once from migration planning, that also opens the connection into HCX — so the operator resumes there with the waves already committed. Manual export and import stayed only as a fallback.</p>
       </div>
 
       <div style="margin: 32px -80px 0;">
