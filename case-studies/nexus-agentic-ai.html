@@ -211,6 +211,45 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 }
 
 /* Prev/Next cards (bottom) */
+.cs .contact {
+  padding: 88px 80px;
+  border-bottom: 1px solid var(--hair);
+  text-align: center;
+}
+.cs .contact .label {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.cs .contact h2 {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 auto 36px;
+  max-width: 24ch;
+  text-wrap: balance;
+}
+.cs .contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.cs .contact-links a {
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--muted);
+  padding-bottom: 4px;
+}
+.cs .contact-links a:hover { color: var(--ink); border-color: var(--ink); }
+
 .cs .prevnext {
   padding: 80px 80px 96px;
   border-bottom: 1px solid var(--ink);
@@ -326,6 +365,8 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   .cs .validation-stats { margin-left: -48px !important; margin-right: -48px !important; }
   .cs .validation-stats .item { padding: 36px 24px; }
   .cs .validation-stats .item .num { font-size: 44px; }
+  .cs .contact { padding: 72px 48px; }
+  .cs .contact h2 { font-size: 34px; }
   .cs .prevnext { padding: 64px 48px 80px; }
   .cs .pn-card .ttl { font-size: 36px; }
   .cs .footer { padding: 20px 48px; }
@@ -422,6 +463,9 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   .cs .takeaway p { font-size: 16px; }
 
   /* Prev/next cards — stack */
+  .cs .contact { padding: 56px 20px; }
+  .cs .contact h2 { font-size: 26px; }
+  .cs .contact-links { flex-direction: column; align-items: center; gap: 14px; }
   .cs .prevnext { padding: 48px 20px 56px; }
   .cs .prevnext-grid { grid-template-columns: 1fr; gap: 32px; }
   .cs .pn-card { padding: 12px 0; gap: 18px; }
@@ -688,6 +732,16 @@ body { font-family: 'Inter', system-ui, sans-serif; }
           <h4>Focus over status</h4>
           <p>Specific intents ("Evacuating Host-A") transform AI from opaque to collaborative. Status indicators tell you the system is alive; named intents tell you what it's <em>actually</em> trying to do.</p>
         </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+      <div class="label">— Get in touch —</div>
+      <h2>Have a role where this kind of work matters? Let’s talk.</h2>
+      <div class="contact-links">
+        <a href="mailto:rishabhgandotra@gmail.com">rishabhgandotra@gmail.com</a>
+        <a href="https://www.linkedin.com/in/rishabhgandotra" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
       </div>
     </section>
 
