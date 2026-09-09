@@ -14,7 +14,8 @@ I've spent my career in the enterprise space — designing everything from globa
 - `case-studies/` — long-form case studies, grouped on the homepage as:
   - **VMware** — Workload Mobility, VMware Cloud on Dell, vCenter High Availability
   - **Independent** — Nexus Agentic AI
-- `assets/` — images, SVG diagrams, walkthrough videos, and the résumé PDF
+- `assets/` — shared thumbnails, portrait, and résumé PDFs at the root; per-case-study
+  images, SVG diagrams, and walkthrough videos in a subfolder named for each case study
 
 The site is plain HTML and CSS — no framework, no build step.
 
