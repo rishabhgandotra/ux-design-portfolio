@@ -38,6 +38,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 .cs a { color: inherit; text-decoration: none; }
 .cs em { font-style: italic; }
 .cs .narrow { max-width: 1040px; margin: 0 auto; }
+.cs .wm-roadmap-mobile { display: none; }
 
 /* Top nav */
 .cs .topbar {
@@ -884,6 +885,10 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   .cs .validation-stats { margin-left: -20px !important; margin-right: -20px !important; }
   .cs .vision-img { margin: 0 -20px; }
 
+  /* Roadmap diagram: swap to stacked layout so labels stay legible */
+  .cs .wm-roadmap-desktop { display: none; }
+  .cs .wm-roadmap-mobile { display: block; }
+
   /* Validation stats — 3-col to 1-col */
   .cs .validation-stats { grid-template-columns: 1fr; }
   .cs .validation-stats .item {
@@ -1035,7 +1040,6 @@ body { font-family: 'Inter', system-ui, sans-serif; }
         <div class="section-label">— The Stakes —</div>
         <h2 class="section-title">Migration failures cost more than downtime.</h2>
         <p class="lede">IT administrators migrate hundreds of VMs at a time — consolidating datacenters, adopting cloud, or refreshing aging hardware, usually against a fixed deadline. Net&nbsp;Ops and HCX — the legacy tools for planning and running a migration — don't show what capacity is actually available at the destination until late in the process, so admins first have to piece that picture together across other monitoring tools, internal systems, and third-party utilities before they can plan a migration with any confidence. If the plan turns out to be wrong, or the migration simply takes longer than the maintenance window allows, workloads are left half-moved when the window closes — additional downtime the business didn't expect and hadn't budgeted for.</p>
-        <p class="lede" style="margin-top:24px">Completing the migration is also a prerequisite to adopting VMware Cloud Foundation. A migration that stalls or gets abandoned isn't only a bad night for the admin running it — it's a customer who doesn't complete the move to the platform.</p>
       </div>
     </section>
 
@@ -1044,18 +1048,17 @@ body { font-family: 'Inter', system-ui, sans-serif; }
       <div class="narrow">
         <div class="section-label">— Approach —</div>
         <h2 class="section-title">From fragmented handoffs to one connected workflow.</h2>
-        <p class="lede">Enterprise VM migration was split across two UIs: Network&nbsp;Operations (Net&nbsp;Ops), where operators planned a migration, and HCX, the engine that actually moves the VMs — with no shared view of capacity or scope between them. Leadership had already decided to retire the legacy Net&nbsp;Ops UI entirely. As design lead, I owned the UX strategy for rebuilding migration planning inside the modern Operations Console — <em>redesigning and modernizing</em> the entire planning experience, not simply porting it over — while also modernizing the HCX UI for future platform consolidation.</p>
+        <p class="lede">Enterprise VM migration was split across two UIs — Net&nbsp;Ops for planning, HCX for execution — with no shared view of capacity or scope between them. As design lead, I owned the UX strategy for rebuilding migration planning into the modern Operations Console, one workstream in leadership's broader retirement of the legacy Net&nbsp;Ops UI.</p>
       </div>
 
       <div class="sub" style="max-width:1040px;margin:80px auto 0">
         <h3>Streamlining the end-to-end workflow</h3>
-        <p>Working with product and engineering, I mapped the full journey and framed the strategy around tighter integration between Net&nbsp;Ops and HCX — to eliminate the manual export and import steps, reduce user burden by auto-generating waves and groups, and pull the "Commit" action across the platform boundary into the Ops&nbsp;UI. A plan's VMs are split into waves — batches sized to what a maintenance window can realistically move — and each wave into mobility groups, typically the VMs of one multi-tier application migrating together.</p>
-        <p>Beyond usability, the move paid off structurally: it took migration planning off Net&nbsp;Ops's aging tech stack and legacy design system and onto the supported Operations Console — one workstream in the planned, multi-release deprecation of legacy Net&nbsp;Ops, so the planning experience no longer carried the upkeep cost of a stack already scheduled to go away.</p>
+        <p>Working with product and engineering, I mapped the full journey and framed the strategy around tighter integration between Net&nbsp;Ops and HCX — to eliminate the manual export and import steps, reduce user burden by auto-generating waves and groups, and pull the "Commit" action across the platform boundary into the Ops&nbsp;UI. A plan's VMs are split into waves — batches sized to what a maintenance window can realistically move — and each wave into mobility groups, typically the VMs of one multi-tier application migrating together. This first phase closed the handoff friction between the two tools; the destination-capacity visibility gap came next — first through the persistent summary widget introduced during execution, then more fully through the multi-cluster capacity analysis in the platform's longer-term vision.</p>
       </div>
 
       <div class="callout">
         <div class="callout-label">— Where I pushed back —</div>
-        <p>Engineering proposed <em>two</em> actions: "send" the waves to HCX, then "commit" them again inside HCX. I argued against it — the legacy flow had no "send" step, and splitting the handoff would force operators to <em>commit a second time</em> after signing in to HCX. I pushed for a single <strong>Commit</strong>, done once from migration planning, that also opens the connection into HCX — so the operator resumes there with the waves already committed. Manual export and import stayed only as a fallback.</p>
+        <p>Engineering proposed <em>two</em> actions: "send" the waves to HCX, then "commit" them again inside HCX. I argued against it — the legacy flow had no "send" step, and splitting the handoff would force operators to <em>commit a second time</em>, once in each tool. I pushed for a single <strong>Commit</strong>, done once from migration planning, that sends the waves into HCX and commits them – so no second commit is needed.</p>
       </div>
 
       <div style="margin: 32px -80px 0;">
@@ -1278,6 +1281,60 @@ body { font-family: 'Inter', system-ui, sans-serif; }
         <p class="lede">Following the success of the Workload Mobility unification, I defined the long-term vision for a Global Mobility Service — shifting from individual tool integration to a unified operational surface.</p>
         <p class="lede" style="font-size:16px;font-style:italic;color:var(--muted);margin-top:20px">Status: pitched to executive leadership; on the Q3 2026 roadmap. I led the vision definition and the executive presentations end-to-end.</p>
       </div>
+
+      <div class="narrow" style="margin-top:56px">
+        <svg class="wm-roadmap-desktop" viewBox="0 0 1040 300" width="100%" height="auto" role="img" aria-label="Roadmap: Phase 1, shipped redesign, leads to Phase 2, the Global Service vision, carrying forward destination-capacity visibility">
+          <rect x="0.75" y="20.75" width="459.5" height="248.5" rx="6" fill="none" stroke="var(--ink-2)" stroke-width="1.5"/>
+          <rect x="579.75" y="20.75" width="459.5" height="248.5" rx="6" fill="none" stroke="var(--ink-2)" stroke-width="1.5" stroke-dasharray="6 5"/>
+
+          <defs>
+            <marker id="wm-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0L10 5L0 10z" fill="var(--ink-2)"/>
+            </marker>
+          </defs>
+          <line x1="460.5" y1="145" x2="572" y2="145" stroke="var(--ink-2)" stroke-width="1.5" marker-end="url(#wm-arrow)"/>
+          <text x="516" y="122" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" letter-spacing="0.08em" fill="var(--muted)">CAPACITY</text>
+          <text x="516" y="133" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" letter-spacing="0.08em" fill="var(--muted)">VISIBILITY</text>
+
+          <text x="28" y="55" font-family="Inter, sans-serif" font-size="11" letter-spacing="0.18em" fill="var(--muted)">PHASE 1 · SHIPPED</text>
+          <text x="28" y="90" font-family="Lora, serif" font-size="24" fill="var(--ink)">Redesign</text>
+          <text x="28" y="152" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Manual export/import steps removed</text>
+          <text x="28" y="184" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Auto-generated waves &amp; groups</text>
+          <text x="28" y="216" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Single Commit, no double-commit</text>
+
+          <text x="608" y="55" font-family="Inter, sans-serif" font-size="11" letter-spacing="0.18em" fill="var(--muted)">PHASE 2 · VISION</text>
+          <text x="608" y="90" font-family="Lora, serif" font-size="24" fill="var(--ink)">Global Service</text>
+          <text x="608" y="152" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Single pane of glass across Ops + HCX</text>
+          <text x="608" y="184" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Destination &amp; Feasibility Insights</text>
+        </svg>
+
+        <svg class="wm-roadmap-mobile" viewBox="0 0 460 560" width="100%" height="auto" role="img" aria-label="Roadmap: Phase 1, shipped redesign, leads to Phase 2, the Global Service vision, carrying forward destination-capacity visibility">
+          <rect x="0.75" y="0.75" width="458.5" height="248.5" rx="6" fill="none" stroke="var(--ink-2)" stroke-width="1.5"/>
+          <rect x="0.75" y="310.75" width="458.5" height="248.5" rx="6" fill="none" stroke="var(--ink-2)" stroke-width="1.5" stroke-dasharray="6 5"/>
+
+          <defs>
+            <marker id="wm-arrow-m" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0L10 5L0 10z" fill="var(--ink-2)"/>
+            </marker>
+          </defs>
+          <line x1="230" y1="249.5" x2="230" y2="302" stroke="var(--ink-2)" stroke-width="1.5" marker-end="url(#wm-arrow-m)"/>
+          <text x="248" y="280" font-family="Inter, sans-serif" font-size="9.5" letter-spacing="0.08em" fill="var(--muted)">CAPACITY VISIBILITY</text>
+
+          <text x="28" y="34" font-family="Inter, sans-serif" font-size="11" letter-spacing="0.18em" fill="var(--muted)">PHASE 1 · SHIPPED</text>
+          <text x="28" y="69" font-family="Lora, serif" font-size="24" fill="var(--ink)">Redesign</text>
+          <text x="28" y="131" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Manual export/import steps removed</text>
+          <text x="28" y="163" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Auto-generated waves &amp; groups</text>
+          <text x="28" y="195" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Single Commit, no double-commit</text>
+
+          <text x="28" y="344" font-family="Inter, sans-serif" font-size="11" letter-spacing="0.18em" fill="var(--muted)">PHASE 2 · VISION</text>
+          <text x="28" y="379" font-family="Lora, serif" font-size="24" fill="var(--ink)">Global Service</text>
+          <text x="28" y="441" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Single pane of glass across Ops + HCX</text>
+          <text x="28" y="473" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Destination &amp; Feasibility Insights</text>
+        </svg>
+
+        <div class="figure-caption" style="margin-top:14px">— Two-phase rollout —</div>
+      </div>
+
       <div class="vision-list">
         <div class="vision-item">
           <div class="vision-heading">
