@@ -100,6 +100,32 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   letter-spacing: -0.01em;
 }
 
+/* Emphasis callout — a decision worth not missing */
+.cs .callout {
+  max-width: 1040px;
+  margin: 48px auto 0;
+  border-left: 2px solid var(--ink);
+  padding-left: 32px;
+}
+.cs .callout .callout-label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.cs .callout p {
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin: 0;
+  max-width: 64ch;
+}
+.cs .callout p em { font-style: italic; }
+.cs .callout p strong { font-weight: 500; }
+
 /* Hero image */
 .cs .hero-img {
   border-bottom: 1px solid var(--hair);
@@ -307,8 +333,8 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 /* Testimonials */
 .cs .quotes {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 64px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
   margin-top: 56px;
 }
 .cs .quote { display: flex; flex-direction: column; }
@@ -557,6 +583,8 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   .cs .titleblock { padding: 80px 48px 36px; }
   .cs .cs-title { font-size: 56px; }
   .cs .meta { margin: 56px -48px 0; padding: 36px 48px 0; }
+  .cs .callout { padding-left: 24px; }
+  .cs .callout p { font-size: 17px; }
   .cs .metrics > div { padding: 44px 24px; }
   .cs .metrics .stat { font-size: 52px; }
   .cs section.block { padding: 72px 48px; }
@@ -639,6 +667,8 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   .cs .section-label { font-size: 10px; letter-spacing: 0.16em; margin-bottom: 14px; }
   .cs .section-title { font-size: 26px; line-height: 1.15; margin-bottom: 28px; }
   .cs .lede { font-size: 17px; line-height: 1.5; }
+  .cs .callout { margin-top: 36px; padding-left: 18px; }
+  .cs .callout p { font-size: 16px; }
   .cs .sub { margin-top: 48px; }
   .cs .sub h3 { font-size: 22px; }
   .cs .sub p { font-size: 16px; line-height: 1.55; }
@@ -785,12 +815,12 @@ body { font-family: 'Inter', system-ui, sans-serif; }
       <div>
         <div class="label">Satisfaction</div>
         <div class="stat"><em>+23%</em></div>
-        <div class="caption">User satisfaction vs. legacy process</div>
+        <div class="caption">Increase in satisfaction over the legacy process (61% → 75%)</div>
       </div>
       <div>
         <div class="label">Usability</div>
         <div class="stat"><em>+14%</em></div>
-        <div class="caption">More participants rated ordering “Easy” or “Very Easy” after incorporating research insights (MVP → next release)</div>
+        <div class="caption">Rated ordering “Easy” or “Very Easy” after incorporating research insights (81% → 92%)</div>
       </div>
     </section>
 
@@ -893,7 +923,12 @@ body { font-family: 'Inter', system-ui, sans-serif; }
         <h2 class="section-title">From blueprint to MVP, step-by-step.</h2>
       </div>
 
-      <div style="max-width:1040px;margin:0 auto">
+      <div class="callout">
+        <div class="callout-label">— Where I pushed back —</div>
+        <p>The instinct was to lead with an ambitious global fleet map — it read well in a slide. But early customer conversations showed it added little value to admins who had just one or two locations to start with; what they actually wanted was proof that a single site could be ordered, deployed, and operated reliably. I pulled the MVP scope back to a single-site, end-to-end flow — <strong>order → deploy → operate</strong> — and moved the global view into the longer-term vision, where it later shipped as the fleet-management concept shown at VMworld.</p>
+      </div>
+
+      <div style="max-width:1040px;margin:64px auto 0">
         <div class="sub">
           <h3>Wireframing the digital experience</h3>
           <p>I started putting together some wireframes to illustrate what the UI could look like based on the blueprint. This helped in ensuring we were aligned with the end-to-end workflow and allowed us to iterate faster.</p>
@@ -915,6 +950,14 @@ body { font-family: 'Inter', system-ui, sans-serif; }
               <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-ecommerce.png" alt="E-commerce flow for ordering datacenter capacity">
             </div>
           </div>
+        </div>
+
+        <div class="sub">
+          <h3>From insight to shipped fix</h3>
+          <p>The research insights above didn't just get logged — they shaped the next iteration of the ordering flow.</p>
+          <p><strong>One location at a time.</strong> Admins wouldn't commit to multiple sites until they trusted the first one, so I moved location and contact details inside the ordering flow itself instead of collecting them upfront.</p>
+          <p><strong>Save &amp; continue.</strong> There was no way to save progress mid-order — a blocker for admins who needed to loop in a site technician or billing contact before finishing. I added a Save &amp; Continue action at every step.</p>
+          <p><strong>Pre-requisites in context.</strong> Rack, power, and network requirements were originally confirmed in one separate step at the end. I eliminated that step and folded each requirement into the existing Rack and Network steps where it was actually relevant.</p>
         </div>
 
         <div class="sub">
@@ -955,6 +998,11 @@ body { font-family: 'Inter', system-ui, sans-serif; }
           <div class="mark">"</div>
           <blockquote>We can now do it ourselves and not rely on partners.</blockquote>
           <div class="attr"><strong>Director of Engineering</strong><br>Fortune 500 insurer</div>
+        </div>
+        <div class="quote">
+          <div class="mark">"</div>
+          <blockquote>This is the perfect solution for us. How do I get started on deploying this at our locations?</blockquote>
+          <div class="attr"><strong>Senior Vice President</strong><br>Global financial services firm</div>
         </div>
       </div>
     </section>
