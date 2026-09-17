@@ -852,6 +852,71 @@ body { font-family: 'Inter', system-ui, sans-serif; }
         </div>
         <div class="figure-caption" style="margin-top:14px">— Service blueprint —</div>
       </div>
+
+      <div class="sub" style="max-width:1040px;margin:80px auto 0">
+        <h3>Wireframing the digital experience</h3>
+        <p>I started putting together some wireframes to illustrate what the UI could look like based on the blueprint. This helped in ensuring we were aligned with the end-to-end workflow and allowed us to iterate faster.</p>
+        <div class="wire-grid">
+          <div class="wire"><img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-wire-1.png" alt="Wireframe — step 1"></div>
+          <div class="wire"><img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-wire-3.png" alt="Wireframe — step 2"></div>
+          <div class="wire"><img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-wire-5.png" alt="Wireframe — step 3"></div>
+          <div class="wire"><img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-wire-2.png" alt="Wireframe — step 4"></div>
+          <div class="wire"><img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-wire-4.png" alt="Wireframe — step 5"></div>
+          <div class="wire"><img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-wire-6.png" alt="Wireframe — step 6"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vision -->
+    <section class="block">
+      <div class="narrow">
+        <div class="section-label">— Vision —</div>
+        <h2 class="section-title">Imagining fleet management at global scale.</h2>
+        <p class="lede">Before there was any customer signal, I explored what fleet management could look like at global scale — a unified view for hundreds of locations, drillable from a single map. VMware's CEO Pat Gelsinger and CTO Ray O'Farrell used it to headline the <em>VMworld 2019</em> keynote, generating excitement about where the platform was headed. It was a concept, not a committed roadmap — it never shipped.</p>
+      </div>
+
+      <div class="vision-list">
+        <div class="vision-item">
+          <div class="vision-heading">
+            <span class="num">i.</span>
+            <h3>Edge Locations</h3>
+            <p>A global map view of every deployment, sized and colored by health state — critical, warning, no-hardware, good — with the location list alongside.</p>
+          </div>
+          <div class="vision-img" style="margin: 0 auto; max-width: 1216px">
+            <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-vision-1.png" alt="Edge Locations — global map of all deployments">
+          </div>
+        </div>
+        <div class="vision-item">
+          <div class="vision-heading">
+            <span class="num">ii.</span>
+            <h3>Regional View</h3>
+            <p>Zooming reveals regional deployments with their health status — maintaining the same level of detail.</p>
+          </div>
+          <div class="vision-img" style="margin: 0 auto; max-width: 1216px">
+            <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-vision-2.png" alt="Regional view of clustered deployments">
+          </div>
+        </div>
+        <div class="vision-item">
+          <div class="vision-heading">
+            <span class="num">iii.</span>
+            <h3>Location Drill-Down</h3>
+            <p>Single-site detail surfaces hardware and service status — what the site operator and the global architect both need to see.</p>
+          </div>
+          <div class="vision-img" style="margin: 0 auto; max-width: 1216px">
+            <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-vision-3.png" alt="Single-location drill-down view">
+          </div>
+        </div>
+        <div class="vision-item">
+          <div class="vision-heading">
+            <span class="num">iv.</span>
+            <h3>Operational Detail</h3>
+            <p>Down to a specific rack: telemetry, lifecycle state, scheduled maintenance — the same console patterns that ordered the hardware also keep it running.</p>
+          </div>
+          <div class="vision-img" style="margin: 0 auto; max-width: 1216px">
+            <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-vision-4.png" alt="Rack-level operational detail view">
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- User Validation -->
@@ -859,9 +924,15 @@ body { font-family: 'Inter', system-ui, sans-serif; }
       <div class="narrow">
         <div class="section-label">— User Validation —</div>
         <h2 class="section-title">What enterprise IT admins surfaced.</h2>
+        <p class="lede">After sharing the global fleet concept internally, I went to find out what admins actually needed first.</p>
       </div>
 
-      <div class="validation-stats" style="margin:96px -80px 0">
+      <div class="callout" style="margin-top:64px">
+        <div class="callout-label">— Where I pushed back —</div>
+        <p>The global fleet map I'd explored read well in a keynote — but early customer conversations told a different story. Admins with just one or two locations to start with said it added little value; what they actually wanted was proof that a single site could be ordered, deployed, and operated reliably before trusting the system with more. I pulled the MVP scope back to a single-site, end-to-end flow — <strong>order → deploy → operate</strong>.</p>
+      </div>
+
+      <div class="validation-stats" style="margin:64px -80px 0">
         <div class="item">
           <div class="num">24</div>
           <div class="desc">Moderated sessions</div>
@@ -914,6 +985,14 @@ body { font-family: 'Inter', system-ui, sans-serif; }
           </div>
         </div>
       </div>
+
+      <div class="sub" style="max-width:1040px;margin:80px auto 0">
+        <h3>From insight to shipped fix</h3>
+        <p>These insights didn't just get logged — they shaped the next iteration of the ordering flow.</p>
+        <p><strong>One location at a time.</strong> Admins wouldn't commit to multiple sites until they trusted the first one, so I moved location and contact details inside the ordering flow itself instead of collecting them upfront.</p>
+        <p><strong>Save &amp; continue.</strong> There was no way to save progress mid-order — a blocker for admins who needed to loop in a site technician or billing contact before finishing. I added a Save &amp; Continue action at every step.</p>
+        <p><strong>Pre-requisites in context.</strong> Rack, power, and network requirements were originally confirmed in one separate step at the end. I eliminated that step and folded each requirement into the existing Rack and Network steps where it was actually relevant.</p>
+      </div>
     </section>
 
     <!-- Execution -->
@@ -923,25 +1002,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
         <h2 class="section-title">From blueprint to MVP, step-by-step.</h2>
       </div>
 
-      <div class="callout">
-        <div class="callout-label">— Where I pushed back —</div>
-        <p>The instinct was to lead with an ambitious global fleet map — it read well in a slide. But early customer conversations showed it added little value to admins who had just one or two locations to start with; what they actually wanted was proof that a single site could be ordered, deployed, and operated reliably. I pulled the MVP scope back to a single-site, end-to-end flow — <strong>order → deploy → operate</strong> — and moved the global view into the longer-term vision, where it later shipped as the fleet-management concept shown at VMworld.</p>
-      </div>
-
-      <div style="max-width:1040px;margin:64px auto 0">
-        <div class="sub">
-          <h3>Wireframing the digital experience</h3>
-          <p>I started putting together some wireframes to illustrate what the UI could look like based on the blueprint. This helped in ensuring we were aligned with the end-to-end workflow and allowed us to iterate faster.</p>
-          <div class="wire-grid">
-            <div class="wire"><img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-wire-1.png" alt="Wireframe — step 1"></div>
-            <div class="wire"><img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-wire-3.png" alt="Wireframe — step 2"></div>
-            <div class="wire"><img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-wire-5.png" alt="Wireframe — step 3"></div>
-            <div class="wire"><img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-wire-2.png" alt="Wireframe — step 4"></div>
-            <div class="wire"><img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-wire-4.png" alt="Wireframe — step 5"></div>
-            <div class="wire"><img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-wire-6.png" alt="Wireframe — step 6"></div>
-          </div>
-        </div>
-
+      <div style="max-width:1040px;margin:0 auto">
         <div class="sub">
           <h3>E-commerce for the datacenter</h3>
           <p>I designed a streamlined step-by-step ordering flow by abstracting the complexity of physical hardware procurement. Admins can select capacity, specify power drops, networking, and ship physical racks without ever leaving the digital console.</p>
@@ -950,14 +1011,6 @@ body { font-family: 'Inter', system-ui, sans-serif; }
               <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-ecommerce.png" alt="E-commerce flow for ordering datacenter capacity">
             </div>
           </div>
-        </div>
-
-        <div class="sub">
-          <h3>From insight to shipped fix</h3>
-          <p>The research insights above didn't just get logged — they shaped the next iteration of the ordering flow.</p>
-          <p><strong>One location at a time.</strong> Admins wouldn't commit to multiple sites until they trusted the first one, so I moved location and contact details inside the ordering flow itself instead of collecting them upfront.</p>
-          <p><strong>Save &amp; continue.</strong> There was no way to save progress mid-order — a blocker for admins who needed to loop in a site technician or billing contact before finishing. I added a Save &amp; Continue action at every step.</p>
-          <p><strong>Pre-requisites in context.</strong> Rack, power, and network requirements were originally confirmed in one separate step at the end. I eliminated that step and folded each requirement into the existing Rack and Network steps where it was actually relevant.</p>
         </div>
 
         <div class="sub">
@@ -1003,58 +1056,6 @@ body { font-family: 'Inter', system-ui, sans-serif; }
           <div class="mark">"</div>
           <blockquote>This is the perfect solution for us. How do I get started on deploying this at our locations?</blockquote>
           <div class="attr"><strong>Senior Vice President</strong><br>Global financial services firm</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Vision -->
-    <section class="block">
-      <div class="narrow">
-        <div class="section-label">— Vision —</div>
-        <h2 class="section-title">From single site to global fleet.</h2>
-        <p class="lede">Beyond the MVP, I explored what fleet management could look like at global scale — a unified view for hundreds of locations, drillable from a single map. This was showcased at <em>VMworld 2019</em> by CEO Pat Gelsinger and CTO Ray O'Farrell in the conference keynote.</p>
-      </div>
-
-      <div class="vision-list">
-        <div class="vision-item">
-          <div class="vision-heading">
-            <span class="num">i.</span>
-            <h3>Edge Locations</h3>
-            <p>A global map view of every deployment, sized and colored by health state — critical, warning, no-hardware, good — with the location list alongside.</p>
-          </div>
-          <div class="vision-img" style="margin: 0 auto; max-width: 1216px">
-            <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-vision-1.png" alt="Edge Locations — global map of all deployments">
-          </div>
-        </div>
-        <div class="vision-item">
-          <div class="vision-heading">
-            <span class="num">ii.</span>
-            <h3>Regional View</h3>
-            <p>Zooming reveals regional deployments with their health status — maintaining the same level of detail.</p>
-          </div>
-          <div class="vision-img" style="margin: 0 auto; max-width: 1216px">
-            <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-vision-2.png" alt="Regional view of clustered deployments">
-          </div>
-        </div>
-        <div class="vision-item">
-          <div class="vision-heading">
-            <span class="num">iii.</span>
-            <h3>Location Drill-Down</h3>
-            <p>Single-site detail surfaces hardware and service status — what the site operator and the global architect both need to see.</p>
-          </div>
-          <div class="vision-img" style="margin: 0 auto; max-width: 1216px">
-            <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-vision-3.png" alt="Single-location drill-down view">
-          </div>
-        </div>
-        <div class="vision-item">
-          <div class="vision-heading">
-            <span class="num">iv.</span>
-            <h3>Operational Detail</h3>
-            <p>Down to a specific rack: telemetry, lifecycle state, scheduled maintenance — the same console patterns that ordered the hardware also keep it running.</p>
-          </div>
-          <div class="vision-img" style="margin: 0 auto; max-width: 1216px">
-            <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-vision-4.png" alt="Rack-level operational detail view">
-          </div>
         </div>
       </div>
     </section>
