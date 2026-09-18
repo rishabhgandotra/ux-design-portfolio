@@ -234,7 +234,38 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 }
 
 /* Outposts journey diagram */
-.cs .journey-mobile { display: none; }
+.cs .journey-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 64px;
+}
+.cs .journey-card {
+  border: 1px solid var(--hair);
+  padding: 28px 24px;
+}
+.cs .journey-card .num {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--muted);
+  margin-bottom: 14px;
+  display: block;
+}
+.cs .journey-card h4 {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: 22px;
+  margin: 0 0 10px;
+  letter-spacing: -0.01em;
+}
+.cs .journey-card p {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0;
+}
 
 /* Validation strip */
 .cs .validation-stats {
@@ -682,9 +713,11 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   .cs .validation-stats { margin-left: -20px !important; margin-right: -20px !important; }
   .cs .vision-img { margin: 0 -20px; }
 
-  /* Journey diagram: swap to stacked layout so labels stay legible */
-  .cs .journey-desktop { display: none; }
-  .cs .journey-mobile { display: block; }
+  /* Journey diagram: collapse to a single column */
+  .cs .journey-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 36px; }
+  .cs .journey-card { padding: 22px 20px; }
+  .cs .journey-card h4 { font-size: 20px; }
+  .cs .journey-card p { font-size: 14px; }
 
   /* Validation stats — 3-col to 1-col */
   .cs .validation-stats { grid-template-columns: 1fr; }
@@ -1086,66 +1119,52 @@ body { font-family: 'Inter', system-ui, sans-serif; }
         <p class="lede">I conducted a cross-functional workshop with product, engineering, and design that extended the service blueprint to a second hyperscaler partner. I mapped the initial end-to-end journey and ordering experience for VMware Cloud on AWS Outposts, then handed full ownership to the senior designer from our team — the same blueprint-first, UI-second, operations-third framework carried over as the standard approach for VMware's <em>Cloud to Edge</em> portfolio.</p>
       </div>
 
-      <div style="margin: 64px -80px 0;">
-        <svg class="journey-desktop" viewBox="0 0 1040 100" width="100%" height="auto" role="img" aria-label="Outposts journey framework, nine phases from Learn to Scale: Learn, Onboard, Order, View, Deploy, Monitor, Maintain, Use, Scale">
-          <defs>
-            <marker id="journey-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-              <path d="M0 0L10 5L0 10z" fill="var(--ink-2)"/>
-            </marker>
-          </defs>
-          <line x1="20" y1="32" x2="1030" y2="32" stroke="var(--ink-2)" stroke-width="1.5" marker-end="url(#journey-arrow)"/>
-          <g font-family="Inter, sans-serif" font-size="11" letter-spacing="0.12em" fill="var(--muted)" text-anchor="middle">
-            <circle cx="30" cy="32" r="5.5" fill="var(--bg)" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="30" y="60">LEARN</text>
-            <circle cx="152" cy="32" r="5.5" fill="var(--bg)" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="152" y="60">ONBOARD</text>
-            <circle cx="275" cy="32" r="5.5" fill="var(--bg)" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="275" y="60">ORDER</text>
-            <circle cx="398" cy="32" r="5.5" fill="var(--bg)" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="398" y="60">VIEW</text>
-            <circle cx="520" cy="32" r="5.5" fill="var(--bg)" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="520" y="60">DEPLOY</text>
-            <circle cx="642" cy="32" r="5.5" fill="var(--bg)" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="642" y="60">MONITOR</text>
-            <circle cx="765" cy="32" r="5.5" fill="var(--bg)" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="765" y="60">MAINTAIN</text>
-            <circle cx="888" cy="32" r="5.5" fill="var(--bg)" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="888" y="60">USE</text>
-            <circle cx="1010" cy="32" r="5.5" fill="var(--bg)" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="1010" y="60">SCALE</text>
-          </g>
-        </svg>
-
-        <svg class="journey-mobile" viewBox="0 0 460 700" width="100%" height="auto" role="img" aria-label="Outposts journey framework, nine phases from Learn to Scale: Learn, Onboard, Order, View, Deploy, Monitor, Maintain, Use, Scale">
-          <defs>
-            <marker id="journey-arrow-m" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-              <path d="M0 0L10 5L0 10z" fill="var(--ink-2)"/>
-            </marker>
-          </defs>
-          <line x1="30" y1="10" x2="30" y2="695" stroke="var(--ink-2)" stroke-width="1.5" marker-end="url(#journey-arrow-m)"/>
-          <g font-family="Inter, sans-serif" font-size="15" letter-spacing="0.1em" fill="var(--muted)">
-            <circle cx="30" cy="10" r="6" fill="var(--bg)" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="54" y="15">LEARN</text>
-            <circle cx="30" cy="94" r="6" fill="var(--bg)" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="54" y="99">ONBOARD</text>
-            <circle cx="30" cy="178" r="6" fill="var(--bg)" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="54" y="183">ORDER</text>
-            <circle cx="30" cy="261" r="6" fill="var(--bg)" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="54" y="266">VIEW</text>
-            <circle cx="30" cy="345" r="6" fill="var(--bg)" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="54" y="350">DEPLOY</text>
-            <circle cx="30" cy="429" r="6" fill="var(--bg)" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="54" y="434">MONITOR</text>
-            <circle cx="30" cy="513" r="6" fill="var(--bg)" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="54" y="518">MAINTAIN</text>
-            <circle cx="30" cy="596" r="6" fill="var(--bg)" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="54" y="601">USE</text>
-            <circle cx="30" cy="680" r="6" fill="var(--bg)" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="54" y="685">SCALE</text>
-          </g>
-        </svg>
-
-        <div class="figure-caption" style="margin-top:14px">— Journey framework: Learn to Scale —</div>
+      <div class="journey-grid">
+        <div class="journey-card">
+          <span class="num">i.</span>
+          <h4>Learn</h4>
+          <p>Overview, journey, and resources before ordering.</p>
+        </div>
+        <div class="journey-card">
+          <span class="num">ii.</span>
+          <h4>Onboard</h4>
+          <p>Email invitation, org setup, payment method, and inviting users.</p>
+        </div>
+        <div class="journey-card">
+          <span class="num">iii.</span>
+          <h4>Order</h4>
+          <p>Select a site or outpost, hosts, subscription, and networking.</p>
+        </div>
+        <div class="journey-card">
+          <span class="num">iv.</span>
+          <h4>View</h4>
+          <p>One inventory list across every Outpost deployment and its status.</p>
+        </div>
+        <div class="journey-card">
+          <span class="num">v.</span>
+          <h4>Deploy</h4>
+          <p>AWS surveys the site and installs hardware; status stays visible in the console.</p>
+        </div>
+        <div class="journey-card">
+          <span class="num">vi.</span>
+          <h4>Monitor</h4>
+          <p>Hardware and network health, surfaced the same way as VMware Cloud on AWS.</p>
+        </div>
+        <div class="journey-card">
+          <span class="num">vii.</span>
+          <h4>Maintain</h4>
+          <p>Lifecycle management carried over from existing VMware Cloud on AWS patterns.</p>
+        </div>
+        <div class="journey-card">
+          <span class="num">viii.</span>
+          <h4>Use</h4>
+          <p>Local network configuration and an activity log for auditing.</p>
+        </div>
+        <div class="journey-card">
+          <span class="num">ix.</span>
+          <h4>Scale</h4>
+          <p>Add nodes or clusters, and integrate with tools like Tanzu and HCX.</p>
+        </div>
       </div>
     </section>
 
