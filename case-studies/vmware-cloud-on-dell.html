@@ -1133,9 +1133,28 @@ body { font-family: 'Inter', system-ui, sans-serif; }
       <div class="sub" style="max-width:1040px;margin:80px auto 0">
         <h3>From insight to shipped fix</h3>
         <p>These insights didn't just get logged — they shaped the next iteration of the ordering flow.</p>
-        <p><strong>One location at a time.</strong> Admins wouldn't commit to multiple sites until they trusted the first one, so I moved location and contact details inside the ordering flow itself instead of collecting them upfront.</p>
-        <p><strong>Save &amp; continue.</strong> There was no way to save progress mid-order — a blocker for admins who needed to loop in a site technician or billing contact before finishing. I added a Save &amp; Continue action at every step.</p>
-        <p><strong>Pre-requisites in context.</strong> Rack, power, and network requirements were originally confirmed in one separate step at the end. I eliminated that step and folded each requirement into the existing Rack and Network steps where it was actually relevant.</p>
+
+        <p><strong>Planning comes before ordering.</strong> Admins wanted to review technical details before ever starting an order — plan/design was its own phase, not something to work out mid-flow. I added a Technical Overview page ahead of the ordering flow, covering compute, storage, and networking requirements up front.</p>
+        <div style="margin: 32px -80px 0;">
+          <div class="figure">
+            <img loading="lazy" src="../assets/vmware-cloud-on-dell/planning-comes-before-ordering–technical-overview.png" alt="Technical Overview page shown before the ordering flow begins">
+          </div>
+        </div>
+
+        <p style="margin-top:56px"><strong>One location at a time.</strong> Admins wouldn't commit to multiple sites until they trusted the first one, so I moved location and contact details inside the ordering flow itself instead of collecting them upfront.</p>
+        <div style="margin: 32px -80px 0;">
+          <div class="figure">
+            <img loading="lazy" src="../assets/vmware-cloud-on-dell/location-moved-into-ordering+additional-contacts.png" alt="Location and contact details moved into step 1 of the ordering flow">
+          </div>
+        </div>
+
+        <p style="margin-top:56px"><strong>Save &amp; continue.</strong> There was no way to save progress mid-order — a blocker for admins who needed to loop in a site technician or billing contact before finishing. I added a Save &amp; Continue action at every step.</p>
+
+        <p style="margin-top:56px"><strong>Pre-requisites in context.</strong> Rack, power, and network requirements were originally confirmed in one separate step at the end. I eliminated that step and folded each requirement into the existing Rack and Network steps where it was actually relevant.</p>
+        <div class="wire-grid" style="margin-top:32px">
+          <div class="wire"><img loading="lazy" src="../assets/vmware-cloud-on-dell/pre-reqs-inside-rack-step.png" alt="Rack requirements folded into the Rack step"></div>
+          <div class="wire"><img loading="lazy" src="../assets/vmware-cloud-on-dell/pre-reqs-inside-network-step.png" alt="Network requirements folded into the Network step"></div>
+        </div>
       </div>
     </section>
 
