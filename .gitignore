@@ -12,3 +12,9 @@ resume-visual.html
 # Reference / alternate resume PDFs kept local (not served on the public site).
 assets/Resume-old.pdf
 assets/Rishabh-Gandotra-Resume-ATS.pdf
+
+# Internal source decks used as reference material for case-study writing.
+# Contain internal-only detail (JIRA IDs, scope planning) — not for the public repo.
+assets/vmware-cloud-on-dell/Case study presentation - Dell.pdf
+assets/vmware-cloud-on-dell/Outposts UX scope.pdf
+assets/vmware-cloud-on-dell/VMC on AWS Outposts.pdf
