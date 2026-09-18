@@ -964,15 +964,19 @@ body { font-family: 'Inter', system-ui, sans-serif; }
       <div class="narrow">
         <div class="section-label">— User Validation —</div>
         <h2 class="section-title">What enterprise IT admins surfaced.</h2>
-        <p class="lede">After sharing the global fleet concept internally, I went to find out what admins actually needed first.</p>
+        <p class="lede">The first thing I did was put the concept in front of real users — and the feedback reshaped everything that came next.</p>
       </div>
 
       <div class="callout" style="margin-top:64px">
         <div class="callout-label">— Where I pushed back —</div>
-        <p>The global fleet map I'd explored read well in a keynote — but early customer conversations told a different story. Admins with just one or two locations to start with said it added little value; what they actually wanted was proof that a single site could be ordered, deployed, and operated reliably before trusting the system with more. I pulled the MVP scope back to a single-site, end-to-end flow — <strong>order → deploy → operate</strong>.</p>
+        <p>The global fleet map read well in a keynote — but showing it to users early on told a different story. Admins with just one or two locations to start with said it added little value; what they actually wanted was proof that a single site could be ordered, deployed, and operated reliably before trusting the system with more. That feedback is what shaped the MVP: a single-site, end-to-end flow — <strong>order → deploy → operate</strong>.</p>
       </div>
 
-      <div class="validation-stats" style="margin:64px -80px 0">
+      <div class="sub" style="max-width:1040px;margin:56px auto 0">
+        <p>With the MVP designed around that scope, I ran a deeper round of research to pressure-test the actual ordering flow before it shipped.</p>
+      </div>
+
+      <div class="validation-stats" style="margin:32px -80px 0">
         <div class="item">
           <div class="num">24</div>
           <div class="desc">Moderated sessions</div>
@@ -1054,13 +1058,8 @@ body { font-family: 'Inter', system-ui, sans-serif; }
         </div>
 
         <div class="sub">
-          <h3>Pre-provisioning at the factory</h3>
-          <p>Before a rack ever reaches the customer, a VMware SRE installs the full software stack on the hardware Dell provisions at its factory. I designed the internal portal SREs use to do this — the goal was to pre-provision everything so the rack arrives ready to activate, not a blank box waiting on on-site setup.</p>
-        </div>
-
-        <div class="sub">
           <h3>Automating deployment</h3>
-          <p>Once the hardware is physically plugged in on-site, the software takes over. I designed a transparent provisioning experience that tracks the automated bootstrapping of the SDDC, completely eliminating the need for manual IT deployment.</p>
+          <p>Before a rack ever reaches the customer, a VMware SRE pre-installs the full software stack on the hardware Dell provisions at its factory — I designed the internal portal SREs use to do this, so the rack arrives ready to activate instead of a blank box waiting on on-site setup. Once it's physically plugged in on-site, the software takes over from there: I designed a transparent provisioning experience that tracks the automated bootstrapping of the SDDC, completely eliminating the need for manual IT deployment.</p>
           <div style="margin: 32px -80px 0;">
             <div class="figure">
               <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-deployment.png" alt="Automated deployment progress tracking">
