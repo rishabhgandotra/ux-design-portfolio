@@ -233,6 +233,54 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   text-align: center;
 }
 
+/* Click-to-play video cover */
+.cs .video-cover {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  display: block;
+}
+.cs .video-cover img,
+.cs .video-cover video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.cs .video-cover .play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.28);
+  background: rgba(20, 20, 22, 0.78);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease, box-shadow 0.3s ease;
+  pointer-events: none;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+.cs .video-cover:hover .play-btn {
+  transform: translate(-50%, -50%) scale(1.08);
+  background: rgba(20, 20, 22, 0.92);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.28);
+}
+.cs .video-cover .play-btn svg {
+  width: 28px;
+  height: 28px;
+  margin-left: 4px;
+  fill: currentColor;
+}
+.cs .video-cover.playing::after,
+.cs .video-cover.playing .play-btn { display: none; }
+
 /* Outposts journey diagram */
 .cs .journey-grid {
   display: grid;
@@ -977,9 +1025,19 @@ body { font-family: 'Inter', system-ui, sans-serif; }
           <p>I designed a streamlined step-by-step ordering flow by abstracting the complexity of physical hardware procurement. Admins can select capacity, specify power drops, networking, and ship physical racks without ever leaving the digital console.</p>
           <div style="margin: 32px -80px 0;">
             <div class="figure">
-              <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-ecommerce.png" alt="E-commerce flow for ordering datacenter capacity">
+              <div class="video-cover" id="vmc-ordering-video"
+                   data-src="../assets/vmware-cloud-on-dell/vmc-ordering-walkthrough.mov"
+                   role="button" tabindex="0" aria-label="Play ordering flow walkthrough video">
+                <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-ecommerce.png" alt="E-commerce flow for ordering datacenter capacity">
+                <div class="play-btn" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M6 4l14 8-14 8V4z"/>
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
+          <div class="figure-caption" style="margin-top:14px">— Full ordering walkthrough —</div>
         </div>
 
         <div class="sub">
@@ -1234,6 +1292,29 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 
   </div>
 </div>
+
+<script>
+// Click-to-play video cover
+document.querySelectorAll('.video-cover').forEach(function(cover) {
+  function play() {
+    if (cover.classList.contains('playing')) return;
+    var video = document.createElement('video');
+    video.src = cover.dataset.src;
+    video.controls = true;
+    video.autoplay = true;
+    video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    cover.classList.add('playing');
+    var img = cover.querySelector('img');
+    if (img) img.remove();
+    cover.appendChild(video);
+  }
+  cover.addEventListener('click', play);
+  cover.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }
+  });
+});
+</script>
 
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ba10ff8f736d4e0297dd12cb1a3cc735"}'></script>
