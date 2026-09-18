@@ -957,6 +957,57 @@ body { font-family: 'Inter', system-ui, sans-serif; }
           </div>
         </div>
       </div>
+
+      <div class="callout" style="margin-top:64px">
+        <div class="callout-label">— Where I pushed back —</div>
+        <p>The global fleet map read well in a keynote — but showing it to users early on told a different story. Admins with just one or two locations to start with said it added little value; what they actually wanted was proof that a single site could be ordered, deployed, and operated reliably before trusting the system with more. That feedback is what shaped the MVP: a single-site, end-to-end flow — <strong>order → deploy → operate</strong>.</p>
+      </div>
+    </section>
+
+    <!-- Execution -->
+    <section class="block">
+      <div class="narrow">
+        <div class="section-label">— Execution —</div>
+        <h2 class="section-title">From blueprint to MVP, step-by-step.</h2>
+      </div>
+
+      <div style="max-width:1040px;margin:0 auto">
+        <div class="sub">
+          <h3>E-commerce for the datacenter</h3>
+          <p>I designed a streamlined step-by-step ordering flow by abstracting the complexity of physical hardware procurement. Admins can select capacity, specify power drops, networking, and ship physical racks without ever leaving the digital console.</p>
+          <div style="margin: 32px -80px 0;">
+            <div class="figure">
+              <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-ecommerce.png" alt="E-commerce flow for ordering datacenter capacity">
+            </div>
+          </div>
+        </div>
+
+        <div class="sub">
+          <h3>Automating deployment</h3>
+          <p>Before a rack ever reaches the customer, a VMware SRE pre-installs the full software stack on the hardware Dell provisions at its factory — I designed the internal portal SREs use to do this, so the rack arrives ready to activate instead of a blank box waiting on on-site setup. Once it's physically plugged in on-site, the software takes over from there: I designed a transparent provisioning experience that tracks the automated bootstrapping of the SDDC, completely eliminating the need for manual IT deployment.</p>
+          <div style="margin: 32px -80px 0;">
+            <div class="figure">
+              <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-deployment.png" alt="Automated deployment progress tracking">
+            </div>
+          </div>
+        </div>
+
+        <div class="sub">
+          <h3>Day-2 operations</h3>
+          <p>Managing on-premises hardware is historically an operational burden. I designed a centralized fleet view surfacing real-time rack health and capacity alerts, shifting the lifecycle management entirely onto the service.</p>
+          <div style="margin: 32px -80px 0;">
+            <div class="figure">
+              <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-day2.png" alt="Day-2 operations fleet view">
+            </div>
+          </div>
+        </div>
+
+        <div class="sub">
+          <h3>Growing a three-person design team</h3>
+          <p>Two other designers joined partway through the two years, and each grew into ownership of a distinct area. I stayed responsible for the end-to-end ordering workflow, onboarding, day-2 operations, and the factory pre-provisioning portal above. A senior designer who joined the team took ownership of maintenance-window scheduling, then went on to independently own VMware Cloud on AWS Outposts after I helped map its initial end-to-end journey and ordering experience. A junior designer started by helping migrate our files from Sketch to Figma and building out the component library while getting oriented, then grew into owning the networking domain and later VMC's Bring-Your-Own-Hardware initiative.</p>
+          <p>To get them there, I shared the service blueprint and customer journey so they had the same map I was working from, transferred the technical domain knowledge they needed to move fast, and had them shadow my research sessions to learn the nuances of interviewing IT admins. I was also who they leaned on to flag when a product decision was likely to introduce a usability problem, and to check that their designs still matched user expectations while they were building context. By the end, both were running their own research independently and making design calls with the confidence of subject-matter experts in their areas.</p>
+        </div>
+      </div>
     </section>
 
     <!-- User Validation -->
@@ -964,19 +1015,10 @@ body { font-family: 'Inter', system-ui, sans-serif; }
       <div class="narrow">
         <div class="section-label">— User Validation —</div>
         <h2 class="section-title">What enterprise IT admins surfaced.</h2>
-        <p class="lede">The first thing I did was put the concept in front of real users — and the feedback reshaped everything that came next.</p>
+        <p class="lede">With the MVP live, I ran a deeper round of research to pressure-test the actual ordering flow.</p>
       </div>
 
-      <div class="callout" style="margin-top:64px">
-        <div class="callout-label">— Where I pushed back —</div>
-        <p>The global fleet map read well in a keynote — but showing it to users early on told a different story. Admins with just one or two locations to start with said it added little value; what they actually wanted was proof that a single site could be ordered, deployed, and operated reliably before trusting the system with more. That feedback is what shaped the MVP: a single-site, end-to-end flow — <strong>order → deploy → operate</strong>.</p>
-      </div>
-
-      <div class="sub" style="max-width:1040px;margin:56px auto 0">
-        <p>With the MVP designed around that scope, I ran a deeper round of research to pressure-test the actual ordering flow before it shipped.</p>
-      </div>
-
-      <div class="validation-stats" style="margin:32px -80px 0">
+      <div class="validation-stats" style="margin:64px -80px 0">
         <div class="item">
           <div class="num">24</div>
           <div class="desc">Moderated sessions</div>
@@ -1036,52 +1078,6 @@ body { font-family: 'Inter', system-ui, sans-serif; }
         <p><strong>One location at a time.</strong> Admins wouldn't commit to multiple sites until they trusted the first one, so I moved location and contact details inside the ordering flow itself instead of collecting them upfront.</p>
         <p><strong>Save &amp; continue.</strong> There was no way to save progress mid-order — a blocker for admins who needed to loop in a site technician or billing contact before finishing. I added a Save &amp; Continue action at every step.</p>
         <p><strong>Pre-requisites in context.</strong> Rack, power, and network requirements were originally confirmed in one separate step at the end. I eliminated that step and folded each requirement into the existing Rack and Network steps where it was actually relevant.</p>
-      </div>
-    </section>
-
-    <!-- Execution -->
-    <section class="block">
-      <div class="narrow">
-        <div class="section-label">— Execution —</div>
-        <h2 class="section-title">From blueprint to MVP, step-by-step.</h2>
-      </div>
-
-      <div style="max-width:1040px;margin:0 auto">
-        <div class="sub">
-          <h3>E-commerce for the datacenter</h3>
-          <p>I designed a streamlined step-by-step ordering flow by abstracting the complexity of physical hardware procurement. Admins can select capacity, specify power drops, networking, and ship physical racks without ever leaving the digital console.</p>
-          <div style="margin: 32px -80px 0;">
-            <div class="figure">
-              <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-ecommerce.png" alt="E-commerce flow for ordering datacenter capacity">
-            </div>
-          </div>
-        </div>
-
-        <div class="sub">
-          <h3>Automating deployment</h3>
-          <p>Before a rack ever reaches the customer, a VMware SRE pre-installs the full software stack on the hardware Dell provisions at its factory — I designed the internal portal SREs use to do this, so the rack arrives ready to activate instead of a blank box waiting on on-site setup. Once it's physically plugged in on-site, the software takes over from there: I designed a transparent provisioning experience that tracks the automated bootstrapping of the SDDC, completely eliminating the need for manual IT deployment.</p>
-          <div style="margin: 32px -80px 0;">
-            <div class="figure">
-              <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-deployment.png" alt="Automated deployment progress tracking">
-            </div>
-          </div>
-        </div>
-
-        <div class="sub">
-          <h3>Day-2 operations</h3>
-          <p>Managing on-premises hardware is historically an operational burden. I designed a centralized fleet view surfacing real-time rack health and capacity alerts, shifting the lifecycle management entirely onto the service.</p>
-          <div style="margin: 32px -80px 0;">
-            <div class="figure">
-              <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-day2.png" alt="Day-2 operations fleet view">
-            </div>
-          </div>
-        </div>
-
-        <div class="sub">
-          <h3>Growing a three-person design team</h3>
-          <p>Two other designers joined partway through the two years, and each grew into ownership of a distinct area. I stayed responsible for the end-to-end ordering workflow, onboarding, day-2 operations, and the factory pre-provisioning portal above. A senior designer who joined the team took ownership of maintenance-window scheduling, then went on to independently own VMware Cloud on AWS Outposts after I helped map its initial end-to-end journey and ordering experience. A junior designer started by helping migrate our files from Sketch to Figma and building out the component library while getting oriented, then grew into owning the networking domain and later VMC's Bring-Your-Own-Hardware initiative.</p>
-          <p>To get them there, I shared the service blueprint and customer journey so they had the same map I was working from, transferred the technical domain knowledge they needed to move fast, and had them shadow my research sessions to learn the nuances of interviewing IT admins. I was also who they leaned on to flag when a product decision was likely to introduce a usability problem, and to check that their designs still matched user expectations while they were building context. By the end, both were running their own research independently and making design calls with the confidence of subject-matter experts in their areas.</p>
-        </div>
       </div>
     </section>
 
