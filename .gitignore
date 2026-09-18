@@ -18,3 +18,8 @@ assets/Rishabh-Gandotra-Resume-ATS.pdf
 assets/vmware-cloud-on-dell/Case study presentation - Dell.pdf
 assets/vmware-cloud-on-dell/Outposts UX scope.pdf
 assets/vmware-cloud-on-dell/VMC on AWS Outposts.pdf
+
+# Raw keynote photos -- superseded by the resized/renamed vmc-keynote-*.jpg
+# files actually used on the site. Kept locally in case a different crop is
+# ever wanted, not for the public repo.
+assets/vmware-cloud-on-dell/IMG_20180827_*.jpg
