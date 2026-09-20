@@ -1059,7 +1059,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
             <rect x="0.75" y="20.75" width="459.5" height="248.5" rx="6" fill="none" stroke="var(--ink-2)" stroke-width="1.5"/>
             <text x="28" y="55" font-family="Inter, sans-serif" font-size="11" letter-spacing="0.18em" fill="var(--muted)">PHASE 1 · SHIPPED</text>
             <text x="28" y="90" font-family="Lora, serif" font-size="24" fill="var(--ink)">Redesign</text>
-            <text x="28" y="152" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Manual export/import steps removed</text>
+            <text x="28" y="152" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Export/import kept as a fallback</text>
             <text x="28" y="184" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Auto-generated waves &amp; groups</text>
             <text x="28" y="216" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Single Commit, no double-commit</text>
           </g>
@@ -1087,7 +1087,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
             <rect x="0.75" y="0.75" width="458.5" height="248.5" rx="6" fill="none" stroke="var(--ink-2)" stroke-width="1.5"/>
             <text x="28" y="34" font-family="Inter, sans-serif" font-size="11" letter-spacing="0.18em" fill="var(--muted)">PHASE 1 · SHIPPED</text>
             <text x="28" y="69" font-family="Lora, serif" font-size="24" fill="var(--ink)">Redesign</text>
-            <text x="28" y="131" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Manual export/import steps removed</text>
+            <text x="28" y="131" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Export/import kept as a fallback</text>
             <text x="28" y="163" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Auto-generated waves &amp; groups</text>
             <text x="28" y="195" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Single Commit, no double-commit</text>
           </g>
@@ -1114,7 +1114,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 
       <div class="sub" style="max-width:1040px;margin:80px auto 0">
         <h3>Streamlining the end-to-end workflow</h3>
-        <p>Working with product and engineering, I mapped the full journey and framed the strategy around tighter integration between Net&nbsp;Ops and HCX — to eliminate the manual export and import steps, reduce user burden by auto-generating waves and groups, and pull the "Commit" action across the platform boundary into the Ops&nbsp;UI. A plan's VMs are split into waves — batches sized to what a maintenance window can realistically move — and each wave into mobility groups, typically the VMs of one multi-tier application migrating together. This first phase closed the handoff friction between the two tools; the destination-capacity visibility gap came next — first through the persistent summary widget introduced during execution, then more fully through the multi-cluster capacity analysis in the platform's longer-term vision.</p>
+        <p>Working with product and engineering, I mapped the full journey and framed the strategy around tighter integration between Net&nbsp;Ops and HCX — to make manual export and import unnecessary in the common case, reduce user burden by auto-generating waves and groups (manual grouping stayed available), and pull the "Commit" action across the platform boundary into the Ops&nbsp;UI. Manual export and import remained as a fallback for when Net&nbsp;Ops and HCX weren't connected. A plan's VMs are split into waves — batches sized to what a maintenance window can realistically move — and each wave into mobility groups, typically the VMs of one multi-tier application migrating together. This first phase closed the handoff friction between the two tools; the destination-capacity visibility gap came next — first through the persistent summary widget introduced during execution, then more fully through the multi-cluster capacity analysis in the platform's longer-term vision.</p>
       </div>
 
       <div class="callout">
@@ -1292,7 +1292,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 
         <div class="sub">
           <h3>Automating the tedious and error-prone</h3>
-          <p>Building migration waves manually was highly tedious and error-prone. We introduced an automated workflow that analyzes network dependencies to instantly generate optimal migration waves and mobility groups — drastically reducing time-to-value while preserving the operator's ability to review and override the system's logic.</p>
+          <p>Building migration waves manually was highly tedious and error-prone. We introduced an automated workflow that analyzes network dependencies to instantly generate optimal migration waves and mobility groups — drastically reducing time-to-value. Once generation completes, operators can review the result and override it. Manual grouping remained available as an alternative, since research later showed the generation logic wasn't yet robust enough to rely on.</p>
           <div class="ba">
             <span class="ba-label before">Before</span>
             <span class="ba-label after">After</span>
@@ -1340,7 +1340,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
         <div class="section-label">— Scaling to a Global Service —</div>
         <h2 class="section-title">A unified "single pane of glass" for the next horizon.</h2>
         <p class="lede">Following the success of the Workload Mobility unification, I defined the long-term vision for a Global Mobility Service — shifting from individual tool integration to a unified operational surface.</p>
-        <p class="lede" style="font-size:16px;font-style:italic;color:var(--muted);margin-top:20px">Status: pitched to executive leadership; on the Q3 2026 roadmap. I led the vision definition and the executive presentations end-to-end.</p>
+        <p class="lede" style="font-size:16px;font-style:italic;color:var(--muted);margin-top:20px">Pitched to executive leadership and placed on the roadmap. I led the vision definition and the executive presentations end-to-end.</p>
       </div>
 
       <div class="narrow wm-roadmap-wrap" data-focus="2" style="margin-top:56px">
@@ -1349,7 +1349,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
             <rect x="0.75" y="20.75" width="459.5" height="248.5" rx="6" fill="none" stroke="var(--ink-2)" stroke-width="1.5"/>
             <text x="28" y="55" font-family="Inter, sans-serif" font-size="11" letter-spacing="0.18em" fill="var(--muted)">PHASE 1 · SHIPPED</text>
             <text x="28" y="90" font-family="Lora, serif" font-size="24" fill="var(--ink)">Redesign</text>
-            <text x="28" y="152" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Manual export/import steps removed</text>
+            <text x="28" y="152" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Export/import kept as a fallback</text>
             <text x="28" y="184" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Auto-generated waves &amp; groups</text>
             <text x="28" y="216" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Single Commit, no double-commit</text>
           </g>
@@ -1377,7 +1377,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
             <rect x="0.75" y="0.75" width="458.5" height="248.5" rx="6" fill="none" stroke="var(--ink-2)" stroke-width="1.5"/>
             <text x="28" y="34" font-family="Inter, sans-serif" font-size="11" letter-spacing="0.18em" fill="var(--muted)">PHASE 1 · SHIPPED</text>
             <text x="28" y="69" font-family="Lora, serif" font-size="24" fill="var(--ink)">Redesign</text>
-            <text x="28" y="131" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Manual export/import steps removed</text>
+            <text x="28" y="131" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Export/import kept as a fallback</text>
             <text x="28" y="163" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Auto-generated waves &amp; groups</text>
             <text x="28" y="195" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Single Commit, no double-commit</text>
           </g>
