@@ -27,3 +27,6 @@ assets/vmware-cloud-on-dell/IMG_20180827_*.jpg
 # Personal / internal reference files — not for the public repo.
 assets/LinkedIn-Profile.pdf
 assets/workload-mobility/Case study presentation - Mobility.pdf
+
+# Figma re-exports made for slide decks — not used by the site.
+slides-exports/
