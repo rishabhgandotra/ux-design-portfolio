@@ -919,6 +919,60 @@ body { font-family: 'Inter', system-ui, sans-serif; }
         <h2 class="section-title">Enterprise hardware procurement is a months-long bottleneck.</h2>
         <p class="lede">Enterprises needing on-premises infrastructure for compliance, latency, or data sovereignty had to navigate a fragmented, months-long process of vendor negotiations and manual deployment.</p>
       </div>
+
+      <div class="sub" style="max-width:1040px;margin:80px auto 0">
+        <h3>Meet ACME</h3>
+        <p>To keep the team anchored on a real shape of customer, I framed the problem around ACME — a composite of the global financial-services enterprises we were designing for. Like every customer we were targeting, ACME already ran its workloads on VMware vSphere, in its datacenters and its branch offices.</p>
+      </div>
+
+      <div class="validation-stats" style="margin:32px -80px 0;grid-template-columns:repeat(2,1fr)">
+        <div class="item">
+          <div class="num">~100</div>
+          <div class="desc">Branch offices worldwide</div>
+        </div>
+        <div class="item">
+          <div class="num">6</div>
+          <div class="desc">Datacenters across the globe</div>
+        </div>
+      </div>
+
+      <div class="sub" style="max-width:1040px;margin:80px auto 0">
+        <h3>Samantha, IT admin — and ACME's bottleneck</h3>
+        <p>Every one of those locations runs on infrastructure someone has to install, upgrade, and keep alive. At ACME, that someone is Samantha.</p>
+        <div class="journey-grid" style="margin-top:32px">
+          <div class="journey-card">
+            <h4>Her days</h4>
+            <p>Most of her time goes to installs and upgrades across ACME's many locations — using a patchwork of internal and third-party tools and spreadsheets.</p>
+          </div>
+          <div class="journey-card">
+            <h4>Her queue</h4>
+            <p>She's also who the application teams come to whenever they need a new VM provisioned.</p>
+          </div>
+          <div class="journey-card">
+            <h4>The perception</h4>
+            <p>Because installs and upgrades consume her, the application teams see her as the <strong>blocker to fast VM provisioning</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub" style="max-width:1040px;margin:80px auto 0">
+        <h3>Table stakes</h3>
+        <p>For ACME to succeed, any answer had to deliver all six of these — and HPE GreenLake, AWS Outposts, Azure Stack Edge, and Rackspace were already competing for the same customers.</p>
+        <div class="journey-grid" style="margin-top:32px">
+          <div class="journey-card"><h4 style="margin:0">Automated installs &amp; upgrades</h4></div>
+          <div class="journey-card"><h4 style="margin:0">Delivered as a service to your locations</h4></div>
+          <div class="journey-card"><h4 style="margin:0">On-demand capacity</h4></div>
+          <div class="journey-card" style="border-color:var(--ink)"><span class="num" style="font-family:'Inter',sans-serif;font-style:normal;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:10px">Deciding factor</span><h4 style="margin:0">Minimal reconfiguration of existing VMware VMs</h4></div>
+          <div class="journey-card"><h4 style="margin:0">Kubernetes &amp; cloud-native apps</h4></div>
+          <div class="journey-card"><h4 style="margin:0">Full-sized hardware rack</h4></div>
+        </div>
+        <p style="margin-top:32px">Most contenders could make a case for the other five. What settled it was minimal reconfiguration: because ACME already ran on vSphere, VMware Cloud on Dell meant a lift and shift — existing VMs move over as they are, with no time spent rearchitecting or reconfiguring them for a different platform. That made it the offering ACME chose, and the easiest choice for any customer already on VMware — exactly who it was built for.</p>
+      </div>
+
+      <div class="callout" style="margin-top:80px">
+        <div class="callout-label">— Opportunity —</div>
+        <p>What if a fully managed datacenter could be delivered to a customer's location — and managed from the cloud?</p>
+      </div>
     </section>
 
     <!-- Approach -->
@@ -1218,7 +1272,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
       <div class="narrow">
         <div class="section-label">— Scaling —</div>
         <h2 class="section-title">Establishing the pattern for VMware Cloud on AWS Outposts.</h2>
-        <p class="lede">I conducted a cross-functional workshop with product, engineering, and design that extended the service blueprint to a second hyperscaler partner. I mapped the initial end-to-end journey and ordering experience for VMware Cloud on AWS Outposts, then handed full ownership to the senior designer from our team — the same blueprint-first, UI-second, operations-third framework carried over as the standard approach for VMware's <em>Cloud to Edge</em> portfolio.</p>
+        <p class="lede">VMware's partnership with AWS began with the cloud-only VMware Cloud on AWS; the next step was VMware Cloud on AWS Outposts — VMware's stack running on Outposts hardware. Unlike the standalone AWS Outposts in the competitive landscape above, it kept the same lift and shift for VMware customers. I conducted a cross-functional workshop with product, engineering, and design that extended the service blueprint to a second infrastructure partner. I mapped the initial end-to-end journey and ordering experience for VMware Cloud on AWS Outposts, then handed full ownership to the senior designer from our team — the same blueprint-first, UI-second, operations-third framework carried over as the standard approach for VMware's <em>Cloud to Edge</em> portfolio.</p>
       </div>
 
       <div class="journey-grid">
