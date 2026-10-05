@@ -616,6 +616,15 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 }
 .cs .quote .attr strong { color: var(--ink-2); font-weight: 500; }
 
+/* Stakes — two problems */
+.cs .problems {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px;
+  margin-top: 48px;
+}
+.cs .stakes-close { margin-top: 48px; }
+
 /* Takeaways */
 .cs .takeaways {
   display: grid;
@@ -907,7 +916,8 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   .cs .quote blockquote { font-size: 19px; }
   .cs .quote .mark { font-size: 48px; margin-bottom: 12px; }
 
-  /* Takeaways — collapse */
+  /* Stakes problems + takeaways — collapse */
+  .cs .problems { grid-template-columns: 1fr; gap: 28px; }
   .cs .takeaways { grid-template-columns: 1fr; gap: 28px; }
   .cs .takeaway h4 { font-size: 20px; }
   .cs .takeaway p { font-size: 16px; }
@@ -1040,8 +1050,23 @@ body { font-family: 'Inter', system-ui, sans-serif; }
     <section class="block">
       <div class="narrow">
         <div class="section-label">— The Stakes —</div>
-        <h2 class="section-title">Migration failures cost more than downtime.</h2>
-        <p class="lede">IT administrators migrate hundreds of VMs at a time — consolidating datacenters, adopting cloud, or refreshing aging hardware, usually against a fixed deadline. Net&nbsp;Ops and HCX — the legacy tools for planning and running a migration — don't show what capacity is actually available at the destination until late in the process, so admins first have to piece that picture together across other monitoring tools, internal systems, and third-party utilities before they can plan a migration with any confidence. If the plan turns out to be wrong, or the migration simply takes longer than the maintenance window allows, workloads are left half-moved when the window closes — additional downtime the business didn't expect and hadn't budgeted for.</p>
+        <h2 class="section-title">By the time the plan was ready, it was already out of date.</h2>
+        <p class="lede">IT administrators migrate hundreds of VMs at a time — consolidating datacenters, adopting cloud, or refreshing aging hardware — usually against a fixed maintenance window. The work was split across two legacy tools: Net&nbsp;Ops to plan the migration, HCX to run it.</p>
+
+        <div class="problems">
+          <div class="takeaway">
+            <div class="num">01</div>
+            <h4>The handoff</h4>
+            <p>Admins sorted VMs by hand into waves — batches sized to fit a maintenance window — and each wave into mobility groups, usually the VMs of one application that must move together. Then they exported the plan from Net&nbsp;Ops, imported it into HCX, and committed it there. Manual grouping invited mistakes: a stray VM, or a whole batch, landing in the wrong wave.</p>
+          </div>
+          <div class="takeaway">
+            <div class="num">02</div>
+            <h4>The blind spot</h4>
+            <p>Net&nbsp;Ops showed network dependencies, but not what the destination could hold. Admins pieced together cluster capacity and downtime tolerance from other monitoring tools, internal systems, and third-party utilities. Meanwhile the environment kept moving — teams spin VMs up and down constantly — so by the time a plan was finished, its dependency and capacity data could already be stale.</p>
+          </div>
+        </div>
+
+        <p class="lede stakes-close">A wrong or stale plan meant workloads left half-moved when the window closed — downtime the business hadn't budgeted for. The handoff was the problem we could fix first. The blind spot was harder, and it shaped everything that came after.</p>
       </div>
     </section>
 
@@ -1050,7 +1075,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
       <div class="narrow">
         <div class="section-label">— Approach —</div>
         <h2 class="section-title">From fragmented handoffs to one connected workflow.</h2>
-        <p class="lede">Enterprise VM migration was split across two UIs — Net&nbsp;Ops for planning, HCX for execution — with no shared view of capacity or scope between them. As design lead, I owned the UX strategy for rebuilding migration planning into the modern Operations Console, one workstream in leadership's broader retirement of the legacy Net&nbsp;Ops UI.</p>
+        <p class="lede">As design lead, I owned the UX strategy for rebuilding migration planning into the modern Operations Console — one workstream in leadership's broader retirement of the legacy Net&nbsp;Ops UI. Phase&nbsp;1 fixed the handoff and started on the blind spot; Phase&nbsp;2 took the blind spot on in full.</p>
       </div>
 
       <div class="narrow wm-roadmap-wrap" data-focus="1" style="margin-top:56px">
@@ -1114,7 +1139,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 
       <div class="sub" style="max-width:1040px;margin:80px auto 0">
         <h3>Streamlining the end-to-end workflow</h3>
-        <p>Working with product and engineering, I mapped the full journey and framed the strategy around tighter integration between Net&nbsp;Ops and HCX — to make manual export and import unnecessary in the common case, reduce user burden by auto-generating waves and groups (manual grouping stayed available), and pull the "Commit" action across the platform boundary into the Ops&nbsp;UI. Manual export and import remained as a fallback for when Net&nbsp;Ops and HCX weren't connected. A plan's VMs are split into waves — batches sized to what a maintenance window can realistically move — and each wave into mobility groups, typically the VMs of one multi-tier application migrating together. This first phase closed the handoff friction between the two tools; the destination-capacity visibility gap came next — first through the persistent summary widget introduced during execution, then more fully through the multi-cluster capacity analysis in the platform's longer-term vision.</p>
+        <p>Working with product and engineering, I mapped the full journey and framed the strategy around tighter integration between Net&nbsp;Ops and HCX — to make manual export and import unnecessary in the common case, reduce user burden by auto-generating waves and groups (manual grouping stayed available), and pull the "Commit" action across the platform boundary into the Ops&nbsp;UI. Manual export and import remained as a fallback for when Net&nbsp;Ops and HCX weren't connected. This first phase closed the handoff friction between the two tools; the destination-capacity visibility gap came next — first through the persistent summary widget introduced during execution, then more fully through the multi-cluster capacity analysis in the platform's longer-term vision.</p>
       </div>
 
       <div class="callout">
