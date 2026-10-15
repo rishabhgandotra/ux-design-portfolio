@@ -1276,6 +1276,21 @@ body { font-family: 'Inter', system-ui, sans-serif; }
         </div>
 
         <div class="sub">
+          <h3>Starting from the inventory</h3>
+          <p><strong>Scope by object, not by list.</strong> Users told us a flat list of every VM up front wasn't useful — a migration plan starts from a use case. Retiring an old datastore or network, for example, means moving every VM on that object. Research also showed operators expected to start from the familiar inventory view, so I built scoping around the Ops inventory tree: pick a vCenter, datastore, or network, see only the VMs attached to it, and add them to the plan's scope.</p>
+          <div class="ba-toggle">
+            <div class="ba-toggle-bar">
+              <button data-toggle="before">Nothing selected</button>
+              <button data-toggle="after" class="active">Object selected</button>
+            </div>
+            <div class="img-frame" style="aspect-ratio:3840/2390">
+              <img loading="lazy" data-img="before" src="../assets/workload-mobility/inventory-scope-empty.png" alt="Scope step with the inventory tree and an empty panel prompting the user to select an object">
+              <img loading="lazy" data-img="after" class="active" src="../assets/workload-mobility/inventory-scope-selected.png" alt="Scope step listing only the VMs attached to the selected inventory object, ready to add to scope">
+            </div>
+          </div>
+        </div>
+
+        <div class="sub">
           <h3>Persistent context during execution</h3>
           <p><strong>Persistent summary widget.</strong> During research, users reported limited visibility into the plan's capacity once they were deep inside the migration workflow. In direct response, I designed a sticky, collapsible summary widget that persists across every step of plan creation — ensuring operators always have real-time visibility into allocated resources without losing their place.</p>
           <div class="ba-toggle">
