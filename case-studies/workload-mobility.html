@@ -1058,7 +1058,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
       <div class="narrow">
         <div class="section-label">— The Stakes —</div>
         <h2 class="section-title">By the time the plan was ready, it was already out of date.</h2>
-        <p class="lede">IT administrators migrate hundreds of VMs at a time — consolidating datacenters, adopting cloud, or refreshing aging hardware — usually against a fixed maintenance window. The work was split across two legacy tools: Net&nbsp;Ops to plan the migration, HCX to run it.</p>
+        <p class="lede">IT administrators migrate hundreds of VMs at a time — consolidating datacenters, adopting cloud, or refreshing aging hardware — usually against a fixed maintenance window. The work was split across two legacy tools: Net&nbsp;Ops (Aria Operations for Networks), a network-analysis tool, to plan the migration, and HCX, VMware's migration engine, to run it.</p>
 
         <div class="problems">
           <div class="takeaway">
@@ -1082,7 +1082,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
       <div class="narrow">
         <div class="section-label">— Approach —</div>
         <h2 class="section-title">From fragmented handoffs to one connected workflow.</h2>
-        <p class="lede">As design lead, I owned the UX strategy for rebuilding migration planning into the modern Operations Console — one workstream in leadership's broader retirement of the legacy Net&nbsp;Ops UI. Phase&nbsp;1 fixed the handoff and started on the blind spot; Phase&nbsp;2 took the blind spot on in full.</p>
+        <p class="lede">As design lead, I owned the UX strategy for rebuilding migration planning into the Ops Console (VCF Operations), the platform's modern management UI — one workstream in leadership's broader retirement of the legacy Net&nbsp;Ops UI. Phase&nbsp;1 fixed the handoff and started on the blind spot; Phase&nbsp;2 took the blind spot on in full.</p>
       </div>
 
       <div class="narrow wm-roadmap-wrap" data-focus="1" style="margin-top:56px">
@@ -1146,7 +1146,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 
       <div class="sub" style="max-width:1040px;margin:80px auto 0">
         <h3>Streamlining the end-to-end workflow</h3>
-        <p>Working with product and engineering, I mapped the full journey and framed the strategy around tighter integration between Net&nbsp;Ops and HCX — to make manual export and import unnecessary in the common case, reduce user burden by auto-generating waves and groups (manual grouping stayed available), and pull the "Commit" action across the platform boundary into the Ops&nbsp;UI. Manual export and import remained as a fallback for when Net&nbsp;Ops and HCX weren't connected. This first phase closed the handoff friction between the two tools; the destination-capacity visibility gap came next — first through the persistent summary widget introduced during plan creation, then more fully through the multi-cluster capacity analysis in the platform's longer-term vision.</p>
+        <p>Working with product and engineering, I mapped the full journey and framed the strategy around tighter integration between Net&nbsp;Ops and HCX — to make manual export and import unnecessary in the common case, reduce user burden by auto-generating waves and groups (manual grouping stayed available), and pull the "Commit" action across the platform boundary into the Ops&nbsp;Console. Manual export and import remained as a fallback for when Net&nbsp;Ops and HCX weren't connected. This first phase closed the handoff friction between the two tools; the destination-capacity visibility gap came next — first through the persistent summary widget introduced during plan creation, then more fully through the multi-cluster capacity analysis in the platform's longer-term vision.</p>
       </div>
 
       <div class="callout">
@@ -1244,8 +1244,8 @@ body { font-family: 'Inter', system-ui, sans-serif; }
         <div class="category" data-color="paleblue">
           <h3 class="category-label">Planning &amp; Capacity</h3>
           <div class="notes">
-            <div class="note"><p>Capacity &amp; cost planning from Ops should carry into the migration plan.</p></div>
-            <div class="note"><p>Prefer integration with vR Ops and vRNI for diagnostics &amp; planning.</p></div>
+            <div class="note"><p>Capacity &amp; cost planning from the Ops Console should carry into the migration plan.</p></div>
+            <div class="note"><p>Prefer integration with the Ops Console and Net&nbsp;Ops for diagnostics &amp; planning.</p></div>
             <div class="note"><p>Users expect to start migration from the familiar inventory view.</p></div>
           </div>
         </div>
@@ -1360,7 +1360,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 
         <div class="sub">
           <h3>Modernizing legacy execution workflows</h3>
-          <p>The legacy HCX execution flow buried critical settings under complex, nested interactions. When engineering decided to modernize the architecture, I redesigned the UI into a clear, linear progression — utilizing scalable inventory tables and global network destination assignments. This removed immediate friction <em>and</em> structurally prepared the interface for its eventual native integration into the Ops UI.</p>
+          <p>HCX's legacy execution flow buried critical settings under complex, nested interactions. Within the same workstream, product needed to move HCX off its legacy tech stack — and I used the rebuild to fix interactions customers had complained about for years. I redesigned the flow into a clear, linear progression, with scalable inventory tables and network destinations assigned globally instead of VM by VM. It shipped alongside the planning redesign, structured for a later move into the Ops&nbsp;Console.</p>
           <div class="ba">
             <span class="ba-label before">Before</span>
             <span class="ba-label after">After</span>
@@ -1552,23 +1552,29 @@ body { font-family: 'Inter', system-ui, sans-serif; }
     <section class="block">
       <div class="narrow">
         <div class="section-label">— Takeaways —</div>
-        <h2 class="section-title">Three lessons that resonate.</h2>
+        <h2 class="section-title">What this project taught me.</h2>
       </div>
       <div class="takeaways" style="max-width:1040px;margin:56px auto 0">
         <div class="takeaway">
           <div class="num">i.</div>
-          <h4>Designing for ecosystems</h4>
-          <p>Bridging legacy tools requires solving the overarching architecture — not just localized UI fixes.</p>
+          <h4>Automation runs on trust</h4>
+          <p>Operators wouldn't rely on generated waves until the logic weighed more than network dependencies. Showing why the system grouped VMs the way it did matters as much as the grouping itself.</p>
         </div>
         <div class="takeaway">
           <div class="num">ii.</div>
-          <h4>Balancing wins with vision</h4>
-          <p>Features like the collapsible widget addressed immediate pain points, while research set the foundation for the future Global Mobility Service.</p>
+          <h4>Design for the task, not the architecture</h4>
+          <p>A "send, then commit" flow mirrored the boundary between two systems. Holding out for a single Commit kept the workflow shaped around what operators were trying to do.</p>
         </div>
         <div class="takeaway">
           <div class="num">iii.</div>
-          <h4>Multiplying impact</h4>
-          <p>True design leadership means elevating the team. Mentoring a junior designer to independently moderate high-stakes customer sessions expanded research velocity and built lasting capability.</p>
+          <h4>Mentoring as a working model</h4>
+          <p>I mapped each workflow end to end in hi-fi; the designer I mentored completed the remaining screens across our US–India time difference, and we alternated moderating research sessions. That freed me to manage stakeholders and lead the executive presentations.</p>
+        </div>
+      </div>
+      <div class="narrow">
+        <div class="callout">
+          <div class="callout-label">— What I'd do differently —</div>
+          <p>The research was mostly qualitative. I'd set up quantitative baselines from the start — failure rates, time to build a migration plan, time to execute one — so design decisions, and the results afterward, could be measured against the legacy flow.</p>
         </div>
       </div>
     </section>
