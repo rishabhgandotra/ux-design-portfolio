@@ -624,6 +624,13 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   margin-top: 48px;
 }
 .cs .stakes-close { margin-top: 48px; }
+.cs .takeaway .source {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--muted);
+  margin-top: 14px;
+}
 
 /* Takeaways */
 .cs .takeaways {
@@ -1032,17 +1039,17 @@ body { font-family: 'Inter', system-ui, sans-serif; }
       <div>
         <div class="label">Migration time</div>
         <div class="stat"><em>−72%</em></div>
-        <div class="caption">Major bank: 3 months → 25 days</div>
+        <div class="caption">80K VMs in 25 days, vs. 3 months before</div>
       </div>
       <div>
         <div class="label">Support load</div>
         <div class="stat"><em>−28%</em></div>
-        <div class="caption">Fewer tickets, Q2 → Q4 2025</div>
+        <div class="caption">Migration tickets, Feb–Apr → Aug–Oct 2025</div>
       </div>
       <div>
         <div class="label">Satisfaction</div>
         <div class="stat"><em>92%</em></div>
-        <div class="caption">CSAT score, up from 65%</div>
+        <div class="caption">Annual CX survey, up from 65%</div>
       </div>
     </section>
 
@@ -1380,6 +1387,35 @@ body { font-family: 'Inter', system-ui, sans-serif; }
           <div class="mark">"</div>
           <blockquote>I would like the planning capability to be built into Ops without having to install Net&nbsp;Ops. I'd especially like to use that collapsible widget to understand capacity needs from an HCX service-mesh standpoint.</blockquote>
           <div class="attr"><strong>IT Architect</strong><br>Fortune 500 payments company</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outcomes -->
+    <section class="block">
+      <div class="narrow">
+        <div class="section-label">— Outcomes —</div>
+        <h2 class="section-title">What changed after Phase&nbsp;1 shipped.</h2>
+        <p class="lede">Phase&nbsp;1 shipped in June 2025. These results reflect the whole team's work — including backend improvements across Net&nbsp;Ops and HCX — not design alone.</p>
+      </div>
+      <div class="takeaways" style="max-width:1040px;margin:56px auto 0">
+        <div class="takeaway">
+          <div class="num">3 months → 25 days</div>
+          <h4>Faster migrations</h4>
+          <p>A major bank completed a datacenter migration of ~80,000&nbsp;VMs in 25 days; a similar migration had previously taken three months. Design changes that contributed: a single Commit in place of per-wave export and import, a persistent widget that kept capacity in view, and starting migrations from the familiar inventory view. Plan data was available in both the UI and the API.</p>
+          <p class="source">Reported by the product manager.</p>
+        </div>
+        <div class="takeaway">
+          <div class="num">−28% tickets</div>
+          <h4>Fewer support cases</h4>
+          <p>Two ticket types map directly to the redesign: CSV formatting errors, which dropped once waves no longer had to move between tools as exported files (outside the manual fallback); and HCX Manager connection errors, which admins now see on the landing dashboard early in planning.</p>
+          <p class="source">Migration support tickets, Feb–Apr vs. Aug–Oct 2025.</p>
+        </div>
+        <div class="takeaway">
+          <div class="num">65% → 92%</div>
+          <h4>Higher satisfaction</h4>
+          <p>The annual CX survey rates migration as its own category. The legacy flow scored 65% in 2024; the redesigned flow scored 92% in 2025.</p>
+          <p class="source">~250 responses in the 2025 survey.</p>
         </div>
       </div>
     </section>
