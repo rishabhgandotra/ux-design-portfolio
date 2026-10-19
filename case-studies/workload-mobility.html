@@ -1259,6 +1259,15 @@ body { font-family: 'Inter', system-ui, sans-serif; }
         <h2 class="section-title">High value redesigns, shipped end-to-end.</h2>
       </div>
 
+      <div style="max-width:1040px;margin:0 auto 80px">
+        <div class="figure">
+          <video class="flow-video" src="../assets/workload-mobility/workload-mobility-flow.mp4" poster="../assets/workload-mobility/workload-mobility-flow-poster.jpg" muted playsinline controls preload="none" style="display:block;width:100%;height:auto;aspect-ratio:1920/1202" aria-label="Walkthrough of the redesigned migration planning flow: create a plan, scope VMs from the inventory, auto-generate waves and mobility groups, review the summary, and commit a wave to HCX">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="figure-caption" style="margin-top:14px">— The redesigned flow, end to end · prototype recreated for portfolio use; shipped UI is confidential —</div>
+      </div>
+
       <div style="max-width:1040px;margin:0 auto">
         <div class="sub">
           <h3>Global visibility at the landing page</h3>
@@ -1708,6 +1717,17 @@ document.querySelectorAll('.ba-toggle').forEach(function(root) {
 
 </script>
 
+<script>
+// Start the flow walkthrough when it scrolls into view, and pause it when it leaves.
+(function () {
+  const v = document.querySelector('.flow-video');
+  if (!v || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  new IntersectionObserver((entries) => entries.forEach((e) => {
+    if (e.isIntersecting) v.play().catch(() => {}); else v.pause();
+  }), { threshold: 0.5 }).observe(v);
+})();
+</script>
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ba10ff8f736d4e0297dd12cb1a3cc735"}'></script>
 <!-- End Cloudflare Web Analytics -->

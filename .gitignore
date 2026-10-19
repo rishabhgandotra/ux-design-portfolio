@@ -31,3 +31,8 @@ assets/Case study presentation (Mobility + Dell).pdf
 
 # Figma re-exports made for slide decks — not used by the site.
 slides-exports/
+
+# Local-only Workload Mobility prototype (used to record videos; not deployed).
+prototype/
+# Raw screen recordings (the site serves the compressed MP4 instead).
+assets/workload-mobility/workload-mobility-recording.mov
