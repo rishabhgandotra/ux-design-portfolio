@@ -434,6 +434,10 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   align-items: center;
 }
 .cs .explore-item.chosen { background: rgba(255, 255, 255, 0.5); }
+/* Hi-fi option screens: full-width image above its caption. */
+.cs .explore-grid.hifi .explore-item { grid-template-columns: 1fr; gap: 20px; }
+.cs .explore-grid.hifi .ba-toggle { margin-top: 0; }
+.cs .explore-grid.hifi .explore-item > img { border: 1px solid var(--hair); }
 .cs .explore-item img {
   display: block;
   width: 100%;
@@ -1316,36 +1320,55 @@ body { font-family: 'Inter', system-ui, sans-serif; }
           </div>
 
           <p style="margin-top:32px"><strong>Where the widget lived was the open question.</strong> I explored four placements, weighing each on whether it held a fixed, predictable spot, kept the operator's full work area, and stayed readable without a click.</p>
-          <div class="explore-grid">
+          <div class="explore-grid hifi">
             <div class="explore-item chosen">
-              <img loading="lazy" src="../assets/workload-mobility/option-a.svg" alt="Schematic: summary widget as a collapsible banner across the top of the work area">
+              <div class="ba-toggle">
+                <div class="ba-toggle-bar"><button data-toggle="expanded" class="active">Expanded</button><button data-toggle="collapsed">Collapsed</button></div>
+                <div class="img-frame" style="aspect-ratio:2400/1785">
+                  <img loading="lazy" data-img="expanded" class="active" src="../assets/workload-mobility/explore/chosen-collapsible-top-banner-expanded.png" alt="Chosen option: plan overview as a collapsible banner across the top, expanded to show charts">
+                  <img loading="lazy" data-img="collapsed" src="../assets/workload-mobility/explore/chosen-collapsible-top-banner-collapsed.png" alt="Chosen option: the top banner collapsed to a one-line strip of plan totals">
+                </div>
+              </div>
               <div class="cap">
                 <div class="name">Collapsible top banner <span class="badge">Chosen</span></div>
                 <p>Fixed, predictable spot; collapses to a one-line strip, so the work area is only borrowed on demand.</p>
               </div>
             </div>
             <div class="explore-item">
-              <img loading="lazy" src="../assets/workload-mobility/option-b.svg" alt="Schematic: summary widget as a fixed, non-collapsible banner across the top">
+              <img loading="lazy" src="../assets/workload-mobility/explore/fixed-top-banner.png" alt="Option: plan overview as a fixed banner that stays open above the scope table">
               <div class="cap">
                 <div class="name">Fixed top banner</div>
                 <p>Always on — permanently pushes the work area down.</p>
               </div>
             </div>
             <div class="explore-item">
-              <img loading="lazy" src="../assets/workload-mobility/option-c.svg" alt="Schematic: summary widget as a collapsible rail docked to the right side">
+              <div class="ba-toggle">
+                <div class="ba-toggle-bar"><button data-toggle="expanded" class="active">Expanded</button><button data-toggle="collapsed">Collapsed</button></div>
+                <div class="img-frame" style="aspect-ratio:2400/1785">
+                  <img loading="lazy" data-img="expanded" class="active" src="../assets/workload-mobility/explore/collapsible-side-rail-expanded.png" alt="Option: plan overview as an expanded rail on the right side of the summary">
+                  <img loading="lazy" data-img="collapsed" src="../assets/workload-mobility/explore/collapsible-side-rail-collapsed.png" alt="Option: the side rail collapsed to a narrow column of totals">
+                </div>
+              </div>
               <div class="cap">
                 <div class="name">Collapsible side rail</div>
                 <p>Competes with the wide VM tables for horizontal space.</p>
               </div>
             </div>
             <div class="explore-item">
-              <img loading="lazy" src="../assets/workload-mobility/option-d.svg" alt="Schematic: summary widget as an on-demand drawer opened from a toolbar toggle">
+              <div class="ba-toggle">
+                <div class="ba-toggle-bar"><button data-toggle="open" class="active">Open</button><button data-toggle="closed">Closed</button></div>
+                <div class="img-frame" style="aspect-ratio:2400/1785">
+                  <img loading="lazy" data-img="open" class="active" src="../assets/workload-mobility/explore/on-demand-drawer-open.png" alt="Option: plan overview in a drawer opened over the summary">
+                  <img loading="lazy" data-img="closed" src="../assets/workload-mobility/explore/on-demand-drawer-closed.png" alt="Option: drawer closed, with a Plan Overview button above the waves table">
+                </div>
+              </div>
               <div class="cap">
                 <div class="name">On-demand drawer</div>
                 <p>Hidden by default — needs to be clicked every time you need a number or a metric you're tracking continuously.</p>
               </div>
             </div>
           </div>
+          <div class="figure-caption" style="margin-top:14px">— Options recreated in hi-fi for this case study; originally explored as wireframes —</div>
         </div>
 
         <div class="sub">
