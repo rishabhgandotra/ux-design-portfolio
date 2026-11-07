@@ -15,183 +15,161 @@
 html, body { margin: 0; padding: 0; }
 #root { display: flex; justify-content: center; }
 
+/*
+  Layout grid: content sits inside a --gutter on each side and is split into
+  12 equal columns. The faint vertical lines in the background mark those
+  columns; text and images start on a line.
+*/
 .qm {
-  background: var(--bg);
+  --gutter: 80px;
+  /* Vertical rhythm, smallest to largest */
+  --label-gap: 40px;    /* section label's line → the content under it */
+  --item-gap: 96px;     /* between case studies */
+  --section-gap: 128px; /* end of one section → next section's label */
+  background-color: var(--bg);
+  background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px);
+  background-size: calc((100% - 2 * var(--gutter)) / 12) 100%;
+  background-position: var(--gutter) 0;
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
-  letter-spacing: -0.005em;
   width: 100%;
   max-width: 1280px;
   border-left: 1px solid var(--hair);
   border-right: 1px solid var(--hair);
-  box-shadow: 0 1px 3px rgba(0,0,0,.04);
 }
 .qm a { color: inherit; text-decoration: none; }
-.qm .container { padding: 0 80px; }
+.qm a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.qm .container { padding: 0 var(--gutter); }
+
+/* Small uppercase monospace text: labels, dates, links */
+.qm .mono,
+.qm .masthead .sub,
+.qm .hero .eyebrow,
+.qm .credentials .label,
+.qm .work-header .label,
+.qm .case-text .num,
+.qm .case-text .yr,
+.qm .case-text .case-link,
+.qm .about-links,
+.qm .footer .colophon {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
 
 /* Masthead */
 .qm .masthead {
-  text-align: center;
-  padding: 56px 80px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 24px var(--gutter);
   border-bottom: 1px solid var(--ink);
 }
 .qm .masthead .name {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 32px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -0.01em;
 }
-.qm .masthead .sub {
-  font-size: 13px;
-  color: var(--muted);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  margin-top: 12px;
-}
+.qm .masthead .sub { color: var(--muted); }
 
 /* Hero */
-.qm .hero {
-  padding: 120px 80px 80px;
-  text-align: center;
-  border-bottom: 1px solid var(--hair);
-}
-.qm .hero .eyebrow {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 40px;
-}
+.qm .hero { padding: 120px var(--gutter) 96px; }
+.qm .hero .eyebrow { color: var(--muted); margin-bottom: 40px; }
+.qm .hero .eyebrow::before { content: "/ "; color: var(--accent); }
 .qm .display {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 88px;
-  line-height: 1.05;
-  letter-spacing: -0.015em;
-  max-width: 22ch;
-  margin: 0 auto;
+  font-weight: 600;
+  font-size: 76px;
+  line-height: 1.0;
+  letter-spacing: -0.035em;
+  max-width: 17ch;
+  margin: 0;
 }
-.qm .display em { font-style: italic; }
+.qm .display em { font-style: normal; color: var(--accent); }
 .qm .lead {
-  margin: 56px auto 0;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 1.55;
+  margin: 40px 0 0;
+  font-size: 19px;
+  line-height: 1.6;
   color: var(--ink-2);
-  max-width: 56ch;
+  max-width: 58ch;
 }
 
-/* Credentials strip */
+/* Credentials strip — each item spans 3 of the 12 columns */
 .qm .credentials {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border-bottom: 1px solid var(--hair);
-  text-align: center;
+  margin: 0 var(--gutter);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
 }
-.qm .credentials > div {
-  padding: 32px 24px;
-  border-right: 1px solid var(--hair);
-}
-.qm .credentials > div:last-child { border-right: none; }
-.qm .credentials .label {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
+.qm .credentials > div { padding: 24px 24px 24px 0; }
+.qm .credentials .label { color: var(--muted); margin-bottom: 10px; }
 .qm .credentials .val {
   font-family: var(--font-display);
-  font-size: 20px;
-  letter-spacing: -0.005em;
+  font-size: 18px;
+  font-weight: 500;
   line-height: 1.3;
+  letter-spacing: -0.01em;
 }
-.qm .credentials .val em { font-style: italic; }
+.qm .credentials .val em { font-style: normal; }
 
-/* Work section */
-.qm .work { padding: 96px 0; }
+/* Section headers */
+.qm .work { padding: var(--section-gap) 0 0; }
 .qm .work-header {
-  text-align: center;
-  margin-bottom: 64px;
+  border-bottom: 1px solid var(--hair);
+  padding-bottom: 12px;
+  margin-bottom: var(--label-gap);
 }
-.qm .work-header .label {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
+.qm .work-header .label { color: var(--ink); }
+.qm .work-header.next-section { margin-top: var(--section-gap); }
 
-/* Case study rows */
+/* Case study rows — text spans columns 1–5, image starts on the column-6 line.
+   Rows are separated by white space only; lines are reserved for section labels. */
 .qm .case {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 56px;
-  align-items: center;
-  padding: 48px 0;
-  cursor: pointer;
+  grid-template-columns: 5fr 7fr;
+  align-items: start;
 }
-.qm .case:last-of-type { padding-bottom: 0; }
+.qm .case + .case { margin-top: var(--item-gap); }
 .qm .case-text {
   display: flex;
   flex-direction: column;
-  padding: 8px 0;
+  padding-right: 48px;
 }
-.qm .case-text .num {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 18px;
-  color: var(--muted);
-  margin-bottom: 16px;
-}
+.qm .case-text .num { color: var(--accent); margin-bottom: 12px; }
 .qm .case-text .ttl {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 36px;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--ink);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
   margin-bottom: 14px;
   width: fit-content;
-  background-image: linear-gradient(currentColor, currentColor);
+  padding-bottom: 4px;
+  background-image: linear-gradient(var(--accent), var(--accent));
   background-repeat: no-repeat;
   background-position: 0 100%;
-  background-size: 0% 1px;
-  transition: background-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  padding-bottom: 4px;
+  background-size: 0% 2px;
+  transition: background-size 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.qm .case:hover .case-text .ttl { background-size: 100% 1px; }
+.qm .case:hover .case-text .ttl,
+.qm .case:focus-visible .case-text .ttl { background-size: 100% 2px; }
 .qm .case-text .sub {
-  font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.5;
   color: var(--ink-2);
   max-width: 42ch;
-  margin-bottom: 24px;
-  letter-spacing: -0.005em;
+  margin-bottom: 20px;
 }
-.qm .case-text .yr {
-  font-family: var(--font-body);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 24px;
-}
-.qm .case-text .case-link {
-  font-family: var(--font-body);
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink);
-  border-bottom: 1px solid var(--ink);
-  padding-bottom: 4px;
-  align-self: flex-start;
-}
+.qm .case-text .yr { color: var(--muted); margin-bottom: 20px; }
+.qm .case-text .case-link { color: var(--accent); align-self: flex-start; }
+.qm .case:hover .case-link { text-decoration: underline; text-underline-offset: 4px; }
 .qm .case-image {
   aspect-ratio: 4/3;
   border: 1px solid var(--hair);
@@ -209,20 +187,17 @@ html, body { margin: 0; padding: 0; }
   display: block;
 }
 
-/* About section */
+/* About — photo spans columns 1–4, text columns 6–12 */
 .qm .about {
-  padding: 96px 80px;
-  border-top: 1px solid var(--hair);
+  padding: var(--section-gap) var(--gutter) 96px;
 }
 .qm .about-grid {
   display: grid;
-  grid-template-columns: 400px 1fr;
-  gap: 64px;
+  grid-template-columns: repeat(12, 1fr);
   align-items: start;
-  max-width: 1040px;
-  margin: 0 auto;
 }
 .qm .about-photo {
+  grid-column: 1 / 5;
   border: 1px solid var(--hair);
   background: var(--bg-2);
   aspect-ratio: 4/5;
@@ -236,149 +211,113 @@ html, body { margin: 0; padding: 0; }
   display: block;
 }
 .qm .about-text {
-  font-family: var(--font-display);
-  font-size: 19px;
-  line-height: 1.55;
+  grid-column: 6 / 13;
+  font-size: 18px;
+  line-height: 1.6;
   color: var(--ink-2);
-  letter-spacing: -0.005em;
+  max-width: 60ch;
 }
 .qm .about-text p { margin: 0; }
 .qm .about-text p + p { margin-top: 1em; }
 .qm .about-links {
   margin-top: 40px;
-  padding-top: 28px;
+  padding-top: 24px;
   border-top: 1px solid var(--hair);
   display: flex;
   gap: 32px;
   flex-wrap: wrap;
-  font-family: var(--font-body);
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
 }
-.qm .about-links a {
-  border-bottom: 1px solid var(--muted);
-  padding-bottom: 4px;
-  color: var(--ink-2);
-}
-.qm .about-links a:hover { color: var(--ink); border-color: var(--ink); }
+.qm .about-links a { color: var(--accent); }
+.qm .about-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
 
 /* Footer */
 .qm .footer {
   background: var(--bg);
-  padding: 24px 80px;
+  padding: 24px var(--gutter);
   border-top: 1px solid var(--ink);
 }
 .qm .footer .colophon {
   font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
   color: var(--muted);
   display: flex;
   justify-content: space-between;
+  gap: 16px;
 }
 
 /* ============ TABLET (≤ 1279px) ============ */
 @media (max-width: 1279px) {
-  .qm .container { padding: 0 48px; }
-  .qm .masthead { padding: 48px 48px 28px; }
-  .qm .hero { padding: 88px 48px 64px; }
-  .qm .display { font-size: 68px; max-width: 22ch; }
-  .qm .lead { font-size: 20px; margin-top: 44px; }
-  .qm .credentials > div { padding: 28px 20px; }
-  .qm .credentials .val { font-size: 18px; }
-  .qm .work { padding: 80px 0; }
-  .qm .work-header { margin-bottom: 48px; }
-  .qm .case { grid-template-columns: 1fr 1.4fr; gap: 40px; padding: 36px 0; }
-  .qm .case-text .ttl { font-size: 32px; }
-  .qm .case-text .sub { font-size: 17px; }
-  .qm .about { padding: 80px 48px; }
-  .qm .about-grid {
-    grid-template-columns: 340px 1fr;
-    gap: 48px;
-  }
-  .qm .about-text { font-size: 18px; }
-  .qm .footer { padding: 24px 48px; }
+  .qm { --gutter: 48px; --item-gap: 80px; --section-gap: 112px; }
+  .qm .hero { padding: 88px var(--gutter) 72px; }
+  .qm .display { font-size: 60px; }
+  .qm .lead { font-size: 18px; margin-top: 32px; }
+  .qm .credentials .val { font-size: 17px; }
+  .qm .case-text { padding-right: 32px; }
+  .qm .case-text .ttl { font-size: 28px; }
+  .qm .case-text .sub { font-size: 16px; }
+  .qm .about { padding: var(--section-gap) var(--gutter) 80px; }
+  .qm .about-text { font-size: 17px; }
 }
 
 /* ============ MOBILE (≤ 767px) ============ */
 @media (max-width: 767px) {
   .qm {
+    --gutter: 20px;
+    --label-gap: 24px;
+    --item-gap: 56px;
+    --section-gap: 80px;
+    background-image: none;
     border-left: none;
     border-right: none;
-    box-shadow: none;
   }
-  .qm .container { padding: 0 20px; }
 
   /* Masthead */
-  .qm .masthead { padding: 32px 20px 20px; }
-  .qm .masthead .name { font-size: 22px; letter-spacing: 0.05em; }
-  .qm .masthead .sub { font-size: 11px; letter-spacing: 0.16em; margin-top: 8px; }
+  .qm .masthead { flex-direction: column; gap: 2px; padding: 20px var(--gutter); }
+  .qm .masthead .sub { font-size: 11px; }
 
   /* Hero */
-  .qm .hero { padding: 48px 20px 36px; }
-  .qm .hero .eyebrow { font-size: 10px; letter-spacing: 0.16em; margin-bottom: 24px; }
-  .qm .display { font-size: 34px; line-height: 1.08; }
-  .qm .lead { font-size: 17px; margin-top: 28px; line-height: 1.5; }
+  .qm .hero { padding: 56px var(--gutter) 40px; }
+  .qm .hero .eyebrow { font-size: 11px; margin-bottom: 24px; }
+  .qm .display { font-size: 40px; line-height: 1.04; letter-spacing: -0.03em; }
+  .qm .lead { font-size: 17px; margin-top: 24px; line-height: 1.55; }
 
-  /* Credentials — stack 4 → 1 */
-  .qm .credentials { grid-template-columns: 1fr; }
-  .qm .credentials > div {
-    border-right: none;
-    border-bottom: 1px solid var(--hair);
-    padding: 20px 20px;
-  }
-  .qm .credentials > div:last-child { border-bottom: none; }
-  .qm .credentials .label { font-size: 10px; margin-bottom: 6px; }
-  .qm .credentials .val { font-size: 17px; }
+  /* Credentials — 2 × 2 */
+  .qm .credentials { grid-template-columns: 1fr 1fr; }
+  .qm .credentials > div { padding: 18px 12px 18px 0; }
+  .qm .credentials > div:nth-child(-n+2) { border-bottom: 1px solid var(--hair); }
+  .qm .credentials .label { font-size: 11px; margin-bottom: 6px; }
+  .qm .credentials .val { font-size: 16px; }
 
-  /* Work / case rows — stack image above text */
-  .qm .work { padding: 48px 0; }
-  .qm .work-header { margin-bottom: 32px; }
-  .qm .work-header .label { font-size: 10px; }
-  .qm .case {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 28px 0;
-  }
-  .qm .case-text { padding: 4px 0 0; }
-  .qm .case-text .num { font-size: 16px; margin-bottom: 10px; }
+  /* Work / case rows — stack */
+  .qm .work-header .label { font-size: 11px; }
+  .qm .case { grid-template-columns: 1fr; gap: 20px; }
+  .qm .case-text { padding-right: 0; }
+  .qm .case-text .num { font-size: 11px; margin-bottom: 8px; }
   .qm .case-text .ttl { font-size: 26px; }
-  .qm .case-text .sub { font-size: 16px; margin-bottom: 16px; }
-  .qm .case-text .yr { font-size: 10px; margin-bottom: 16px; }
+  .qm .case-text .sub { font-size: 16px; margin-bottom: 14px; }
+  .qm .case-text .yr { font-size: 11px; margin-bottom: 14px; }
   .qm .case-text .case-link { font-size: 11px; }
 
   /* About — stack photo above text */
-  .qm .about { padding: 48px 20px; }
-  .qm .about-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-  .qm .about-photo {
-    max-width: 240px;
-    margin: 0 auto;
-    aspect-ratio: 4/5;
-  }
-  .qm .about-text { font-size: 17px; line-height: 1.55; }
+  .qm .about { padding: var(--section-gap) var(--gutter) 56px; }
+  .qm .about-grid { grid-template-columns: 1fr; gap: 28px; }
+  .qm .about-photo { grid-column: auto; max-width: 240px; }
+  .qm .about-text { grid-column: auto; font-size: 17px; line-height: 1.55; }
   .qm .about-links {
     margin-top: 28px;
     padding-top: 20px;
-    gap: 16px;
+    gap: 14px;
     font-size: 11px;
     flex-direction: column;
     align-items: flex-start;
   }
 
   /* Footer — stack colophon */
-  .qm .footer { padding: 20px 20px; }
-  .qm .footer .colophon {
-    flex-direction: column;
-    gap: 6px;
-    text-align: center;
-    align-items: center;
-    font-size: 10px;
-    letter-spacing: 0.16em;
-  }
+  .qm .footer { padding: 20px var(--gutter); }
+  .qm .footer .colophon { flex-direction: column; gap: 4px; font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qm .case-text .ttl { transition: none; }
 }
 </style>
 </head>
@@ -420,12 +359,12 @@ html, body { margin: 0; padding: 0; }
     <section class="work" aria-label="Selected Work">
       <div class="container">
         <div class="work-header">
-          <div class="label">— Selected Work —</div>
+          <div class="label">Selected Work</div>
         </div>
 
         <a class="case" href="case-studies/workload-mobility.html" aria-label="Read case study: Workload Mobility">
           <div class="case-text">
-            <span class="num">I.</span>
+            <span class="num">1</span>
             <div class="ttl">Workload Mobility</div>
             <div class="sub">Unifying legacy VM migration tools across the VMware Cloud Foundation portfolio.</div>
             <div class="yr">Broadcom — 2024 to 2026</div>
@@ -438,7 +377,7 @@ html, body { margin: 0; padding: 0; }
 
         <a class="case" href="case-studies/vmware-cloud-on-dell.html" aria-label="Read case study: VMware Cloud on Dell">
           <div class="case-text">
-            <span class="num">II.</span>
+            <span class="num">2</span>
             <div class="ttl">VMware Cloud on Dell</div>
             <div class="sub">A self-service portal for managed on-premises infrastructure.</div>
             <div class="yr">VMware — 2018 to 2020</div>
@@ -451,7 +390,7 @@ html, body { margin: 0; padding: 0; }
 
         <a class="case" href="case-studies/vcenter-high-availability.html" aria-label="Read case study: vCenter High Availability">
           <div class="case-text">
-            <span class="num">III.</span>
+            <span class="num">3</span>
             <div class="ttl">vCenter High Availability</div>
             <div class="sub">A lifecycle workflow for millions of vSphere administrators.</div>
             <div class="yr">VMware — 2016 to 2017</div>
@@ -462,13 +401,13 @@ html, body { margin: 0; padding: 0; }
           </div>
         </a>
 
-        <div class="work-header" style="margin-top: 80px;">
-          <div class="label">— Independent Project —</div>
+        <div class="work-header next-section">
+          <div class="label">Independent Project</div>
         </div>
 
         <a class="case" href="case-studies/nexus-agentic-ai.html" aria-label="Read case study: Nexus Agentic AI">
           <div class="case-text">
-            <span class="num">I.</span>
+            <span class="num">4</span>
             <div class="ttl">Nexus Agentic AI</div>
             <div class="sub">Multi-agent control plane for autonomous server patching.</div>
             <div class="yr">Independent — 2026</div>
@@ -482,8 +421,8 @@ html, body { margin: 0; padding: 0; }
     </section>
 
     <section class="about" id="about">
-      <div class="work-header" style="margin-bottom:56px">
-        <div class="label">— About Me —</div>
+      <div class="work-header">
+        <div class="label">About</div>
       </div>
       <div class="about-grid">
         <div class="about-photo">
