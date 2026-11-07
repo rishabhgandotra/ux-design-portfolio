@@ -11,167 +11,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../assets/case-study.css">
 <style>
-*, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-#root { display: flex; justify-content: center; }
-
-.cs {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
-  letter-spacing: -0.005em;
-  width: 100%;
-  max-width: 1280px;
-  border-left: 1px solid var(--hair);
-  border-right: 1px solid var(--hair);
-  box-shadow: 0 1px 3px rgba(0,0,0,.04);
-}
-.cs a { color: inherit; text-decoration: none; }
-.cs em { font-style: italic; }
-.cs .narrow { max-width: 1040px; margin: 0 auto; }
-
-/* Top nav */
-.cs .topbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 24px 80px;
-  border-bottom: 1px solid var(--hair);
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-.cs .topbar .name {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-}
-
-/* Title block */
-.cs .titleblock {
-  padding: 96px 80px 40px;
-  border-bottom: 1px solid var(--hair);
-}
-.cs .eyebrow {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 32px;
-}
-.cs .cs-title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 72px;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin: 0;
-  max-width: 22ch;
-}
-.cs .meta {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin: 64px -80px 0;
-  padding: 40px 80px 0;
-  border-top: 1px solid var(--hair);
-}
-.cs .meta > div { text-align: center; }
-.cs .meta .label {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
-.cs .meta .val {
-  font-family: var(--font-display);
-  font-size: 22px;
-  letter-spacing: -0.01em;
-}
-
-/* Hero image */
-.cs .hero-img {
-  border-bottom: 1px solid var(--hair);
-  overflow: hidden;
-  background: var(--bg);
-}
-.cs .hero-img img { display: block; width: 100%; height: auto; }
-
-/* Content blocks */
-.cs section.block { padding: 96px 80px; border-bottom: 1px solid var(--hair); }
-.cs .section-label {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 18px;
-  text-align: left;
-}
-.cs .section-title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 44px;
-  line-height: 1.1;
-  letter-spacing: -0.015em;
-  margin: 0 0 48px;
-  max-width: 22ch;
-  text-align: left;
-}
-.cs .lede {
-  font-family: var(--font-display);
-  font-size: 22px;
-  line-height: 1.55;
-  color: var(--ink-2);
-  max-width: 56ch;
-  margin: 0;
-  letter-spacing: -0.005em;
-}
-.cs .sub { margin-top: 80px; }
-.cs .sub:first-child { margin-top: 0; }
-.cs .sub h3 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 28px;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  margin: 0 0 20px;
-}
-.cs .sub p {
-  font-family: var(--font-display);
-  font-size: 18px;
-  line-height: 1.55;
-  letter-spacing: -0.005em;
-  color: var(--ink-2);
-  margin: 0 0 24px;
-  max-width: 64ch;
-}
-.cs .sub p strong { color: var(--ink); font-weight: 500; }
-.cs .figure {
-  margin-top: 32px;
-  border: 1px solid var(--hair);
-  overflow: hidden;
-}
-.cs .figure img { display: block; width: 100%; height: auto; }
-.cs .figure-caption {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-top: 14px;
-  text-align: center;
-}
 
 /* Research insights — sticky notes */
 .cs .insights {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px 36px;
-  max-width: 1040px;
+  gap: 40px var(--col-gap);
+  max-width: var(--content-max);
   margin: 56px auto 0;
   padding: 24px 0;
 }
@@ -197,7 +45,7 @@ html, body { margin: 0; padding: 0; }
 }
 .cs .insights .insight .num { display: none; }
 .cs .insights .insight p {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: -0.005em;
@@ -210,14 +58,14 @@ html, body { margin: 0; padding: 0; }
 .cs .gallery-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+  gap: var(--col-gap);
   margin-top: 32px;
   align-items: start;
 }
 .cs .gallery-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: var(--col-gap);
   margin-top: 32px;
 }
 .cs .gallery-2 .item, .cs .gallery-3 .item {
@@ -313,17 +161,19 @@ html, body { margin: 0; padding: 0; }
 .cs .quotes {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 64px;
+  gap: var(--col-gap);
   margin-top: 56px;
 }
 .cs .quote { display: flex; flex-direction: column; }
 .cs .quote .mark {
   font-family: var(--font-display);
-  font-style: italic;
+  font-style: normal;
   font-size: 64px;
   line-height: 0.6;
   color: var(--muted);
   margin-bottom: 16px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
 }
 .cs .quote blockquote {
   font-family: var(--font-display);
@@ -331,356 +181,50 @@ html, body { margin: 0; padding: 0; }
   line-height: 1.45;
   color: var(--ink);
   margin: 0 0 24px;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.01em;
+  font-weight: 500;
 }
 
 /* Takeaways */
 .cs .takeaways {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 64px;
+  gap: var(--col-gap);
   margin-top: 56px;
 }
-.cs .takeaway .num {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 18px;
-  color: var(--muted);
-  margin-bottom: 20px;
-}
-.cs .takeaway h4 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-style: italic;
-  font-size: 22px;
-  line-height: 1.25;
-  margin: 0 0 14px;
-  letter-spacing: -0.01em;
-}
-.cs .takeaway p {
-  font-family: var(--font-display);
-  font-size: 17px;
-  line-height: 1.5;
-  letter-spacing: -0.005em;
-  color: var(--ink-2);
-  margin: 0;
-}
-
-/* Prev/Next cards (bottom) */
-.cs .contact {
-  padding: 88px 80px;
-  border-bottom: 1px solid var(--hair);
-  text-align: center;
-}
-.cs .contact .label {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 20px;
-}
-.cs .contact h2 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 40px;
-  line-height: 1.15;
-  letter-spacing: -0.015em;
-  color: var(--ink);
-  margin: 0 auto 36px;
-  max-width: 24ch;
-  text-wrap: balance;
-}
-.cs .contact-links {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  flex-wrap: wrap;
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-.cs .contact-links a {
-  color: var(--ink-2);
-  border-bottom: 1px solid var(--muted);
-  padding-bottom: 4px;
-}
-.cs .contact-links a:hover { color: var(--ink); border-color: var(--ink); }
-
-.cs .prevnext {
-  padding: 80px 80px 96px;
-  border-bottom: 1px solid var(--ink);
-}
-.cs .prevnext .label {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 40px;
-  text-align: center;
-}
-.cs .prevnext-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-}
-.cs .pn-card {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 28px;
-  cursor: pointer;
-  padding: 24px 0;
-}
-.cs .pn-card.prev { text-align: left; }
-.cs .pn-card.next { text-align: right; }
-.cs .pn-card .dir {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.cs .pn-card .num {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 18px;
-  color: var(--muted);
-  margin-bottom: 12px;
-}
-.cs .pn-card .ttl {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 44px;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  margin-bottom: 14px;
-  display: inline-block;
-  background-image: linear-gradient(currentColor, currentColor);
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 0% 1px;
-  transition: background-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  padding-bottom: 4px;
-}
-.cs .pn-card.next .ttl { background-position: 100% 100%; }
-.cs .pn-card:hover .ttl { background-size: 100% 1px; }
-.cs .pn-card .sub {
-  font-family: var(--font-display);
-  font-size: 17px;
-  line-height: 1.5;
-  color: var(--ink-2);
-  max-width: 42ch;
-  margin-bottom: 20px;
-}
-.cs .pn-card.next .sub { margin-left: auto; }
-.cs .pn-card .yr {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.cs .pn-card .image {
-  aspect-ratio: 4/3;
-  border: 1px solid var(--hair);
-  overflow: hidden;
-}
-.cs .pn-card .image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
-
-/* Footer */
-.cs .footer {
-  padding: 24px 80px;
-  text-align: center;
-}
-.cs .footer .colophon {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-  display: flex;
-  justify-content: space-between;
-}
-
+</style>
+<link rel="stylesheet" href="../assets/case-study-responsive.css">
+<style>
+/* Page-specific tablet/phone rules — after the shared responsive file so they win */
 /* ============ TABLET (<= 1279px) ============ */
 @media (max-width: 1279px) {
-  .cs .topbar { padding: 20px 48px; }
-  .cs .titleblock { padding: 80px 48px 36px; }
-  .cs .cs-title { font-size: 56px; }
-  .cs .meta { margin: 56px -48px 0; padding: 36px 48px 0; }
-  .cs .metrics > div { padding: 44px 24px; }
-  .cs .metrics .stat { font-size: 52px; }
-  .cs section.block { padding: 72px 48px; }
-  .cs .section-title { font-size: 38px; }
-  .cs .lede { font-size: 20px; }
-  .cs .sub h3 { font-size: 24px; }
-  .cs .sub p { font-size: 17px; }
-  .cs .narrow { max-width: 100%; }
-  /* Full-bleed figures: match new padding */
-  .cs .titleblock + .hero-img,
-  .cs .hero-img img { max-width: 100%; }
-  .cs section.block div[style*="-80px"] { margin-left: -48px !important; margin-right: -48px !important; }
-  .cs .meta[style*="-80px"], .cs .validation-stats[style*="-80px"] { margin-left: -48px !important; margin-right: -48px !important; padding-left: 48px !important; padding-right: 48px !important; }
-  .cs .validation-stats { margin-left: -48px !important; margin-right: -48px !important; }
-  .cs .validation-stats .item { padding: 36px 24px; }
-  .cs .validation-stats .item .num { font-size: 44px; }
-  .cs .contact { padding: 72px 48px; }
-  .cs .contact h2 { font-size: 34px; }
-  .cs .prevnext { padding: 64px 48px 80px; }
-  .cs .pn-card .ttl { font-size: 36px; }
-  .cs .footer { padding: 20px 48px; }
-  /* Galleries */
-  .cs .gallery-3 { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .cs .gallery-2 { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  .cs .wire-grid { gap: 24px; }
-  /* Strip slides */
-  .cs .strip { padding: 0 48px 20px; }
-  .cs .strip .slide { flex-basis: 640px; }
-  /* Insights sticky-note grid 3 -> 3 (tablet still 3 cols, smaller) */
-  .cs .insights-grid .notes { grid-template-columns: repeat(3, 1fr); gap: 28px; }
-  .cs .insights-grid .notes .note { padding: 22px 18px; min-height: 120px; }
-  .cs .insights-grid .notes .note p { font-size: 14px; }
-  /* vCHA-specific tablet */
-  .cs .insights { gap: 32px 28px; padding: 16px 0; }
+                                                                /* vCHA-specific tablet */
+  .cs .insights { gap: 32px var(--col-gap); padding: 16px 0; }
   .cs .insights .insight { padding: 26px 22px; min-height: 160px; }
   .cs .insights .insight p { font-size: 15px; }
-  /* Vision grid */
-  .cs .vision-img { margin: 0 -48px; }
-  /* Toggle */
-  .cs .ba-toggle .img-frame, .cs .ba-side { /* keep as-is */ }
-}
+    }
 
 /* ============ MOBILE (<= 767px) ============ */
 @media (max-width: 767px) {
-  .cs {
-    border-left: none;
-    border-right: none;
-    box-shadow: none;
-  }
-
-  /* Top bar */
-  .cs .topbar { padding: 16px 20px; }
-  .cs .topbar .name { font-size: 14px; }
-
-  /* Title block */
-  .cs .titleblock { padding: 48px 20px 24px; }
-  .cs .eyebrow { font-size: 10px; letter-spacing: 0.16em; margin-bottom: 20px; }
-  .cs .cs-title { font-size: 32px; line-height: 1.1; }
-  .cs .meta {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin: 36px -20px 0;
-    padding: 28px 20px 0;
-  }
-  .cs .meta > div { text-align: left; }
-  .cs .meta .label { font-size: 10px; margin-bottom: 4px; }
-  .cs .meta .val { font-size: 18px; }
-
-  /* Metrics — 3-col to 1-col */
-  .cs .metrics { grid-template-columns: 1fr; }
-  .cs .metrics > div {
-    border-right: none;
-    border-bottom: 1px solid var(--hair);
-    padding: 28px 20px;
-  }
-  .cs .metrics > div:last-child { border-bottom: none; }
-  .cs .metrics .label { font-size: 10px; margin-bottom: 12px; }
-  .cs .metrics .stat { font-size: 44px; margin-bottom: 10px; }
-  .cs .metrics .caption { font-size: 14px; }
-
-  /* Sections */
-  .cs section.block { padding: 48px 20px; }
-  .cs .section-label { font-size: 10px; letter-spacing: 0.16em; margin-bottom: 14px; }
-  .cs .section-title { font-size: 26px; line-height: 1.15; margin-bottom: 28px; }
-  .cs .lede { font-size: 17px; line-height: 1.5; }
-  .cs .sub { margin-top: 48px; }
-  .cs .sub h3 { font-size: 22px; }
-  .cs .sub p { font-size: 16px; line-height: 1.55; }
-  .cs .figure-caption { font-size: 10px; }
-
-  /* Full-bleed figures: match new mobile padding */
-  .cs section.block div[style*="-80px"] { margin-left: -20px !important; margin-right: -20px !important; }
-  .cs .validation-stats { margin-left: -20px !important; margin-right: -20px !important; }
-  .cs .vision-img { margin: 0 -20px; }
-
-  /* Validation stats — 3-col to 1-col */
-  .cs .validation-stats { grid-template-columns: 1fr; }
-  .cs .validation-stats .item {
-    padding: 24px 20px;
-    border-right: none;
-    border-bottom: 1px solid var(--hair);
-  }
-  .cs .validation-stats .item:last-child { border-bottom: none; }
-  .cs .validation-stats .item .num { font-size: 38px; }
-  .cs .validation-stats .item .desc { font-size: 11px; }
-
-  /* Quotes — 2 cols to 1 */
-  .cs .quotes { grid-template-columns: 1fr; gap: 32px; }
-  .cs .quote blockquote { font-size: 19px; }
-  .cs .quote .mark { font-size: 48px; margin-bottom: 12px; }
-
-  /* Takeaways — collapse */
-  .cs .takeaways { grid-template-columns: 1fr; gap: 28px; }
-  .cs .takeaway h4 { font-size: 20px; }
-  .cs .takeaway p { font-size: 16px; }
-
-  /* Prev/next cards — stack */
-  .cs .contact { padding: 56px 20px; }
-  .cs .contact h2 { font-size: 26px; }
-  .cs .contact-links { flex-direction: column; align-items: center; gap: 14px; }
-  .cs .prevnext { padding: 48px 20px 56px; }
-  .cs .prevnext-grid { grid-template-columns: 1fr; gap: 32px; }
-  .cs .pn-card { padding: 12px 0; gap: 18px; }
-  .cs .pn-card.prev, .cs .pn-card.next { text-align: left; }
-  .cs .pn-card.next .sub { margin-left: 0; }
-  .cs .pn-card .ttl { font-size: 28px; }
-  .cs .pn-card .sub { font-size: 15px; }
-
-  /* Footer — stack colophon */
-  .cs .footer { padding: 18px 20px; }
-  .cs .footer .colophon {
-    flex-direction: column;
-    gap: 6px;
-    text-align: center;
-    align-items: center;
-    font-size: 10px;
-  }
-
-  /* Galleries — single column */
-  .cs .gallery-3, .cs .gallery-2, .cs .wire-grid { grid-template-columns: 1fr; gap: 20px; }
-
-  /* Insights sticky-note grid */
-  .cs .insights-grid { padding: 12px 0; }
-  .cs .insights-grid .category { margin-top: 36px; }
-  .cs .insights-grid .category-label { font-size: 19px; margin-bottom: 20px; }
-  .cs .insights-grid .notes { grid-template-columns: 1fr; gap: 18px; padding: 8px 0; }
-  .cs .insights-grid .notes .note { padding: 22px 20px; min-height: 0; }
-  .cs .insights-grid .notes .note:hover { transform: rotate(0deg); }
-
-  /* Vision items */
-  .cs .vision-list { margin-top: 36px; }
-  .cs .vision-item { margin-top: 56px; }
-  .cs .vision-heading { padding: 0 20px; }
-  .cs .vision-heading h3 { font-size: 24px; }
-  .cs .vision-heading p { font-size: 16px; }
-
-  /* Strip carousel — smaller slides */
-  .cs .strip { padding: 0 20px 16px; }
-  .cs .strip .slide { flex-basis: 80vw; }
-
-  /* Toggle */
-  .cs .ba-toggle .ba-toggle-bar button { padding: 10px 18px; font-size: 10px; }
-
-  /* Before/After slider — smaller knob (still finger-friendly at 36px) */
-  .cs .ba-knob { width: 40px; height: 40px; }
-  .cs .ba-label { font-size: 12px; padding: 4px 10px; top: 12px; }
-  .cs .ba-label.before { left: 12px; }
-  .cs .ba-label.after { right: 12px; }
-
-  /* Video play button */
-  .cs .video-cover .play-btn { width: 72px; height: 72px; }
-  .cs .video-cover .play-btn svg { width: 22px; height: 22px; }
-
-  /* Overview 3-col features (Nexus) */
-  .cs .overview-grid { grid-template-columns: 1fr; gap: 28px; margin-top: 36px; padding: 0 20px; }
-
+  
+    
+              
+            
+                
+      
+          
+      
+      
+                    
+    
+  
+            
+          
+    
+  
+        
+    
+  
   /* vCHA-specific sticky notes (uses .insights, not .insights-grid) */
   .cs .insights {
     grid-template-columns: 1fr;
@@ -704,10 +248,11 @@ html, body { margin: 0; padding: 0; }
 
     <header class="topbar">
       <a class="name" href="../index.html">Rishabh Gandotra</a>
+      <span class="role">Staff Product Designer</span>
     </header>
 
     <section class="titleblock">
-      <div class="eyebrow">— vCenter High Availability · VMware · 2016 to 2017 —</div>
+      <div class="eyebrow">vCenter High Availability · VMware · 2016 to 2017</div>
       <h1 class="cs-title"><em>Simplifying</em> the setup of vCenter High Availability.</h1>
       <div class="meta">
         <div>
@@ -744,7 +289,7 @@ html, body { margin: 0; padding: 0; }
     <!-- Context -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Context —</div>
+        <div class="section-label">Context</div>
         <h2 class="section-title">An unprotected vCenter is a single point of failure.</h2>
         <p class="lede">vCenter is critical to a customer's virtual infrastructure. When software or hardware failure takes it offline, every dependent workload feels it. The existing workflow for enabling vCenter High Availability (vCHA) was complicated and drew negative customer feedback — turning it into a tedious process.</p>
       </div>
@@ -753,7 +298,7 @@ html, body { margin: 0; padding: 0; }
     <!-- Walkthrough -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Walkthrough —</div>
+        <div class="section-label">Walkthrough</div>
         <h2 class="section-title">The simplified setup, end to end.</h2>
         <p class="lede">A short walkthrough of the shipped flow — from launching setup, through resource and network configuration, to a fully configured vCHA cluster.</p>
       </div>
@@ -771,14 +316,14 @@ html, body { margin: 0; padding: 0; }
             </div>
           </div>
         </div>
-        <div class="figure-caption" style="margin-top:14px">— Final design walkthrough —</div>
+        <div class="figure-caption" style="margin-top:14px">Final design walkthrough</div>
       </div>
     </section>
 
     <!-- Overview / Architecture -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— How it works —</div>
+        <div class="section-label">How it works</div>
         <h2 class="section-title">Active. Passive. Witness.</h2>
         <p class="lede">As part of vCHA, two copies of vCenter — the <em>Active node</em>, plus <em>Passive</em> and <em>Witness</em> nodes — are deployed on a private network and kept in sync. When the Active node fails, the Witness initiates failover to the Passive, which becomes the new Active. The Witness reconciles any changes that occurred during the gap, and the cluster's identities swap. Downtime: only a few seconds.</p>
       </div>
@@ -787,40 +332,40 @@ html, body { margin: 0; padding: 0; }
         <div class="figure" style="border:none">
           <img loading="lazy" src="../assets/vcenter-high-availability/vcha-architecture.png" alt="vCHA cluster architecture — vSphere Client connected to Active, Passive, and Witness nodes via the vCenter HA Network">
         </div>
-        <div class="figure-caption" style="margin-top:14px">— vCHA cluster architecture —</div>
+        <div class="figure-caption" style="margin-top:14px">vCHA cluster architecture</div>
       </div>
     </section>
 
     <!-- Research Insights -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Research Insights —</div>
+        <div class="section-label">Research Insights</div>
         <h2 class="section-title">What customers told us before, during, and after design.</h2>
         <p class="lede">I presented several iterations of the designs to customers and gathered insights that informed every decision. Six findings shaped the final workflow.</p>
       </div>
       <div class="insights">
         <div class="insight">
-          <div class="num">i.</div>
+          <div class="num">1</div>
           <p>Customers found it difficult to understand <em>self-managed</em> vs. <em>managed by another vCenter</em>, in the same or a different SSO domain.</p>
         </div>
         <div class="insight">
-          <div class="num">ii.</div>
+          <div class="num">2</div>
           <p>Most customers were already using a distributed switch over a standard switch.</p>
         </div>
         <div class="insight">
-          <div class="num">iii.</div>
+          <div class="num">3</div>
           <p>Most had no concerns over automating the cloning of Passive and Witness nodes — <em>provided</em> they retained control over resource settings.</p>
         </div>
         <div class="insight">
-          <div class="num">iv.</div>
+          <div class="num">4</div>
           <p>VM settings were important to nearly every customer. Only one was comfortable entering management-vCenter credentials just to see them.</p>
         </div>
         <div class="insight">
-          <div class="num">v.</div>
+          <div class="num">5</div>
           <p>The getting-started screen had too much text. Customers wanted less reading, more doing.</p>
         </div>
         <div class="insight">
-          <div class="num">vi.</div>
+          <div class="num">6</div>
           <p>The terminology on the credentials screens was confusing and needed to be rephrased.</p>
         </div>
       </div>
@@ -829,7 +374,7 @@ html, body { margin: 0; padding: 0; }
     <!-- Approach -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Approach —</div>
+        <div class="section-label">Approach</div>
         <h2 class="section-title">One workflow, not two.</h2>
         <p class="lede">The existing basic and advanced workflows were both complicated, especially the advanced path. Working with my PM, I analyzed both and proposed a <em>single, unified workflow</em> that combined the strengths of each — automating much of the backend work and removing the burden from the user.</p>
       </div>
@@ -838,18 +383,18 @@ html, body { margin: 0; padding: 0; }
         <div class="figure">
           <img loading="lazy" src="../assets/vcenter-high-availability/vcha-workflow.svg" alt="Workflow comparison — existing Basic, existing Advanced, and the proposed unified workflow">
         </div>
-        <div class="figure-caption" style="margin-top:14px">— Existing vs. proposed workflows —</div>
+        <div class="figure-caption" style="margin-top:14px">Existing vs. proposed workflows</div>
       </div>
     </section>
 
     <!-- Initial designs -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Initial Designs —</div>
+        <div class="section-label">Initial Designs</div>
         <h2 class="section-title">Lo-fi prototypes for fast stakeholder feedback.</h2>
         <p class="lede">To visualize the new workflow, I built lo-fi prototypes to gather quick feedback from stakeholders and validate the structure before investing in hi-fidelity mockups.</p>
       </div>
-      <div style="max-width:1040px;margin:0 auto">
+      <div style="max-width:var(--content-max);margin:0 auto">
         <div class="gallery-3">
           <div class="item"><img loading="lazy" src="../assets/vcenter-high-availability/vcha-initial-1.png" alt="Initial design — lo-fi prototype 1"></div>
           <div class="item"><img loading="lazy" src="../assets/vcenter-high-availability/vcha-initial-2.png" alt="Initial design — lo-fi prototype 2"></div>
@@ -863,7 +408,7 @@ html, body { margin: 0; padding: 0; }
     <!-- First iteration -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— First Iteration —</div>
+        <div class="section-label">First Iteration</div>
         <h2 class="section-title">Hi-fi mockups, and the wizard-in-a-wizard problem.</h2>
         <p class="lede">The first hi-fi version captured every workflow detail and aligned stakeholders. But one challenge surfaced quickly: the setup was framed as a <em>wizard inside a pop-up</em>, with additional nested workflows requiring their own wizards in additional pop-ups. Nested pop-ups had to go — they fragmented context and broke the operator's flow.</p>
       </div>
@@ -891,7 +436,7 @@ html, body { margin: 0; padding: 0; }
     <!-- Next iteration -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Refined Iteration —</div>
+        <div class="section-label">Refined Iteration</div>
         <h2 class="section-title">Out of the pop-up. Into the page.</h2>
         <p class="lede">The next iteration addressed the wizard-in-a-wizard challenge by removing the pop-up wizard entirely for the main workflow — letting setup live on the page, with clear progressive steps instead of nested modals.</p>
       </div>
@@ -906,11 +451,11 @@ html, body { margin: 0; padding: 0; }
     <!-- Outcomes -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Outcomes —</div>
+        <div class="section-label">Outcomes</div>
         <h2 class="section-title">A simpler vCHA, in the operator's own words.</h2>
         <p class="lede">The simplified experience shipped — first with vSphere 6.5, then refined in vCenter 6.7 Update 1's fully HTML5 release. Customers and the broader VMware community noted the difference.</p>
       </div>
-      <div class="quotes" style="max-width:1040px;margin:56px auto 0">
+      <div class="quotes" style="max-width:var(--content-max);margin:56px auto 0">
         <div class="quote">
           <div class="mark">"</div>
           <blockquote>In the fully functioning HTML5 release of vCenter 6.7 Update 1 onwards, the setup of vCenter HA was hugely simplified.</blockquote>
@@ -925,17 +470,17 @@ html, body { margin: 0; padding: 0; }
     <!-- Takeaways -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Takeaways —</div>
+        <div class="section-label">Takeaways</div>
         <h2 class="section-title">Two lessons that resonate.</h2>
       </div>
-      <div class="takeaways" style="max-width:1040px;margin:56px auto 0">
+      <div class="takeaways" style="max-width:var(--content-max);margin:56px auto 0">
         <div class="takeaway">
-          <div class="num">i.</div>
+          <div class="num">1</div>
           <h4>Collaboration is the prerequisite</h4>
           <p>Designing meaningful workflows in dense technical domains takes real partnership — with PMs who translate business needs into clear product goals, and with engineers who own the technical constraints and the underlying architecture. Neither perspective alone is enough.</p>
         </div>
         <div class="takeaway">
-          <div class="num">ii.</div>
+          <div class="num">2</div>
           <h4>Optimize for the majority, signal the rest</h4>
           <p>You can't tailor a single workflow to every user. Research showed most customers were already moving towards distributed switches — so that became the default, surfaced path, while standard-switch support stayed available but visually quieter.</p>
         </div>
@@ -944,7 +489,7 @@ html, body { margin: 0; padding: 0; }
 
     <!-- Contact -->
     <section class="contact">
-      <div class="label">— Get in touch —</div>
+      <div class="label">Get in touch</div>
       <h2>Have a role where this kind of work matters? Let’s talk.</h2>
       <div class="contact-links">
         <a href="mailto:rishabhgandotra@gmail.com">rishabhgandotra@gmail.com</a>
@@ -954,7 +499,7 @@ html, body { margin: 0; padding: 0; }
 
     <!-- Prev/Next -->
     <section class="prevnext">
-      <div class="label">— Continue Reading —</div>
+      <div class="label">Continue Reading</div>
       <div class="prevnext-grid">
         <a class="pn-card prev" href="./vmware-cloud-on-dell.html">
           <div class="image" style="background:#1B1B1B">
@@ -962,7 +507,7 @@ html, body { margin: 0; padding: 0; }
           </div>
           <div>
             <div class="dir">← Previous Case Study</div>
-            <div class="num" style="margin-top:12px">III.</div>
+            <div class="num" style="margin-top:12px">2</div>
             <div class="ttl">VMware Cloud on Dell</div>
             <div class="sub">A self-service portal for managed on-premises infrastructure.</div>
             <div class="yr">VMware — 2018 to 2020</div>
@@ -974,7 +519,7 @@ html, body { margin: 0; padding: 0; }
           </div>
           <div>
             <div class="dir">Next Case Study →</div>
-            <div class="num" style="margin-top:12px">I.</div>
+            <div class="num" style="margin-top:12px">4</div>
             <div class="ttl">Nexus Agentic AI</div>
             <div class="sub">Multi-agent control plane for autonomous server patching.</div>
             <div class="yr">Independent — 2026</div>

@@ -11,105 +11,26 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../assets/case-study.css">
 <style>
-*, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-#root { display: flex; justify-content: center; }
-
-.cs {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
-  letter-spacing: -0.005em;
-  width: 100%;
-  max-width: 1280px;
-  border-left: 1px solid var(--hair);
-  border-right: 1px solid var(--hair);
-  box-shadow: 0 1px 3px rgba(0,0,0,.04);
-}
-.cs a { color: inherit; text-decoration: none; }
-.cs em { font-style: italic; }
-.cs .narrow { max-width: 1040px; margin: 0 auto; }
-
-/* Top nav */
-.cs .topbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 24px 80px;
-  border-bottom: 1px solid var(--hair);
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-.cs .topbar .name {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-}
-
-/* Title block */
-.cs .titleblock {
-  padding: 96px 80px 40px;
-  border-bottom: 1px solid var(--hair);
-}
-.cs .eyebrow {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 32px;
-}
-.cs .cs-title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 72px;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin: 0;
-  max-width: 22ch;
-}
-.cs .meta {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin: 64px -80px 0;
-  padding: 40px 80px 0;
-  border-top: 1px solid var(--hair);
-}
-.cs .meta > div { text-align: center; }
-.cs .meta .label {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
-.cs .meta .val {
-  font-family: var(--font-display);
-  font-size: 22px;
-  letter-spacing: -0.01em;
-}
 
 /* Emphasis callout — a decision worth not missing */
 .cs .callout {
-  max-width: 1040px;
+  max-width: var(--content-max);
   margin: 48px auto 0;
   border-left: 2px solid var(--ink);
   padding-left: 32px;
 }
 .cs .callout .callout-label {
   font-size: 11px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: 14px;
+  font-family: var(--font-mono);
 }
 .cs .callout p {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 18px;
   line-height: 1.55;
   letter-spacing: -0.005em;
@@ -120,112 +41,7 @@ html, body { margin: 0; padding: 0; }
 .cs .callout p em { font-style: italic; }
 .cs .callout p strong { font-weight: 500; }
 
-/* Hero image */
-.cs .hero-img {
-  border-bottom: 1px solid var(--hair);
-  overflow: hidden;
-  background: var(--bg);
-}
-.cs .hero-img img { display: block; width: 100%; height: auto; }
-
 /* Metrics strip */
-.cs .metrics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-bottom: 1px solid var(--hair);
-  text-align: center;
-}
-.cs .metrics > div {
-  padding: 56px 32px;
-  border-right: 1px solid var(--hair);
-}
-.cs .metrics > div:last-child { border-right: none; }
-.cs .metrics .label {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 18px;
-}
-.cs .metrics .stat {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 64px;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
-}
-.cs .metrics .stat em { font-style: italic; }
-.cs .metrics .caption {
-  font-family: var(--font-display);
-  font-size: 15px;
-  line-height: 1.4;
-  color: var(--ink-2);
-}
-
-/* Content blocks */
-.cs section.block { padding: 96px 80px; border-bottom: 1px solid var(--hair); }
-.cs .section-label {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 18px;
-  text-align: left;
-}
-.cs .section-title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 44px;
-  line-height: 1.1;
-  letter-spacing: -0.015em;
-  margin: 0 0 48px;
-  max-width: 22ch;
-  text-align: left;
-}
-.cs .lede {
-  font-family: var(--font-display);
-  font-size: 22px;
-  line-height: 1.55;
-  color: var(--ink-2);
-  max-width: 56ch;
-  margin: 0;
-  letter-spacing: -0.005em;
-}
-.cs .sub { margin-top: 80px; }
-.cs .sub:first-child { margin-top: 0; }
-.cs .sub h3 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 28px;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  margin: 0 0 20px;
-}
-.cs .sub p {
-  font-family: var(--font-display);
-  font-size: 18px;
-  line-height: 1.55;
-  letter-spacing: -0.005em;
-  color: var(--ink-2);
-  margin: 0 0 24px;
-  max-width: 64ch;
-}
-.cs .sub p strong { color: var(--ink); font-weight: 500; }
-.cs .figure {
-  margin-top: 32px;
-  border: 1px solid var(--hair);
-  overflow: hidden;
-}
-.cs .figure img { display: block; width: 100%; height: auto; }
-.cs .figure-caption {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-top: 14px;
-  text-align: center;
-}
 
 /* Click-to-play video cover */
 .cs .video-cover {
@@ -279,7 +95,7 @@ html, body { margin: 0; padding: 0; }
 .cs .journey-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 24px var(--col-gap);
   margin-top: 64px;
 }
 .cs .journey-card {
@@ -287,22 +103,24 @@ html, body { margin: 0; padding: 0; }
   padding: 28px 24px;
 }
 .cs .journey-card .num {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 16px;
-  color: var(--muted);
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 12px;
+  color: var(--accent);
   margin-bottom: 14px;
   display: block;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 .cs .journey-card h4 {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 22px;
   margin: 0 0 10px;
   letter-spacing: -0.01em;
 }
 .cs .journey-card p {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 15px;
   line-height: 1.5;
   color: var(--ink-2);
@@ -310,42 +128,17 @@ html, body { margin: 0; padding: 0; }
 }
 
 /* Validation strip */
-.cs .validation-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--hair);
-  border-bottom: 1px solid var(--hair);
-  text-align: center;
-}
-.cs .validation-stats .item {
-  padding: 48px 32px;
-  border-right: 1px solid var(--hair);
-}
-.cs .validation-stats .item:last-child { border-right: none; }
-.cs .validation-stats .item .num {
-  font-family: var(--font-display);
-  font-size: 56px;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
-}
-.cs .validation-stats .item .desc {
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
 
 /* Research insights — sticky notes by category */
 .cs .insights-grid {
-  max-width: 1040px;
+  max-width: var(--content-max);
   margin: 64px auto 0;
 }
 .cs .insights-grid .category { margin-top: 56px; }
 .cs .insights-grid .category:first-child { margin-top: 0; }
 .cs .insights-grid .category-label {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 22px;
   line-height: 1.2;
   letter-spacing: -0.01em;
@@ -355,7 +148,7 @@ html, body { margin: 0; padding: 0; }
 .cs .insights-grid .notes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  gap: var(--col-gap);
   padding: 12px 0;
 }
 .cs .insights-grid .notes .note {
@@ -383,7 +176,7 @@ html, body { margin: 0; padding: 0; }
   z-index: 1;
 }
 .cs .insights-grid .notes .note p {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 15px;
   line-height: 1.5;
   letter-spacing: -0.005em;
@@ -396,7 +189,7 @@ html, body { margin: 0; padding: 0; }
 .cs .wire-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+  gap: var(--col-gap);
   margin-top: 32px;
 }
 .cs .wire-grid .wire {
@@ -410,17 +203,19 @@ html, body { margin: 0; padding: 0; }
 .cs .quotes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 48px;
+  gap: var(--col-gap);
   margin-top: 56px;
 }
 .cs .quote { display: flex; flex-direction: column; }
 .cs .quote .mark {
   font-family: var(--font-display);
-  font-style: italic;
+  font-style: normal;
   font-size: 64px;
   line-height: 0.6;
   color: var(--muted);
   margin-bottom: 16px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
 }
 .cs .quote blockquote {
   font-family: var(--font-display);
@@ -428,16 +223,18 @@ html, body { margin: 0; padding: 0; }
   line-height: 1.45;
   color: var(--ink);
   margin: 0 0 24px;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.01em;
+  font-weight: 500;
 }
 .cs .quote .attr {
   font-size: 11px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--muted);
   margin-top: auto;
   padding-top: 20px;
   border-top: 1px solid var(--hair);
+  font-family: var(--font-mono);
 }
 .cs .quote .attr strong { color: var(--ink-2); font-weight: 500; }
 
@@ -446,23 +243,25 @@ html, body { margin: 0; padding: 0; }
 .cs .vision-item { margin-top: 96px; }
 .cs .vision-item:first-child { margin-top: 0; }
 .cs .vision-heading {
-  max-width: 1040px;
+  max-width: var(--content-max);
   margin: 0 auto 32px;
 }
 .cs .vision-heading .num {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 18px;
-  color: var(--muted);
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 12px;
+  color: var(--accent);
   display: block;
   margin-bottom: 16px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 .cs .vision-heading h3 {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 600;
   font-size: 32px;
   line-height: 1.15;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
   margin: 0 0 16px;
 }
 .cs .vision-heading p {
@@ -472,6 +271,8 @@ html, body { margin: 0; padding: 0; }
   color: var(--ink-2);
   max-width: 64ch;
   margin: 0;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 .cs .vision-img {
   margin: 0 -80px;
@@ -492,355 +293,48 @@ html, body { margin: 0; padding: 0; }
 .cs .takeaways {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 64px;
+  gap: var(--col-gap);
   margin-top: 56px;
 }
-.cs .takeaway .num {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 18px;
-  color: var(--muted);
-  margin-bottom: 20px;
-}
-.cs .takeaway h4 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-style: italic;
-  font-size: 22px;
-  line-height: 1.25;
-  margin: 0 0 14px;
-  letter-spacing: -0.01em;
-}
-.cs .takeaway p {
-  font-family: var(--font-display);
-  font-size: 17px;
-  line-height: 1.5;
-  letter-spacing: -0.005em;
-  color: var(--ink-2);
-  margin: 0;
-}
-
-/* Prev/Next cards (bottom) */
-.cs .contact {
-  padding: 88px 80px;
-  border-bottom: 1px solid var(--hair);
-  text-align: center;
-}
-.cs .contact .label {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 20px;
-}
-.cs .contact h2 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 40px;
-  line-height: 1.15;
-  letter-spacing: -0.015em;
-  color: var(--ink);
-  margin: 0 auto 36px;
-  max-width: 24ch;
-  text-wrap: balance;
-}
-.cs .contact-links {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  flex-wrap: wrap;
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-.cs .contact-links a {
-  color: var(--ink-2);
-  border-bottom: 1px solid var(--muted);
-  padding-bottom: 4px;
-}
-.cs .contact-links a:hover { color: var(--ink); border-color: var(--ink); }
-
-.cs .prevnext {
-  padding: 80px 80px 96px;
-  border-bottom: 1px solid var(--ink);
-}
-.cs .prevnext .label {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 40px;
-  text-align: center;
-}
-.cs .prevnext-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-}
-.cs .pn-card {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 28px;
-  cursor: pointer;
-  padding: 24px 0;
-}
-.cs .pn-card.prev { text-align: left; }
-.cs .pn-card.next { text-align: right; }
-.cs .pn-card .dir {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.cs .pn-card .num {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 18px;
-  color: var(--muted);
-  margin-bottom: 12px;
-}
-.cs .pn-card .ttl {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 44px;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  margin-bottom: 14px;
-  display: inline-block;
-  background-image: linear-gradient(currentColor, currentColor);
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 0% 1px;
-  transition: background-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  padding-bottom: 4px;
-}
-.cs .pn-card.next .ttl { background-position: 100% 100%; }
-.cs .pn-card:hover .ttl { background-size: 100% 1px; }
-.cs .pn-card .sub {
-  font-family: var(--font-display);
-  font-size: 17px;
-  line-height: 1.5;
-  color: var(--ink-2);
-  max-width: 42ch;
-  margin-bottom: 20px;
-}
-.cs .pn-card.next .sub { margin-left: auto; }
-.cs .pn-card .yr {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.cs .pn-card .image {
-  aspect-ratio: 4/3;
-  border: 1px solid var(--hair);
-  overflow: hidden;
-}
-.cs .pn-card .image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
-
-/* Footer */
-.cs .footer {
-  padding: 24px 80px;
-  text-align: center;
-}
-.cs .footer .colophon {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-  display: flex;
-  justify-content: space-between;
-}
-
+</style>
+<link rel="stylesheet" href="../assets/case-study-responsive.css">
+<style>
+/* Page-specific tablet/phone rules — after the shared responsive file so they win */
 /* ============ TABLET (<= 1279px) ============ */
 @media (max-width: 1279px) {
-  .cs .topbar { padding: 20px 48px; }
-  .cs .titleblock { padding: 80px 48px 36px; }
-  .cs .cs-title { font-size: 56px; }
-  .cs .meta { margin: 56px -48px 0; padding: 36px 48px 0; }
-  .cs .callout { padding-left: 24px; }
+          .cs .callout { padding-left: 24px; }
   .cs .callout p { font-size: 17px; }
-  .cs .metrics > div { padding: 44px 24px; }
-  .cs .metrics .stat { font-size: 52px; }
-  .cs section.block { padding: 72px 48px; }
-  .cs .section-title { font-size: 38px; }
-  .cs .lede { font-size: 20px; }
-  .cs .sub h3 { font-size: 24px; }
-  .cs .sub p { font-size: 17px; }
-  .cs .narrow { max-width: 100%; }
-  /* Full-bleed figures: match new padding */
-  .cs .titleblock + .hero-img,
-  .cs .hero-img img { max-width: 100%; }
-  .cs section.block div[style*="-80px"] { margin-left: -48px !important; margin-right: -48px !important; }
-  .cs .meta[style*="-80px"], .cs .validation-stats[style*="-80px"] { margin-left: -48px !important; margin-right: -48px !important; padding-left: 48px !important; padding-right: 48px !important; }
-  .cs .validation-stats { margin-left: -48px !important; margin-right: -48px !important; }
-  .cs .validation-stats .item { padding: 36px 24px; }
-  .cs .validation-stats .item .num { font-size: 44px; }
-  .cs .contact { padding: 72px 48px; }
-  .cs .contact h2 { font-size: 34px; }
-  .cs .prevnext { padding: 64px 48px 80px; }
-  .cs .pn-card .ttl { font-size: 36px; }
-  .cs .footer { padding: 20px 48px; }
-  /* Galleries */
-  .cs .gallery-3 { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .cs .gallery-2 { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  .cs .wire-grid { gap: 24px; }
-  /* Strip slides */
-  .cs .strip { padding: 0 48px 20px; }
-  .cs .strip .slide { flex-basis: 640px; }
-  /* Insights sticky-note grid 3 -> 3 (tablet still 3 cols, smaller) */
-  .cs .insights-grid .notes { grid-template-columns: repeat(3, 1fr); gap: 28px; }
-  .cs .insights-grid .notes .note { padding: 22px 18px; min-height: 120px; }
-  .cs .insights-grid .notes .note p { font-size: 14px; }
-  /* Vision grid */
-  .cs .vision-img { margin: 0 -48px; }
-  /* Toggle */
-  .cs .ba-toggle .img-frame, .cs .ba-side { /* keep as-is */ }
-}
+                                                          }
 
 /* ============ MOBILE (<= 767px) ============ */
 @media (max-width: 767px) {
-  .cs {
-    border-left: none;
-    border-right: none;
-    box-shadow: none;
-  }
-
-  /* Top bar */
-  .cs .topbar { padding: 16px 20px; }
-  .cs .topbar .name { font-size: 14px; }
-
-  /* Title block */
-  .cs .titleblock { padding: 48px 20px 24px; }
-  .cs .eyebrow { font-size: 10px; letter-spacing: 0.16em; margin-bottom: 20px; }
-  .cs .cs-title { font-size: 32px; line-height: 1.1; }
-  .cs .meta {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin: 36px -20px 0;
-    padding: 28px 20px 0;
-  }
-  .cs .meta > div { text-align: left; }
-  .cs .meta .label { font-size: 10px; margin-bottom: 4px; }
-  .cs .meta .val { font-size: 18px; }
-
-  /* Metrics — 3-col to 1-col */
-  .cs .metrics { grid-template-columns: 1fr; }
-  .cs .metrics > div {
-    border-right: none;
-    border-bottom: 1px solid var(--hair);
-    padding: 28px 20px;
-  }
-  .cs .metrics > div:last-child { border-bottom: none; }
-  .cs .metrics .label { font-size: 10px; margin-bottom: 12px; }
-  .cs .metrics .stat { font-size: 44px; margin-bottom: 10px; }
-  .cs .metrics .caption { font-size: 14px; }
-
-  /* Sections */
-  .cs section.block { padding: 48px 20px; }
-  .cs .section-label { font-size: 10px; letter-spacing: 0.16em; margin-bottom: 14px; }
-  .cs .section-title { font-size: 26px; line-height: 1.15; margin-bottom: 28px; }
-  .cs .lede { font-size: 17px; line-height: 1.5; }
-  .cs .callout { margin-top: 36px; padding-left: 18px; }
+  
+    
+              
+            
+          .cs .callout { margin-top: 36px; padding-left: 18px; }
   .cs .callout p { font-size: 16px; }
-  .cs .sub { margin-top: 48px; }
-  .cs .sub h3 { font-size: 22px; }
-  .cs .sub p { font-size: 16px; line-height: 1.55; }
-  .cs .figure-caption { font-size: 10px; }
-
-  /* Full-bleed figures: match new mobile padding */
-  .cs section.block div[style*="-80px"] { margin-left: -20px !important; margin-right: -20px !important; }
-  .cs .validation-stats { margin-left: -20px !important; margin-right: -20px !important; }
-  .cs .vision-img { margin: 0 -20px; }
-
+        
+      
   /* Journey diagram: collapse to a single column */
   .cs .journey-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 36px; }
   .cs .journey-card { padding: 22px 20px; }
   .cs .journey-card h4 { font-size: 20px; }
   .cs .journey-card p { font-size: 14px; }
 
-  /* Validation stats — 3-col to 1-col */
-  .cs .validation-stats { grid-template-columns: 1fr; }
-  .cs .validation-stats .item {
-    padding: 24px 20px;
-    border-right: none;
-    border-bottom: 1px solid var(--hair);
+          
+      
+      
+                    
+    
+  
+            
+          
+    
+  
+        
+    
   }
-  .cs .validation-stats .item:last-child { border-bottom: none; }
-  .cs .validation-stats .item .num { font-size: 38px; }
-  .cs .validation-stats .item .desc { font-size: 11px; }
-
-  /* Quotes — 2 cols to 1 */
-  .cs .quotes { grid-template-columns: 1fr; gap: 32px; }
-  .cs .quote blockquote { font-size: 19px; }
-  .cs .quote .mark { font-size: 48px; margin-bottom: 12px; }
-
-  /* Takeaways — collapse */
-  .cs .takeaways { grid-template-columns: 1fr; gap: 28px; }
-  .cs .takeaway h4 { font-size: 20px; }
-  .cs .takeaway p { font-size: 16px; }
-
-  /* Prev/next cards — stack */
-  .cs .contact { padding: 56px 20px; }
-  .cs .contact h2 { font-size: 26px; }
-  .cs .contact-links { flex-direction: column; align-items: center; gap: 14px; }
-  .cs .prevnext { padding: 48px 20px 56px; }
-  .cs .prevnext-grid { grid-template-columns: 1fr; gap: 32px; }
-  .cs .pn-card { padding: 12px 0; gap: 18px; }
-  .cs .pn-card.prev, .cs .pn-card.next { text-align: left; }
-  .cs .pn-card.next .sub { margin-left: 0; }
-  .cs .pn-card .ttl { font-size: 28px; }
-  .cs .pn-card .sub { font-size: 15px; }
-
-  /* Footer — stack colophon */
-  .cs .footer { padding: 18px 20px; }
-  .cs .footer .colophon {
-    flex-direction: column;
-    gap: 6px;
-    text-align: center;
-    align-items: center;
-    font-size: 10px;
-  }
-
-  /* Galleries — single column */
-  .cs .gallery-3, .cs .gallery-2, .cs .wire-grid { grid-template-columns: 1fr; gap: 20px; }
-
-  /* Insights sticky-note grid */
-  .cs .insights-grid { padding: 12px 0; }
-  .cs .insights-grid .category { margin-top: 36px; }
-  .cs .insights-grid .category-label { font-size: 19px; margin-bottom: 20px; }
-  .cs .insights-grid .notes { grid-template-columns: 1fr; gap: 18px; padding: 8px 0; }
-  .cs .insights-grid .notes .note { padding: 22px 20px; min-height: 0; }
-  .cs .insights-grid .notes .note:hover { transform: rotate(0deg); }
-
-  /* Vision items */
-  .cs .vision-list { margin-top: 36px; }
-  .cs .vision-item { margin-top: 56px; }
-  .cs .vision-heading { padding: 0 20px; }
-  .cs .vision-heading h3 { font-size: 24px; }
-  .cs .vision-heading p { font-size: 16px; }
-
-  /* Strip carousel — smaller slides */
-  .cs .strip { padding: 0 20px 16px; }
-  .cs .strip .slide { flex-basis: 80vw; }
-
-  /* Toggle */
-  .cs .ba-toggle .ba-toggle-bar button { padding: 10px 18px; font-size: 10px; }
-
-  /* Before/After slider — smaller knob (still finger-friendly at 36px) */
-  .cs .ba-knob { width: 40px; height: 40px; }
-  .cs .ba-label { font-size: 12px; padding: 4px 10px; top: 12px; }
-  .cs .ba-label.before { left: 12px; }
-  .cs .ba-label.after { right: 12px; }
-
-  /* Video play button */
-  .cs .video-cover .play-btn { width: 72px; height: 72px; }
-  .cs .video-cover .play-btn svg { width: 22px; height: 22px; }
-
-  /* Overview 3-col features (Nexus) */
-  .cs .overview-grid { grid-template-columns: 1fr; gap: 28px; margin-top: 36px; padding: 0 20px; }
-}
 </style>
 </head>
 <body>
@@ -850,10 +344,11 @@ html, body { margin: 0; padding: 0; }
 
     <header class="topbar">
       <a class="name" href="../index.html">Rishabh Gandotra</a>
+      <span class="role">Staff Product Designer</span>
     </header>
 
     <section class="titleblock">
-      <div class="eyebrow">— VMware Cloud on Dell · VMware · 2018 to 2020 —</div>
+      <div class="eyebrow">VMware Cloud on Dell · VMware · 2018 to 2020</div>
       <h1 class="cs-title">Bringing the cloud operating model to the <em>on-premises datacenter.</em></h1>
       <div class="meta">
         <div>
@@ -908,17 +403,17 @@ html, body { margin: 0; padding: 0; }
     <!-- Context -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Context —</div>
+        <div class="section-label">Context</div>
         <h2 class="section-title">Enterprise hardware procurement is a months-long bottleneck.</h2>
         <p class="lede">Enterprises needing on-premises infrastructure for compliance, latency, or data sovereignty had to navigate a fragmented, months-long process of vendor negotiations and manual deployment.</p>
       </div>
 
-      <div class="sub" style="max-width:1040px;margin:80px auto 0">
+      <div class="sub" style="max-width:var(--content-max);margin:80px auto 0">
         <h3>Meet ACME</h3>
         <p>To keep the team anchored on a real shape of customer, I framed the problem around ACME — a composite of the global financial-services enterprises we were designing for. Like every customer we were targeting, ACME already ran its workloads on VMware vSphere, in its datacenters and its branch offices.</p>
       </div>
 
-      <div class="validation-stats" style="margin:32px -80px 0;grid-template-columns:repeat(2,1fr)">
+      <div class="validation-stats" style="margin:32px 0 0;grid-template-columns:repeat(2,1fr)">
         <div class="item">
           <div class="num">~100</div>
           <div class="desc">Branch offices worldwide</div>
@@ -929,7 +424,7 @@ html, body { margin: 0; padding: 0; }
         </div>
       </div>
 
-      <div class="sub" style="max-width:1040px;margin:80px auto 0">
+      <div class="sub" style="max-width:var(--content-max);margin:80px auto 0">
         <h3>Samantha, IT admin — and ACME's bottleneck</h3>
         <p>Every one of those locations runs on infrastructure someone has to install, upgrade, and keep alive. At ACME, that someone is Samantha.</p>
         <div class="journey-grid" style="margin-top:32px">
@@ -948,14 +443,14 @@ html, body { margin: 0; padding: 0; }
         </div>
       </div>
 
-      <div class="sub" style="max-width:1040px;margin:80px auto 0">
+      <div class="sub" style="max-width:var(--content-max);margin:80px auto 0">
         <h3>Table stakes</h3>
         <p>For ACME to succeed, any answer had to deliver all six of these — and HPE GreenLake, AWS Outposts, Azure Stack Edge, and Rackspace were already competing for the same customers.</p>
         <div class="journey-grid" style="margin-top:32px">
           <div class="journey-card"><h4 style="margin:0">Automated installs &amp; upgrades</h4></div>
           <div class="journey-card"><h4 style="margin:0">Delivered as a service to your locations</h4></div>
           <div class="journey-card"><h4 style="margin:0">On-demand capacity</h4></div>
-          <div class="journey-card" style="border-color:var(--ink)"><span class="num" style="font-family: var(--font-body);font-style:normal;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:10px">Deciding factor</span><h4 style="margin:0">Minimal reconfiguration of existing VMware VMs</h4></div>
+          <div class="journey-card" style="border-color:var(--ink)"><span class="num" style="font-family: var(--font-mono);font-style:normal;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:10px">Deciding factor</span><h4 style="margin:0">Minimal reconfiguration of existing VMware VMs</h4></div>
           <div class="journey-card"><h4 style="margin:0">Kubernetes &amp; cloud-native apps</h4></div>
           <div class="journey-card"><h4 style="margin:0">Full-sized hardware rack</h4></div>
         </div>
@@ -963,7 +458,7 @@ html, body { margin: 0; padding: 0; }
       </div>
 
       <div class="callout" style="margin-top:80px">
-        <div class="callout-label">— Opportunity —</div>
+        <div class="callout-label">Opportunity</div>
         <p>What if a fully managed datacenter could be delivered to a customer's location — and managed from the cloud?</p>
       </div>
     </section>
@@ -971,12 +466,12 @@ html, body { margin: 0; padding: 0; }
     <!-- Approach -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Approach —</div>
+        <div class="section-label">Approach</div>
         <h2 class="section-title">A self-service portal for managed physical infrastructure.</h2>
         <p class="lede">Partnering with product and engineering, I led the design of a self-service portal that lets IT admins order, configure, and operate fully managed physical infrastructure — Dell racks — provisioned with VMware software stack, directly from the VMware Cloud console.</p>
       </div>
 
-      <div class="sub" style="max-width:1040px;margin:80px auto 0">
+      <div class="sub" style="max-width:var(--content-max);margin:80px auto 0">
         <h3>Mapping the end-to-end service blueprint</h3>
         <p>Before any UI, I mapped the full service blueprint — aligning the IT admin's digital experience with backend automation, Dell factory logistics, and on-site delivery. The blueprint surfaced everything the cloud operating model would need to absorb on behalf of the user.</p>
       </div>
@@ -985,10 +480,10 @@ html, body { margin: 0; padding: 0; }
         <div class="figure">
           <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-blueprint.svg" alt="End-to-end service blueprint for VMware Cloud on Dell">
         </div>
-        <div class="figure-caption" style="margin-top:14px">— Service blueprint —</div>
+        <div class="figure-caption" style="margin-top:14px">Service blueprint</div>
       </div>
 
-      <div class="sub" style="max-width:1040px;margin:80px auto 0">
+      <div class="sub" style="max-width:var(--content-max);margin:80px auto 0">
         <h3>Wireframing the digital experience</h3>
         <p>I started putting together some wireframes to illustrate what the UI could look like based on the blueprint. This helped in ensuring we were aligned with the end-to-end workflow and allowed us to iterate faster.</p>
         <div class="wire-grid">
@@ -1005,7 +500,7 @@ html, body { margin: 0; padding: 0; }
     <!-- Vision -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Vision —</div>
+        <div class="section-label">Vision</div>
         <h2 class="section-title">Imagining fleet management at global scale.</h2>
         <p class="lede">Before there was any customer signal, I explored what fleet management could look like at global scale — a unified view for hundreds of locations, drillable from a single map. VMware's CEO Pat Gelsinger and CTO Ray O'Farrell used it to headline the <em>VMworld 2018</em> keynote, generating excitement about where the platform was headed. It was a concept, not a committed roadmap — it never shipped.</p>
       </div>
@@ -1014,13 +509,13 @@ html, body { margin: 0; padding: 0; }
         <div class="figure">
           <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-keynote-reveal.jpg" alt="Pat Gelsinger and Ray O'Farrell presenting Project Dimension on stage at the VMworld 2018 keynote">
         </div>
-        <div class="figure-caption" style="margin-top:14px">— VMworld 2018 keynote —</div>
+        <div class="figure-caption" style="margin-top:14px">VMworld 2018 keynote</div>
       </div>
 
       <div class="vision-list">
         <div class="vision-item">
           <div class="vision-heading">
-            <span class="num">i.</span>
+            <span class="num">1</span>
             <h3>Edge Locations</h3>
             <p>A global map view of every deployment, sized and colored by health state — critical, warning, no-hardware, good — with the location list alongside.</p>
           </div>
@@ -1030,7 +525,7 @@ html, body { margin: 0; padding: 0; }
         </div>
         <div class="vision-item">
           <div class="vision-heading">
-            <span class="num">ii.</span>
+            <span class="num">2</span>
             <h3>Regional View</h3>
             <p>Zooming reveals regional deployments with their health status — maintaining the same level of detail.</p>
           </div>
@@ -1040,7 +535,7 @@ html, body { margin: 0; padding: 0; }
         </div>
         <div class="vision-item">
           <div class="vision-heading">
-            <span class="num">iii.</span>
+            <span class="num">3</span>
             <h3>Location Drill-Down</h3>
             <p>Single-site detail surfaces hardware and service status — what the site operator and the global architect both need to see.</p>
           </div>
@@ -1050,7 +545,7 @@ html, body { margin: 0; padding: 0; }
         </div>
         <div class="vision-item">
           <div class="vision-heading">
-            <span class="num">iv.</span>
+            <span class="num">4</span>
             <h3>Operational Detail</h3>
             <p>Down to a specific rack: telemetry, lifecycle state, scheduled maintenance — the same console patterns that ordered the hardware also keep it running.</p>
           </div>
@@ -1061,13 +556,13 @@ html, body { margin: 0; padding: 0; }
             <div class="figure">
               <img loading="lazy" src="../assets/vmware-cloud-on-dell/vmc-keynote-detail-view.jpg" alt="This same drill-down view presented live at the VMworld 2018 keynote">
             </div>
-            <div class="figure-caption" style="margin-top:14px">— Presented live at VMworld 2018 —</div>
+            <div class="figure-caption" style="margin-top:14px">Presented live at VMworld 2018</div>
           </div>
         </div>
       </div>
 
       <div class="callout" style="margin-top:64px">
-        <div class="callout-label">— Where I pushed back —</div>
+        <div class="callout-label">Where I pushed back</div>
         <p>The global fleet map read well in a keynote — but showing it to users early on told a different story. Admins with just one or two locations to start with said it added little value; what they actually wanted was proof that a single site could be ordered, deployed, and operated reliably before trusting the system with more. That feedback is what shaped the MVP: a single-site, end-to-end flow — <strong>order → deploy → operate</strong>.</p>
       </div>
     </section>
@@ -1075,11 +570,11 @@ html, body { margin: 0; padding: 0; }
     <!-- Execution -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Execution —</div>
+        <div class="section-label">Execution</div>
         <h2 class="section-title">From blueprint to MVP, step-by-step.</h2>
       </div>
 
-      <div style="max-width:1040px;margin:0 auto">
+      <div style="max-width:var(--content-max);margin:0 auto">
         <div class="sub">
           <h3>E-commerce for the datacenter</h3>
           <p>I designed a streamlined step-by-step ordering flow by abstracting the complexity of physical hardware procurement. Admins can select capacity, specify power drops, networking, and ship physical racks without ever leaving the digital console.</p>
@@ -1097,7 +592,7 @@ html, body { margin: 0; padding: 0; }
               </div>
             </div>
           </div>
-          <div class="figure-caption" style="margin-top:14px">— Full ordering walkthrough —</div>
+          <div class="figure-caption" style="margin-top:14px">Full ordering walkthrough</div>
         </div>
 
         <div class="sub">
@@ -1131,12 +626,12 @@ html, body { margin: 0; padding: 0; }
     <!-- User Validation -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— User Validation —</div>
+        <div class="section-label">User Validation</div>
         <h2 class="section-title">What enterprise IT admins surfaced.</h2>
         <p class="lede">With the MVP live, I ran a deeper round of research to pressure-test the actual ordering flow.</p>
       </div>
 
-      <div class="validation-stats" style="margin:64px -80px 0">
+      <div class="validation-stats" style="margin:64px 0 0">
         <div class="item">
           <div class="num">24</div>
           <div class="desc">Moderated sessions</div>
@@ -1190,7 +685,7 @@ html, body { margin: 0; padding: 0; }
         </div>
       </div>
 
-      <div class="sub" style="max-width:1040px;margin:80px auto 0">
+      <div class="sub" style="max-width:var(--content-max);margin:80px auto 0">
         <h3>From insight to shipped fix</h3>
         <p>These insights didn't just get logged — they shaped the next iteration of the ordering flow.</p>
 
@@ -1224,13 +719,13 @@ html, body { margin: 0; padding: 0; }
           <div class="figure">
             <img loading="lazy" src="../assets/vmware-cloud-on-dell/pre-reqs-inside-rack-step.png" alt="Rack requirements folded into the Rack step">
           </div>
-          <div class="figure-caption" style="margin-top:14px">— Rack step —</div>
+          <div class="figure-caption" style="margin-top:14px">Rack step</div>
         </div>
         <div style="margin: 40px -80px 0;">
           <div class="figure">
             <img loading="lazy" src="../assets/vmware-cloud-on-dell/pre-reqs-inside-network-step.png" alt="Network requirements folded into the Network step">
           </div>
-          <div class="figure-caption" style="margin-top:14px">— Network step —</div>
+          <div class="figure-caption" style="margin-top:14px">Network step</div>
         </div>
       </div>
     </section>
@@ -1238,10 +733,10 @@ html, body { margin: 0; padding: 0; }
     <!-- Customer Testimonials -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Customer Testimonials —</div>
+        <div class="section-label">Customer Testimonials</div>
         <h2 class="section-title">Validated in the admin's own words.</h2>
       </div>
-      <div class="quotes" style="max-width:1040px;margin:56px auto 0">
+      <div class="quotes" style="max-width:var(--content-max);margin:56px auto 0">
         <div class="quote">
           <div class="mark">"</div>
           <blockquote>Forget the other ways — we should just use this portal as our central view. The portal is very intuitive!</blockquote>
@@ -1263,54 +758,54 @@ html, body { margin: 0; padding: 0; }
     <!-- Scaling -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Scaling —</div>
+        <div class="section-label">Scaling</div>
         <h2 class="section-title">Establishing the pattern for VMware Cloud on AWS Outposts.</h2>
         <p class="lede">VMware's partnership with AWS began with the cloud-only VMware Cloud on AWS; the next step was VMware Cloud on AWS Outposts — VMware's stack running on Outposts hardware. Unlike the standalone AWS Outposts in the competitive landscape above, it kept the same lift and shift for VMware customers. I conducted a cross-functional workshop with product, engineering, and design that extended the service blueprint to a second infrastructure partner. I mapped the initial end-to-end journey and ordering experience for VMware Cloud on AWS Outposts, then handed full ownership to the senior designer from our team — the same blueprint-first, UI-second, operations-third framework carried over as the standard approach for VMware's <em>Cloud to Edge</em> portfolio.</p>
       </div>
 
       <div class="journey-grid">
         <div class="journey-card">
-          <span class="num">i.</span>
+          <span class="num">1</span>
           <h4>Learn</h4>
           <p>Overview, journey, and resources before ordering.</p>
         </div>
         <div class="journey-card">
-          <span class="num">ii.</span>
+          <span class="num">2</span>
           <h4>Onboard</h4>
           <p>Email invitation, org setup, payment method, and inviting users.</p>
         </div>
         <div class="journey-card">
-          <span class="num">iii.</span>
+          <span class="num">3</span>
           <h4>Order</h4>
           <p>Select a site or outpost, hosts, subscription, and networking.</p>
         </div>
         <div class="journey-card">
-          <span class="num">iv.</span>
+          <span class="num">4</span>
           <h4>View</h4>
           <p>One inventory list across every Outpost deployment and its status.</p>
         </div>
         <div class="journey-card">
-          <span class="num">v.</span>
+          <span class="num">5</span>
           <h4>Deploy</h4>
           <p>AWS surveys the site and installs hardware; status stays visible in the console.</p>
         </div>
         <div class="journey-card">
-          <span class="num">vi.</span>
+          <span class="num">6</span>
           <h4>Monitor</h4>
           <p>Hardware and network health, surfaced the same way as VMware Cloud on AWS.</p>
         </div>
         <div class="journey-card">
-          <span class="num">vii.</span>
+          <span class="num">7</span>
           <h4>Maintain</h4>
           <p>Lifecycle management carried over from existing VMware Cloud on AWS patterns.</p>
         </div>
         <div class="journey-card">
-          <span class="num">viii.</span>
+          <span class="num">8</span>
           <h4>Use</h4>
           <p>Local network configuration and an activity log for auditing.</p>
         </div>
         <div class="journey-card">
-          <span class="num">ix.</span>
+          <span class="num">9</span>
           <h4>Scale</h4>
           <p>Add nodes or clusters, and integrate with tools like Tanzu and HCX.</p>
         </div>
@@ -1320,17 +815,17 @@ html, body { margin: 0; padding: 0; }
     <!-- Takeaways -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Takeaways —</div>
+        <div class="section-label">Takeaways</div>
         <h2 class="section-title">Two lessons that resonate.</h2>
       </div>
-      <div class="takeaways" style="max-width:1040px;margin:56px auto 0">
+      <div class="takeaways" style="max-width:var(--content-max);margin:56px auto 0">
         <div class="takeaway">
-          <div class="num">i.</div>
+          <div class="num">1</div>
           <h4>Service blueprinting over UI</h4>
           <p>Map the human and logistical journey first; design the digital interface second. The blueprint catches everything — from factory dispatch to on-site delivery to day-2 operations.</p>
         </div>
         <div class="takeaway">
-          <div class="num">ii.</div>
+          <div class="num">2</div>
           <h4>Prove the smallest case first</h4>
           <p>The ambitious version — a global fleet map — read well in a keynote. But admins starting with one or two locations didn't need a map with nothing on it yet; they needed proof that a single site could be ordered, deployed, and operated reliably. Earn the right to show them more.</p>
         </div>
@@ -1339,7 +834,7 @@ html, body { margin: 0; padding: 0; }
 
     <!-- Contact -->
     <section class="contact">
-      <div class="label">— Get in touch —</div>
+      <div class="label">Get in touch</div>
       <h2>Have a role where this kind of work matters? Let’s talk.</h2>
       <div class="contact-links">
         <a href="mailto:rishabhgandotra@gmail.com">rishabhgandotra@gmail.com</a>
@@ -1349,7 +844,7 @@ html, body { margin: 0; padding: 0; }
 
     <!-- Prev/Next -->
     <section class="prevnext">
-      <div class="label">— Continue Reading —</div>
+      <div class="label">Continue Reading</div>
       <div class="prevnext-grid">
         <a class="pn-card prev" href="./workload-mobility.html">
           <div class="image" style="background:#fff">
@@ -1357,7 +852,7 @@ html, body { margin: 0; padding: 0; }
           </div>
           <div>
             <div class="dir">← Previous Case Study</div>
-            <div class="num" style="margin-top:12px">II.</div>
+            <div class="num" style="margin-top:12px">1</div>
             <div class="ttl">Workload Mobility</div>
             <div class="sub">Unifying legacy migration tools across the VMware Cloud Foundation portfolio.</div>
             <div class="yr">VMware — 2024 to 2026</div>
@@ -1369,7 +864,7 @@ html, body { margin: 0; padding: 0; }
           </div>
           <div>
             <div class="dir">Next Case Study →</div>
-            <div class="num" style="margin-top:12px">IV.</div>
+            <div class="num" style="margin-top:12px">3</div>
             <div class="ttl">vCenter High Availability</div>
             <div class="sub">A lifecycle workflow for millions of vSphere administrators.</div>
             <div class="yr">VMware — 2016 to 2017</div>

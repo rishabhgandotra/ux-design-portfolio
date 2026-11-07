@@ -11,48 +11,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../assets/case-study.css">
 <style>
-*, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-#root { display: flex; justify-content: center; }
 
-.cs {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
-  letter-spacing: -0.005em;
-  width: 100%;
-  max-width: 1280px;
-  border-left: 1px solid var(--hair);
-  border-right: 1px solid var(--hair);
-  box-shadow: 0 1px 3px rgba(0,0,0,.04);
-}
-.cs a { color: inherit; text-decoration: none; }
-.cs em { font-style: italic; }
-.cs .narrow { max-width: 1040px; margin: 0 auto; }
 .cs .wm-roadmap-mobile { display: none; }
 .cs .wm-roadmap-wrap[data-focus="1"] .wm-phase-1 rect { fill: var(--ink); fill-opacity: 0.05; }
 .cs .wm-roadmap-wrap[data-focus="2"] .wm-phase-2 rect { fill: var(--ink); fill-opacity: 0.05; }
-
-/* Top nav */
-.cs .topbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 24px 80px;
-  border-bottom: 1px solid var(--hair);
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-.cs .topbar .name {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-}
 
 /* Slim prev/next strip (top) */
 .cs .pn-strip {
@@ -66,11 +30,12 @@ html, body { margin: 0; padding: 0; }
   align-items: baseline;
   gap: 16px;
   font-size: 11px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--muted);
   cursor: pointer;
   transition: color 0.3s ease, background 0.3s ease;
+  font-family: var(--font-mono);
 }
 .cs .pn-strip > a:hover { color: var(--ink); background: rgba(0,0,0,.02); }
 .cs .pn-strip > a.next {
@@ -81,178 +46,32 @@ html, body { margin: 0; padding: 0; }
 .cs .pn-strip .ttl {
   font-family: var(--font-display);
   font-size: 17px;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.01em;
   color: var(--ink);
   text-transform: none;
+  font-weight: 500;
 }
-.cs .pn-strip > a:hover .ttl { font-style: italic; }
-
-/* Title block */
-.cs .titleblock {
-  padding: 96px 80px 40px;
-  border-bottom: 1px solid var(--hair);
-}
-.cs .eyebrow {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 32px;
-}
-.cs .cs-title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 72px;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin: 0;
-  max-width: 22ch;
-}
-.cs .meta {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin: 64px -80px 0;
-  padding: 40px 80px 0;
-  border-top: 1px solid var(--hair);
-}
-.cs .meta > div { text-align: center; }
-.cs .meta .label {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
-.cs .meta .val {
-  font-family: var(--font-display);
-  font-size: 22px;
-  letter-spacing: -0.01em;
-}
-
-/* Hero image */
-.cs .hero-img {
-  border-bottom: 1px solid var(--hair);
-  overflow: hidden;
-  background: var(--bg);
-}
-.cs .hero-img img { display: block; width: 100%; height: auto; }
+.cs .pn-strip > a:hover .ttl { color: var(--accent); }
 
 /* Metrics strip */
-.cs .metrics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-bottom: 1px solid var(--hair);
-  text-align: center;
-}
-.cs .metrics > div {
-  padding: 56px 32px;
-  border-right: 1px solid var(--hair);
-}
-.cs .metrics > div:last-child { border-right: none; }
-.cs .metrics .label {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 18px;
-}
-.cs .metrics .stat {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 64px;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
-}
-.cs .metrics .stat em { font-style: italic; }
-.cs .metrics .caption {
-  font-family: var(--font-display);
-  font-size: 15px;
-  line-height: 1.4;
-  color: var(--ink-2);
-}
-
-/* Content blocks */
-.cs section.block { padding: 96px 80px; border-bottom: 1px solid var(--hair); }
-.cs .section-label {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 18px;
-  text-align: left;
-}
-.cs .section-title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 44px;
-  line-height: 1.1;
-  letter-spacing: -0.015em;
-  margin: 0 0 48px;
-  max-width: 22ch;
-  text-align: left;
-}
-.cs .lede {
-  font-family: var(--font-display);
-  font-size: 22px;
-  line-height: 1.55;
-  color: var(--ink-2);
-  max-width: 56ch;
-  margin: 0;
-  letter-spacing: -0.005em;
-}
-.cs .sub { margin-top: 80px; }
-.cs .sub:first-child { margin-top: 0; }
-.cs .sub h3 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 28px;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  margin: 0 0 20px;
-}
-.cs .sub p {
-  font-family: var(--font-display);
-  font-size: 18px;
-  line-height: 1.55;
-  letter-spacing: -0.005em;
-  color: var(--ink-2);
-  margin: 0 0 24px;
-  max-width: 64ch;
-}
-.cs .sub p strong { color: var(--ink); font-weight: 500; }
-.cs .figure {
-  margin-top: 32px;
-  border: 1px solid var(--hair);
-  overflow: hidden;
-}
-.cs .figure img { display: block; width: 100%; height: auto; }
-.cs .figure-caption {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-top: 14px;
-  text-align: center;
-}
 
 /* Emphasis callout — a decision worth not missing */
 .cs .callout {
-  max-width: 1040px;
+  max-width: var(--content-max);
   margin: 48px auto 0;
   border-left: 2px solid var(--ink);
   padding-left: 32px;
 }
 .cs .callout .callout-label {
   font-size: 11px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: 14px;
+  font-family: var(--font-mono);
 }
 .cs .callout p {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 18px;
   line-height: 1.55;
   letter-spacing: -0.005em;
@@ -267,7 +86,7 @@ html, body { margin: 0; padding: 0; }
 .cs .validation-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  gap: var(--col-gap);
   align-items: center;
   margin-top: 56px;
 }
@@ -278,42 +97,17 @@ html, body { margin: 0; padding: 0; }
   background: var(--bg);
 }
 .cs .validation-figure img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.cs .validation-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--hair);
-  border-bottom: 1px solid var(--hair);
-  text-align: center;
-}
-.cs .validation-stats .item {
-  padding: 48px 32px;
-  border-right: 1px solid var(--hair);
-}
-.cs .validation-stats .item:last-child { border-right: none; }
-.cs .validation-stats .item .num {
-  font-family: var(--font-display);
-  font-size: 56px;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
-}
-.cs .validation-stats .item .desc {
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
 
 /* Research insights — sticky notes by category */
 .cs .insights-grid {
-  max-width: 1040px;
+  max-width: var(--content-max);
   margin: 64px auto 0;
 }
 .cs .insights-grid .category { margin-top: 56px; }
 .cs .insights-grid .category:first-child { margin-top: 0; }
 .cs .insights-grid .category-label {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 22px;
   line-height: 1.2;
   letter-spacing: -0.01em;
@@ -323,7 +117,7 @@ html, body { margin: 0; padding: 0; }
 .cs .insights-grid .notes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  gap: var(--col-gap);
   padding: 12px 0;
 }
 .cs .insights-grid .notes .note {
@@ -351,7 +145,7 @@ html, body { margin: 0; padding: 0; }
   z-index: 1;
 }
 .cs .insights-grid .notes .note p {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 15px;
   line-height: 1.5;
   letter-spacing: -0.005em;
@@ -367,9 +161,9 @@ html, body { margin: 0; padding: 0; }
   display: inline-flex;
   border: 1px solid var(--ink);
   margin-bottom: 20px;
-  font-family: var(--font-body);
+  font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 .cs .ba-toggle .ba-toggle-bar button {
@@ -438,7 +232,7 @@ html, body { margin: 0; padding: 0; }
   height: auto;
 }
 .cs .explore-item .cap .name {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 20px;
   letter-spacing: -0.005em;
   color: var(--ink);
@@ -449,17 +243,17 @@ html, body { margin: 0; padding: 0; }
   flex-wrap: wrap;
 }
 .cs .explore-item .cap .name .badge {
-  font-family: var(--font-body);
+  font-family: var(--font-mono);
   font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--bg);
   background: var(--ink);
   padding: 4px 9px;
 }
 .cs .explore-item .cap p {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.55;
   color: var(--ink-2);
@@ -519,7 +313,7 @@ html, body { margin: 0; padding: 0; }
 .cs .ba-label {
   position: absolute;
   top: 16px;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-style: italic;
   font-size: 14px;
   letter-spacing: 0.04em;
@@ -538,23 +332,25 @@ html, body { margin: 0; padding: 0; }
 .cs .vision-item { margin-top: 96px; }
 .cs .vision-item:first-child { margin-top: 0; }
 .cs .vision-heading {
-  max-width: 1040px;
+  max-width: var(--content-max);
   margin: 0 auto 32px;
 }
 .cs .vision-heading .num {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 18px;
-  color: var(--muted);
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 12px;
+  color: var(--accent);
   display: block;
   margin-bottom: 16px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 .cs .vision-heading h3 {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 600;
   font-size: 32px;
   line-height: 1.15;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
   margin: 0 0 16px;
 }
 .cs .vision-heading p {
@@ -564,6 +360,8 @@ html, body { margin: 0; padding: 0; }
   color: var(--ink-2);
   max-width: 64ch;
   margin: 0;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 .cs .vision-img {
   margin: 0 -80px;
@@ -583,17 +381,19 @@ html, body { margin: 0; padding: 0; }
 .cs .quotes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 48px;
+  gap: var(--col-gap);
   margin-top: 56px;
 }
 .cs .quote { display: flex; flex-direction: column; }
 .cs .quote .mark {
   font-family: var(--font-display);
-  font-style: italic;
+  font-style: normal;
   font-size: 64px;
   line-height: 0.6;
   color: var(--muted);
   margin-bottom: 16px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
 }
 .cs .quote blockquote {
   font-family: var(--font-display);
@@ -601,16 +401,18 @@ html, body { margin: 0; padding: 0; }
   line-height: 1.45;
   color: var(--ink);
   margin: 0 0 24px;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.01em;
+  font-weight: 500;
 }
 .cs .quote .attr {
   font-size: 11px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--muted);
   margin-top: auto;
   padding-top: 20px;
   border-top: 1px solid var(--hair);
+  font-family: var(--font-mono);
 }
 .cs .quote .attr strong { color: var(--ink-2); font-weight: 500; }
 
@@ -618,7 +420,7 @@ html, body { margin: 0; padding: 0; }
 .cs .problems {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 48px;
+  gap: var(--col-gap);
   margin-top: 48px;
 }
 .cs .stakes-close { margin-top: 48px; }
@@ -634,358 +436,52 @@ html, body { margin: 0; padding: 0; }
 .cs .takeaways {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 48px;
+  gap: var(--col-gap);
   margin-top: 56px;
 }
-.cs .takeaway .num {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 18px;
-  color: var(--muted);
-  margin-bottom: 20px;
-}
-.cs .takeaway h4 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-style: italic;
-  font-size: 22px;
-  line-height: 1.25;
-  margin: 0 0 14px;
-  letter-spacing: -0.01em;
-}
-.cs .takeaway p {
-  font-family: var(--font-display);
-  font-size: 17px;
-  line-height: 1.5;
-  letter-spacing: -0.005em;
-  color: var(--ink-2);
-  margin: 0;
-}
-
-/* Prev/Next cards (bottom) */
-.cs .contact {
-  padding: 88px 80px;
-  border-bottom: 1px solid var(--hair);
-  text-align: center;
-}
-.cs .contact .label {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 20px;
-}
-.cs .contact h2 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 40px;
-  line-height: 1.15;
-  letter-spacing: -0.015em;
-  color: var(--ink);
-  margin: 0 auto 36px;
-  max-width: 24ch;
-  text-wrap: balance;
-}
-.cs .contact-links {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  flex-wrap: wrap;
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-.cs .contact-links a {
-  color: var(--ink-2);
-  border-bottom: 1px solid var(--muted);
-  padding-bottom: 4px;
-}
-.cs .contact-links a:hover { color: var(--ink); border-color: var(--ink); }
-
-.cs .prevnext {
-  padding: 80px 80px 96px;
-  border-bottom: 1px solid var(--ink);
-}
-.cs .prevnext .label {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 40px;
-  text-align: center;
-}
-.cs .prevnext-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-}
-.cs .pn-card {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 28px;
-  cursor: pointer;
-  padding: 24px 0;
-}
-.cs .pn-card.prev { text-align: left; }
-.cs .pn-card.next { text-align: right; }
-.cs .pn-card .dir {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.cs .pn-card .num {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 18px;
-  color: var(--muted);
-  margin-bottom: 12px;
-}
-.cs .pn-card .ttl {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 44px;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  margin-bottom: 14px;
-  display: inline-block;
-  background-image: linear-gradient(currentColor, currentColor);
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 0% 1px;
-  transition: background-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  padding-bottom: 4px;
-}
-.cs .pn-card.next .ttl { background-position: 100% 100%; }
-.cs .pn-card:hover .ttl { background-size: 100% 1px; }
-.cs .pn-card .sub {
-  font-family: var(--font-display);
-  font-size: 17px;
-  line-height: 1.5;
-  color: var(--ink-2);
-  max-width: 42ch;
-  margin-bottom: 20px;
-}
-.cs .pn-card.next .sub { margin-left: auto; }
-.cs .pn-card .yr {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.cs .pn-card .image {
-  aspect-ratio: 4/3;
-  border: 1px solid var(--hair);
-  overflow: hidden;
-}
-.cs .pn-card .image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
-
-/* Footer */
-.cs .footer {
-  padding: 24px 80px;
-  text-align: center;
-}
-.cs .footer .colophon {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-  display: flex;
-  justify-content: space-between;
-}
-
+</style>
+<link rel="stylesheet" href="../assets/case-study-responsive.css">
+<style>
+/* Page-specific tablet/phone rules — after the shared responsive file so they win */
 /* ============ TABLET (<= 1279px) ============ */
 @media (max-width: 1279px) {
-  .cs .topbar { padding: 20px 48px; }
-  .cs .titleblock { padding: 80px 48px 36px; }
-  .cs .cs-title { font-size: 56px; }
-  .cs .meta { margin: 56px -48px 0; padding: 36px 48px 0; }
-  .cs .metrics > div { padding: 44px 24px; }
-  .cs .metrics .stat { font-size: 52px; }
-  .cs .callout { padding-left: 24px; }
+              .cs .callout { padding-left: 24px; }
   .cs .callout p { font-size: 17px; }
-  .cs section.block { padding: 72px 48px; }
-  .cs .section-title { font-size: 38px; }
-  .cs .lede { font-size: 20px; }
-  .cs .sub h3 { font-size: 24px; }
-  .cs .sub p { font-size: 17px; }
-  .cs .narrow { max-width: 100%; }
-  /* Full-bleed figures: match new padding */
-  .cs .titleblock + .hero-img,
-  .cs .hero-img img { max-width: 100%; }
-  .cs section.block div[style*="-80px"] { margin-left: -48px !important; margin-right: -48px !important; }
-  .cs .meta[style*="-80px"], .cs .validation-stats[style*="-80px"] { margin-left: -48px !important; margin-right: -48px !important; padding-left: 48px !important; padding-right: 48px !important; }
-  .cs .validation-stats { margin-left: -48px !important; margin-right: -48px !important; }
-  .cs .validation-stats .item { padding: 36px 24px; }
-  .cs .validation-stats .item .num { font-size: 44px; }
-  .cs .contact { padding: 72px 48px; }
-  .cs .contact h2 { font-size: 34px; }
-  .cs .prevnext { padding: 64px 48px 80px; }
-  .cs .pn-card .ttl { font-size: 36px; }
-  .cs .footer { padding: 20px 48px; }
-  /* Galleries */
-  .cs .gallery-3 { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .cs .gallery-2 { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  .cs .wire-grid { gap: 24px; }
-  /* Strip slides */
-  .cs .strip { padding: 0 48px 20px; }
-  .cs .strip .slide { flex-basis: 640px; }
-  /* Insights sticky-note grid 3 -> 3 (tablet still 3 cols, smaller) */
-  .cs .insights-grid .notes { grid-template-columns: repeat(3, 1fr); gap: 28px; }
-  .cs .insights-grid .notes .note { padding: 22px 18px; min-height: 120px; }
-  .cs .insights-grid .notes .note p { font-size: 14px; }
-  /* Vision grid */
-  .cs .vision-img { margin: 0 -48px; }
-  /* Toggle */
-  .cs .ba-toggle .img-frame, .cs .ba-side { /* keep as-is */ }
-}
+                                                      }
 
 /* ============ MOBILE (<= 767px) ============ */
 @media (max-width: 767px) {
-  .cs {
-    border-left: none;
-    border-right: none;
-    box-shadow: none;
-  }
-
-  /* Top bar */
-  .cs .topbar { padding: 16px 20px; }
-  .cs .topbar .name { font-size: 14px; }
-
-  /* Title block */
-  .cs .titleblock { padding: 48px 20px 24px; }
-  .cs .eyebrow { font-size: 10px; letter-spacing: 0.16em; margin-bottom: 20px; }
-  .cs .cs-title { font-size: 32px; line-height: 1.1; }
-  .cs .meta {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin: 36px -20px 0;
-    padding: 28px 20px 0;
-  }
-  .cs .meta > div { text-align: left; }
-  .cs .meta .label { font-size: 10px; margin-bottom: 4px; }
-  .cs .meta .val { font-size: 18px; }
-
-  /* Metrics — 3-col to 1-col */
-  .cs .metrics { grid-template-columns: 1fr; }
-  .cs .metrics > div {
-    border-right: none;
-    border-bottom: 1px solid var(--hair);
-    padding: 28px 20px;
-  }
-  .cs .metrics > div:last-child { border-bottom: none; }
-  .cs .metrics .label { font-size: 10px; margin-bottom: 12px; }
-  .cs .metrics .stat { font-size: 44px; margin-bottom: 10px; }
-  .cs .metrics .caption { font-size: 14px; }
-
-  /* Sections */
-  .cs section.block { padding: 48px 20px; }
-  .cs .section-label { font-size: 10px; letter-spacing: 0.16em; margin-bottom: 14px; }
-  .cs .section-title { font-size: 26px; line-height: 1.15; margin-bottom: 28px; }
-  .cs .lede { font-size: 17px; line-height: 1.5; }
-  .cs .sub { margin-top: 48px; }
-  .cs .sub h3 { font-size: 22px; }
-  .cs .sub p { font-size: 16px; line-height: 1.55; }
-  .cs .callout { margin-top: 36px; padding-left: 18px; }
+  
+    
+              
+            
+                .cs .callout { margin-top: 36px; padding-left: 18px; }
   .cs .callout p { font-size: 16px; }
-  .cs .figure-caption { font-size: 10px; }
-  .cs .explore-grid { gap: 10px; margin-top: 30px; }
+    .cs .explore-grid { gap: 10px; margin-top: 30px; }
   .cs .explore-item { grid-template-columns: 1fr; gap: 16px; padding: 16px; }
   .cs .explore-item .cap .name { font-size: 18px; }
   .cs .explore-item .cap p { font-size: 15px; }
 
-  /* Full-bleed figures: match new mobile padding */
-  .cs section.block div[style*="-80px"] { margin-left: -20px !important; margin-right: -20px !important; }
-  .cs .validation-stats { margin-left: -20px !important; margin-right: -20px !important; }
-  .cs .vision-img { margin: 0 -20px; }
-
+      
   /* Roadmap diagram: swap to stacked layout so labels stay legible */
   .cs .wm-roadmap-desktop { display: none; }
   .cs .wm-roadmap-mobile { display: block; }
 
-  /* Validation stats — 3-col to 1-col */
-  .cs .validation-stats { grid-template-columns: 1fr; }
-  .cs .validation-stats .item {
-    padding: 24px 20px;
-    border-right: none;
-    border-bottom: 1px solid var(--hair);
-  }
-  .cs .validation-stats .item:last-child { border-bottom: none; }
-  .cs .validation-stats .item .num { font-size: 38px; }
-  .cs .validation-stats .item .desc { font-size: 11px; }
-
-  /* Quotes — 2 cols to 1 */
-  .cs .quotes { grid-template-columns: 1fr; gap: 32px; }
-  .cs .quote blockquote { font-size: 19px; }
-  .cs .quote .mark { font-size: 48px; margin-bottom: 12px; }
-
+          
+      
   /* Stakes problems + takeaways — collapse */
   .cs .problems { grid-template-columns: 1fr; gap: 28px; }
-  .cs .takeaways { grid-template-columns: 1fr; gap: 28px; }
-  .cs .takeaway h4 { font-size: 20px; }
-  .cs .takeaway p { font-size: 16px; }
-
-  /* Prev/next cards — stack */
-  .cs .contact { padding: 56px 20px; }
-  .cs .contact h2 { font-size: 26px; }
-  .cs .contact-links { flex-direction: column; align-items: center; gap: 14px; }
-  .cs .prevnext { padding: 48px 20px 56px; }
-  .cs .prevnext-grid { grid-template-columns: 1fr; gap: 32px; }
-  .cs .pn-card { padding: 12px 0; gap: 18px; }
-  .cs .pn-card.prev, .cs .pn-card.next { text-align: left; }
-  .cs .pn-card.next .sub { margin-left: 0; }
-  .cs .pn-card .ttl { font-size: 28px; }
-  .cs .pn-card .sub { font-size: 15px; }
-
-  /* Footer — stack colophon */
-  .cs .footer { padding: 18px 20px; }
-  .cs .footer .colophon {
-    flex-direction: column;
-    gap: 6px;
-    text-align: center;
-    align-items: center;
-    font-size: 10px;
+      
+                    
+    
+  
+            
+          
+    
+  
+        
+    
   }
-
-  /* Galleries — single column */
-  .cs .gallery-3, .cs .gallery-2, .cs .wire-grid { grid-template-columns: 1fr; gap: 20px; }
-
-  /* Insights sticky-note grid */
-  .cs .insights-grid { padding: 12px 0; }
-  .cs .insights-grid .category { margin-top: 36px; }
-  .cs .insights-grid .category-label { font-size: 19px; margin-bottom: 20px; }
-  .cs .insights-grid .notes { grid-template-columns: 1fr; gap: 18px; padding: 8px 0; }
-  .cs .insights-grid .notes .note { padding: 22px 20px; min-height: 0; }
-  .cs .insights-grid .notes .note:hover { transform: rotate(0deg); }
-
-  /* Vision items */
-  .cs .vision-list { margin-top: 36px; }
-  .cs .vision-item { margin-top: 56px; }
-  .cs .vision-heading { padding: 0 20px; }
-  .cs .vision-heading h3 { font-size: 24px; }
-  .cs .vision-heading p { font-size: 16px; }
-
-  /* Strip carousel — smaller slides */
-  .cs .strip { padding: 0 20px 16px; }
-  .cs .strip .slide { flex-basis: 80vw; }
-
-  /* Toggle */
-  .cs .ba-toggle .ba-toggle-bar button { padding: 10px 18px; font-size: 10px; }
-
-  /* Before/After slider — smaller knob (still finger-friendly at 36px) */
-  .cs .ba-knob { width: 40px; height: 40px; }
-  .cs .ba-label { font-size: 12px; padding: 4px 10px; top: 12px; }
-  .cs .ba-label.before { left: 12px; }
-  .cs .ba-label.after { right: 12px; }
-
-  /* Video play button */
-  .cs .video-cover .play-btn { width: 72px; height: 72px; }
-  .cs .video-cover .play-btn svg { width: 22px; height: 22px; }
-
-  /* Overview 3-col features (Nexus) */
-  .cs .overview-grid { grid-template-columns: 1fr; gap: 28px; margin-top: 36px; padding: 0 20px; }
-}
 </style>
 </head>
 <body>
@@ -995,10 +491,11 @@ html, body { margin: 0; padding: 0; }
 
     <header class="topbar">
       <a class="name" href="../index.html">Rishabh Gandotra</a>
+      <span class="role">Staff Product Designer</span>
     </header>
 
     <section class="titleblock">
-      <div class="eyebrow">— Workload Mobility · Broadcom · 2024–2026 —</div>
+      <div class="eyebrow">Workload Mobility · Broadcom · 2024–2026</div>
       <h1 class="cs-title">Unifying legacy migration workflows to simplify <em>VM mobility.</em></h1>
       <div class="meta">
         <div>
@@ -1053,18 +550,18 @@ html, body { margin: 0; padding: 0; }
     <!-- The Stakes -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— The Stakes —</div>
+        <div class="section-label">The Stakes</div>
         <h2 class="section-title">By the time the plan was ready, it was already out of date.</h2>
         <p class="lede">IT administrators migrate hundreds of VMs at a time — consolidating datacenters, adopting cloud, or refreshing aging hardware — usually against a fixed maintenance window. The work was split across two legacy tools: Net&nbsp;Ops (Aria Operations for Networks), a network-analysis tool, to plan the migration, and HCX, VMware's migration engine, to run it.</p>
 
         <div class="problems">
           <div class="takeaway">
-            <div class="num">01</div>
+            <div class="num">1</div>
             <h4>The handoff</h4>
             <p>Admins sorted VMs by hand into waves — batches sized to fit a maintenance window — and each wave into mobility groups, usually the VMs of one application that must move together. Then they exported each wave from Net&nbsp;Ops individually, imported it into HCX, and committed it there. Manual grouping invited mistakes: a stray VM, or a whole batch, landing in the wrong wave.</p>
           </div>
           <div class="takeaway">
-            <div class="num">02</div>
+            <div class="num">2</div>
             <h4>The blind spot</h4>
             <p>Net&nbsp;Ops showed network dependencies, but not what the destination could hold. Admins pieced together cluster capacity and downtime tolerance from other monitoring tools, internal systems, and third-party utilities. Meanwhile the environment kept moving — teams spin VMs up and down constantly — so by the time a plan was finished, its dependency and capacity data could already be stale.</p>
           </div>
@@ -1077,7 +574,7 @@ html, body { margin: 0; padding: 0; }
     <!-- Approach -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Approach —</div>
+        <div class="section-label">Approach</div>
         <h2 class="section-title">From fragmented handoffs to one connected workflow.</h2>
         <p class="lede">As design lead, I owned the UX strategy for rebuilding migration planning into the Ops Console (VCF Operations), the platform's modern management UI — one workstream in leadership's broader retirement of the legacy Net&nbsp;Ops UI. Phase&nbsp;1 fixed the handoff and started on the blind spot; Phase&nbsp;2 took the blind spot on in full.</p>
       </div>
@@ -1086,8 +583,8 @@ html, body { margin: 0; padding: 0; }
         <svg class="wm-roadmap-desktop" viewBox="0 0 1040 300" width="100%" height="auto" role="img" aria-label="Roadmap: Phase 1, shipped redesign, leads to Phase 2, the Global Service vision, carrying forward destination-capacity visibility">
           <g class="wm-phase-1">
             <rect x="0.75" y="20.75" width="459.5" height="248.5" rx="6" fill="none" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="28" y="55" font-family="Inter, sans-serif" font-size="11" letter-spacing="0.18em" fill="var(--muted)">PHASE 1 · SHIPPED</text>
-            <text x="28" y="90" font-family="Lora, serif" font-size="24" fill="var(--ink)">Redesign</text>
+            <text x="28" y="55" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="0.04em" fill="var(--muted)">PHASE 1 · SHIPPED</text>
+            <text x="28" y="90" font-family="Inter Tight, Inter, sans-serif" font-weight="600" letter-spacing="-0.02em" font-size="24" fill="var(--ink)">Redesign</text>
             <text x="28" y="152" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Export/import kept as a fallback</text>
             <text x="28" y="184" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Auto-generated waves &amp; groups</text>
             <text x="28" y="216" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Single Commit, no double-commit</text>
@@ -1095,8 +592,8 @@ html, body { margin: 0; padding: 0; }
 
           <g class="wm-phase-2">
             <rect x="579.75" y="20.75" width="459.5" height="248.5" rx="6" fill="none" stroke="var(--ink-2)" stroke-width="1.5" stroke-dasharray="6 5"/>
-            <text x="608" y="55" font-family="Inter, sans-serif" font-size="11" letter-spacing="0.18em" fill="var(--muted)">PHASE 2 · VISION</text>
-            <text x="608" y="90" font-family="Lora, serif" font-size="24" fill="var(--ink)">Global Service</text>
+            <text x="608" y="55" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="0.04em" fill="var(--muted)">PHASE 2 · VISION</text>
+            <text x="608" y="90" font-family="Inter Tight, Inter, sans-serif" font-weight="600" letter-spacing="-0.02em" font-size="24" fill="var(--ink)">Global Service</text>
             <text x="608" y="152" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Single pane of glass across Ops + HCX</text>
             <text x="608" y="184" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Destination &amp; Feasibility Insights</text>
           </g>
@@ -1107,15 +604,15 @@ html, body { margin: 0; padding: 0; }
             </marker>
           </defs>
           <line x1="460.5" y1="145" x2="572" y2="145" stroke="var(--ink-2)" stroke-width="1.5" marker-end="url(#wm-arrow-a)"/>
-          <text x="516" y="122" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" letter-spacing="0.08em" fill="var(--muted)">CAPACITY</text>
-          <text x="516" y="133" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" letter-spacing="0.08em" fill="var(--muted)">VISIBILITY</text>
+          <text x="516" y="122" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="0.04em" fill="var(--muted)">CAPACITY</text>
+          <text x="516" y="133" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="0.04em" fill="var(--muted)">VISIBILITY</text>
         </svg>
 
         <svg class="wm-roadmap-mobile" viewBox="0 0 460 560" width="100%" height="auto" role="img" aria-label="Roadmap: Phase 1, shipped redesign, leads to Phase 2, the Global Service vision, carrying forward destination-capacity visibility">
           <g class="wm-phase-1">
             <rect x="0.75" y="0.75" width="458.5" height="248.5" rx="6" fill="none" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="28" y="34" font-family="Inter, sans-serif" font-size="11" letter-spacing="0.18em" fill="var(--muted)">PHASE 1 · SHIPPED</text>
-            <text x="28" y="69" font-family="Lora, serif" font-size="24" fill="var(--ink)">Redesign</text>
+            <text x="28" y="34" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="0.04em" fill="var(--muted)">PHASE 1 · SHIPPED</text>
+            <text x="28" y="69" font-family="Inter Tight, Inter, sans-serif" font-weight="600" letter-spacing="-0.02em" font-size="24" fill="var(--ink)">Redesign</text>
             <text x="28" y="131" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Export/import kept as a fallback</text>
             <text x="28" y="163" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Auto-generated waves &amp; groups</text>
             <text x="28" y="195" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Single Commit, no double-commit</text>
@@ -1123,8 +620,8 @@ html, body { margin: 0; padding: 0; }
 
           <g class="wm-phase-2">
             <rect x="0.75" y="310.75" width="458.5" height="248.5" rx="6" fill="none" stroke="var(--ink-2)" stroke-width="1.5" stroke-dasharray="6 5"/>
-            <text x="28" y="344" font-family="Inter, sans-serif" font-size="11" letter-spacing="0.18em" fill="var(--muted)">PHASE 2 · VISION</text>
-            <text x="28" y="379" font-family="Lora, serif" font-size="24" fill="var(--ink)">Global Service</text>
+            <text x="28" y="344" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="0.04em" fill="var(--muted)">PHASE 2 · VISION</text>
+            <text x="28" y="379" font-family="Inter Tight, Inter, sans-serif" font-weight="600" letter-spacing="-0.02em" font-size="24" fill="var(--ink)">Global Service</text>
             <text x="28" y="441" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Single pane of glass across Ops + HCX</text>
             <text x="28" y="473" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Destination &amp; Feasibility Insights</text>
           </g>
@@ -1135,19 +632,19 @@ html, body { margin: 0; padding: 0; }
             </marker>
           </defs>
           <line x1="230" y1="249.5" x2="230" y2="302" stroke="var(--ink-2)" stroke-width="1.5" marker-end="url(#wm-arrow-am)"/>
-          <text x="248" y="280" font-family="Inter, sans-serif" font-size="9.5" letter-spacing="0.08em" fill="var(--muted)">CAPACITY VISIBILITY</text>
+          <text x="248" y="280" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="0.04em" fill="var(--muted)">CAPACITY VISIBILITY</text>
         </svg>
 
-        <div class="figure-caption" style="margin-top:14px">— Phase 1 of 2 —</div>
+        <div class="figure-caption" style="margin-top:14px">Phase 1 of 2</div>
       </div>
 
-      <div class="sub" style="max-width:1040px;margin:80px auto 0">
+      <div class="sub" style="max-width:var(--content-max);margin:80px auto 0">
         <h3>Streamlining the end-to-end workflow</h3>
         <p>Working with product and engineering, I mapped the full journey and framed the strategy around tighter integration between Net&nbsp;Ops and HCX — to make manual export and import unnecessary in the common case, reduce user burden by auto-generating waves and groups (manual grouping stayed available), and pull the "Commit" action across the platform boundary into the Ops&nbsp;Console. Manual export and import remained as a fallback for when Net&nbsp;Ops and HCX weren't connected. This first phase closed the handoff friction between the two tools; the destination-capacity visibility gap came next — first through the persistent summary widget introduced during plan creation, then more fully through the multi-cluster capacity analysis in the platform's longer-term vision.</p>
       </div>
 
       <div class="callout">
-        <div class="callout-label">— Where I pushed back —</div>
+        <div class="callout-label">Where I pushed back</div>
         <p>Engineering proposed <em>two</em> actions: "send" the waves to HCX, then "commit" them again inside HCX. I argued against it — the legacy flow had no "send" step, and splitting the handoff would force operators to <em>commit a second time</em>, once in each tool. I pushed for a single <strong>Commit</strong>, done once from migration planning, that sends the waves into HCX and commits them – so no second commit is needed.</p>
       </div>
 
@@ -1155,10 +652,10 @@ html, body { margin: 0; padding: 0; }
         <div class="figure">
           <img loading="lazy" src="../assets/workload-mobility/end-to-end-workflow.svg" alt="End-to-end workflow schema mapping every screen across Net Ops and HCX UIs">
         </div>
-        <div class="figure-caption" style="margin-top:14px">— End-to-end workflow —</div>
+        <div class="figure-caption" style="margin-top:14px">End-to-end workflow</div>
       </div>
 
-      <div class="sub" style="max-width:1040px;margin:80px auto 0">
+      <div class="sub" style="max-width:var(--content-max);margin:80px auto 0">
         <h3>Mapping the schema, screen by screen</h3>
         <p>Once the workflow was understood, I laid out the entire user-journey schema screen-by-screen to see the full scope and the sub-steps involved. This helped compare the efficiency of the auto-generation feature — and surfaced a critical insight from research: <strong>users were unlikely to adopt auto-generation unless the underlying logic considered criteria beyond just network dependencies.</strong></p>
       </div>
@@ -1179,11 +676,11 @@ html, body { margin: 0; padding: 0; }
     <!-- User Validation -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— User Validation —</div>
+        <div class="section-label">User Validation</div>
         <h2 class="section-title">What the enterprise operators surfaced.</h2>
       </div>
 
-      <div class="validation-stats" style="margin:96px -80px 0">
+      <div class="validation-stats" style="margin:96px 0 0">
         <div class="item">
           <div class="num">13</div>
           <div class="desc">Moderated sessions</div>
@@ -1252,20 +749,20 @@ html, body { margin: 0; padding: 0; }
     <!-- Execution -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Execution · across 2 product releases —</div>
+        <div class="section-label">Execution · across 2 product releases</div>
         <h2 class="section-title">High value redesigns, shipped end-to-end.</h2>
       </div>
 
-      <div style="max-width:1040px;margin:0 auto 80px">
+      <div style="max-width:var(--content-max);margin:0 auto 80px">
         <div class="figure">
           <video class="flow-video" src="../assets/workload-mobility/workload-mobility-flow.mp4?v=2" poster="../assets/workload-mobility/workload-mobility-flow-poster.jpg?v=2" muted playsinline controls preload="none" style="display:block;width:100%;height:auto;aspect-ratio:1920/1080" aria-label="Walkthrough of the redesigned migration planning flow: create a plan, scope VMs from the inventory, auto-generate waves and mobility groups, land on the plan summary, and commit a wave to HCX">
             Your browser does not support the video tag.
           </video>
         </div>
-        <div class="figure-caption" style="margin-top:14px">— The redesigned flow, end to end · prototype recreated for portfolio use; shipped UI is confidential —</div>
+        <div class="figure-caption" style="margin-top:14px">The redesigned flow, end to end · prototype recreated for portfolio use; shipped UI is confidential</div>
       </div>
 
-      <div style="max-width:1040px;margin:0 auto">
+      <div style="max-width:var(--content-max);margin:0 auto">
         <div class="sub">
           <h3>Global visibility at the landing page</h3>
           <p><strong>Contextualizing the global scope.</strong> The legacy planning tool forced users to start from a blind list view. I redesigned the landing experience into a data-rich dashboard, providing immediate cross-plan metrics — such as completed vs. failed waves — before the user even initiates a new migration plan.</p>
@@ -1361,7 +858,7 @@ html, body { margin: 0; padding: 0; }
               </div>
             </div>
           </div>
-          <div class="figure-caption" style="margin-top:14px">— Options recreated in hi-fi for this case study; originally explored as wireframes —</div>
+          <div class="figure-caption" style="margin-top:14px">Options recreated in hi-fi for this case study; originally explored as wireframes</div>
         </div>
 
         <div class="sub">
@@ -1382,7 +879,7 @@ html, body { margin: 0; padding: 0; }
               </svg>
             </div>
           </div>
-          <div class="figure-caption">— Drag to compare —</div>
+          <div class="figure-caption">Drag to compare</div>
         </div>
 
         <div class="sub">
@@ -1403,7 +900,7 @@ html, body { margin: 0; padding: 0; }
               </svg>
             </div>
           </div>
-          <div class="figure-caption">— Drag to compare —</div>
+          <div class="figure-caption">Drag to compare</div>
         </div>
       </div>
     </section>
@@ -1411,11 +908,11 @@ html, body { margin: 0; padding: 0; }
     <!-- What operators told us -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— What operators told us —</div>
+        <div class="section-label">What operators told us</div>
         <h2 class="section-title">In the operator's own words.</h2>
         <p class="lede">From research sessions with enterprise customers during the redesign — including where they wanted the work to go further.</p>
       </div>
-      <div class="quotes" style="max-width:1040px;margin:56px auto 0">
+      <div class="quotes" style="max-width:var(--content-max);margin:56px auto 0">
         <div class="quote">
           <div class="mark">"</div>
           <blockquote>I'm encouraged by the direction Migration is taking. Greater integration between HCX and Net&nbsp;Ops would help create a more cohesive and streamlined workflow.</blockquote>
@@ -1437,11 +934,11 @@ html, body { margin: 0; padding: 0; }
     <!-- Outcomes -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Outcomes —</div>
+        <div class="section-label">Outcomes</div>
         <h2 class="section-title">What changed after Phase&nbsp;1 shipped.</h2>
         <p class="lede">Phase&nbsp;1 shipped in June 2025. These results reflect the whole team's work — including backend improvements across Net&nbsp;Ops and HCX — not design alone.</p>
       </div>
-      <div class="takeaways" style="max-width:1040px;margin:56px auto 0">
+      <div class="takeaways" style="max-width:var(--content-max);margin:56px auto 0">
         <div class="takeaway">
           <div class="num">3 months → 25 days</div>
           <h4>Faster migrations</h4>
@@ -1466,7 +963,7 @@ html, body { margin: 0; padding: 0; }
     <!-- Global Service Vision -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Scaling to a Global Service —</div>
+        <div class="section-label">Scaling to a Global Service</div>
         <h2 class="section-title">From two tools to one global service.</h2>
         <p class="lede">After Phase&nbsp;1 shipped, engineering proposed a new backend architecture: consolidating Net&nbsp;Ops and HCX into a single Global Mobility Service inside the Ops&nbsp;Console. The PM brought UX in to define what that would mean for operators, and I worked closely with the PM and the engineering architect on the vision, using research from the redesign as the baseline.</p>
         <p class="lede" style="margin-top:20px"><em>Global</em> meant visibility into every vCenter the Ops&nbsp;Console can see — not just those registered in Net&nbsp;Ops — and, in time, migrations across sites, to other Ops instances or standalone vCenters. <em>Service</em> meant migration would be one capability of the Ops&nbsp;Console, not a separate tool.</p>
@@ -1477,8 +974,8 @@ html, body { margin: 0; padding: 0; }
         <svg class="wm-roadmap-desktop" viewBox="0 0 1040 300" width="100%" height="auto" role="img" aria-label="Roadmap: Phase 1, shipped redesign, leads to Phase 2, the Global Service vision, carrying forward destination-capacity visibility">
           <g class="wm-phase-1">
             <rect x="0.75" y="20.75" width="459.5" height="248.5" rx="6" fill="none" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="28" y="55" font-family="Inter, sans-serif" font-size="11" letter-spacing="0.18em" fill="var(--muted)">PHASE 1 · SHIPPED</text>
-            <text x="28" y="90" font-family="Lora, serif" font-size="24" fill="var(--ink)">Redesign</text>
+            <text x="28" y="55" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="0.04em" fill="var(--muted)">PHASE 1 · SHIPPED</text>
+            <text x="28" y="90" font-family="Inter Tight, Inter, sans-serif" font-weight="600" letter-spacing="-0.02em" font-size="24" fill="var(--ink)">Redesign</text>
             <text x="28" y="152" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Export/import kept as a fallback</text>
             <text x="28" y="184" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Auto-generated waves &amp; groups</text>
             <text x="28" y="216" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Single Commit, no double-commit</text>
@@ -1486,8 +983,8 @@ html, body { margin: 0; padding: 0; }
 
           <g class="wm-phase-2">
             <rect x="579.75" y="20.75" width="459.5" height="248.5" rx="6" fill="none" stroke="var(--ink-2)" stroke-width="1.5" stroke-dasharray="6 5"/>
-            <text x="608" y="55" font-family="Inter, sans-serif" font-size="11" letter-spacing="0.18em" fill="var(--muted)">PHASE 2 · VISION</text>
-            <text x="608" y="90" font-family="Lora, serif" font-size="24" fill="var(--ink)">Global Service</text>
+            <text x="608" y="55" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="0.04em" fill="var(--muted)">PHASE 2 · VISION</text>
+            <text x="608" y="90" font-family="Inter Tight, Inter, sans-serif" font-weight="600" letter-spacing="-0.02em" font-size="24" fill="var(--ink)">Global Service</text>
             <text x="608" y="152" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Single pane of glass across Ops + HCX</text>
             <text x="608" y="184" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Destination &amp; Feasibility Insights</text>
           </g>
@@ -1498,15 +995,15 @@ html, body { margin: 0; padding: 0; }
             </marker>
           </defs>
           <line x1="460.5" y1="145" x2="572" y2="145" stroke="var(--ink-2)" stroke-width="1.5" marker-end="url(#wm-arrow)"/>
-          <text x="516" y="122" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" letter-spacing="0.08em" fill="var(--muted)">CAPACITY</text>
-          <text x="516" y="133" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" letter-spacing="0.08em" fill="var(--muted)">VISIBILITY</text>
+          <text x="516" y="122" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="0.04em" fill="var(--muted)">CAPACITY</text>
+          <text x="516" y="133" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="0.04em" fill="var(--muted)">VISIBILITY</text>
         </svg>
 
         <svg class="wm-roadmap-mobile" viewBox="0 0 460 560" width="100%" height="auto" role="img" aria-label="Roadmap: Phase 1, shipped redesign, leads to Phase 2, the Global Service vision, carrying forward destination-capacity visibility">
           <g class="wm-phase-1">
             <rect x="0.75" y="0.75" width="458.5" height="248.5" rx="6" fill="none" stroke="var(--ink-2)" stroke-width="1.5"/>
-            <text x="28" y="34" font-family="Inter, sans-serif" font-size="11" letter-spacing="0.18em" fill="var(--muted)">PHASE 1 · SHIPPED</text>
-            <text x="28" y="69" font-family="Lora, serif" font-size="24" fill="var(--ink)">Redesign</text>
+            <text x="28" y="34" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="0.04em" fill="var(--muted)">PHASE 1 · SHIPPED</text>
+            <text x="28" y="69" font-family="Inter Tight, Inter, sans-serif" font-weight="600" letter-spacing="-0.02em" font-size="24" fill="var(--ink)">Redesign</text>
             <text x="28" y="131" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Export/import kept as a fallback</text>
             <text x="28" y="163" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Auto-generated waves &amp; groups</text>
             <text x="28" y="195" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Single Commit, no double-commit</text>
@@ -1514,8 +1011,8 @@ html, body { margin: 0; padding: 0; }
 
           <g class="wm-phase-2">
             <rect x="0.75" y="310.75" width="458.5" height="248.5" rx="6" fill="none" stroke="var(--ink-2)" stroke-width="1.5" stroke-dasharray="6 5"/>
-            <text x="28" y="344" font-family="Inter, sans-serif" font-size="11" letter-spacing="0.18em" fill="var(--muted)">PHASE 2 · VISION</text>
-            <text x="28" y="379" font-family="Lora, serif" font-size="24" fill="var(--ink)">Global Service</text>
+            <text x="28" y="344" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="0.04em" fill="var(--muted)">PHASE 2 · VISION</text>
+            <text x="28" y="379" font-family="Inter Tight, Inter, sans-serif" font-weight="600" letter-spacing="-0.02em" font-size="24" fill="var(--ink)">Global Service</text>
             <text x="28" y="441" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Single pane of glass across Ops + HCX</text>
             <text x="28" y="473" font-family="Inter, sans-serif" font-size="14.5" fill="var(--ink-2)">– Destination &amp; Feasibility Insights</text>
           </g>
@@ -1526,16 +1023,16 @@ html, body { margin: 0; padding: 0; }
             </marker>
           </defs>
           <line x1="230" y1="249.5" x2="230" y2="302" stroke="var(--ink-2)" stroke-width="1.5" marker-end="url(#wm-arrow-m)"/>
-          <text x="248" y="280" font-family="Inter, sans-serif" font-size="9.5" letter-spacing="0.08em" fill="var(--muted)">CAPACITY VISIBILITY</text>
+          <text x="248" y="280" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="0.04em" fill="var(--muted)">CAPACITY VISIBILITY</text>
         </svg>
 
-        <div class="figure-caption" style="margin-top:14px">— Phase 2 of 2 —</div>
+        <div class="figure-caption" style="margin-top:14px">Phase 2 of 2</div>
       </div>
 
       <div class="vision-list">
         <div class="vision-item">
           <div class="vision-heading">
-            <span class="num">i.</span>
+            <span class="num">1</span>
             <h3>Project Dashboard</h3>
             <p>A level above the migration plan. Large efforts like a datacenter exit span many plans; a project shows every plan, active migration, and site connection in one place. Who needs this view most was an open question for user testing.</p>
           </div>
@@ -1545,7 +1042,7 @@ html, body { margin: 0; padding: 0; }
         </div>
         <div class="vision-item">
           <div class="vision-heading">
-            <span class="num">ii.</span>
+            <span class="num">2</span>
             <h3>Destination Insights</h3>
             <p>Closes the blind spot. Candidate clusters compared by capacity, cost, and compatibility, so operators choose a destination with the data in front of them instead of assembling it from other tools.</p>
           </div>
@@ -1555,7 +1052,7 @@ html, body { margin: 0; padding: 0; }
         </div>
         <div class="vision-item">
           <div class="vision-heading">
-            <span class="num">iii.</span>
+            <span class="num">3</span>
             <h3>Capacity Analysis</h3>
             <p>Live, not a snapshot. Forecasted CPU, memory, and storage use across waves, built on live capacity data so a plan doesn't go stale while it's being built.</p>
           </div>
@@ -1565,7 +1062,7 @@ html, body { margin: 0; padding: 0; }
         </div>
         <div class="vision-item">
           <div class="vision-heading">
-            <span class="num">iv.</span>
+            <span class="num">4</span>
             <h3>Capacity Optimization</h3>
             <p>Right-size workloads before they move. Smaller VMs mean less data crossing the network, making better use of bandwidth during migration.</p>
           </div>
@@ -1579,29 +1076,29 @@ html, body { margin: 0; padding: 0; }
     <!-- Takeaways -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Takeaways —</div>
+        <div class="section-label">Takeaways</div>
         <h2 class="section-title">What this project taught me.</h2>
       </div>
-      <div class="takeaways" style="max-width:1040px;margin:56px auto 0">
+      <div class="takeaways" style="max-width:var(--content-max);margin:56px auto 0">
         <div class="takeaway">
-          <div class="num">i.</div>
+          <div class="num">1</div>
           <h4>Automation runs on trust</h4>
           <p>Operators wouldn't rely on generated waves until the logic weighed more than network dependencies. Showing why the system grouped VMs the way it did matters as much as the grouping itself.</p>
         </div>
         <div class="takeaway">
-          <div class="num">ii.</div>
+          <div class="num">2</div>
           <h4>Design for the task, not the architecture</h4>
           <p>A "send, then commit" flow mirrored the boundary between two systems. Holding out for a single Commit kept the workflow shaped around what operators were trying to do.</p>
         </div>
         <div class="takeaway">
-          <div class="num">iii.</div>
+          <div class="num">3</div>
           <h4>Mentoring as a working model</h4>
           <p>I mapped each workflow end to end in hi-fi; the designer I mentored completed the remaining screens across our US–India time difference, and we alternated moderating research sessions. That freed me to manage stakeholders and present the redesign's results to executives.</p>
         </div>
       </div>
       <div class="narrow">
         <div class="callout">
-          <div class="callout-label">— What I'd do differently —</div>
+          <div class="callout-label">What I'd do differently</div>
           <p>The research was mostly qualitative. I'd set up quantitative baselines from the start — failure rates, time to build a migration plan, time to execute one — so design decisions, and the results afterward, could be measured against the legacy flow.</p>
         </div>
       </div>
@@ -1609,7 +1106,7 @@ html, body { margin: 0; padding: 0; }
 
     <!-- Contact -->
     <section class="contact">
-      <div class="label">— Get in touch —</div>
+      <div class="label">Get in touch</div>
       <h2>Have a role where this kind of work matters? Let’s talk.</h2>
       <div class="contact-links">
         <a href="mailto:rishabhgandotra@gmail.com">rishabhgandotra@gmail.com</a>
@@ -1619,7 +1116,7 @@ html, body { margin: 0; padding: 0; }
 
     <!-- Prev/Next -->
     <section class="prevnext">
-      <div class="label">— Continue Reading —</div>
+      <div class="label">Continue Reading</div>
       <div class="prevnext-grid">
         <a class="pn-card prev" href="./nexus-agentic-ai.html">
           <div class="image" style="background:#0E0E0D">
@@ -1627,7 +1124,7 @@ html, body { margin: 0; padding: 0; }
           </div>
           <div>
             <div class="dir">← Previous Case Study</div>
-            <div class="num" style="margin-top:12px">I.</div>
+            <div class="num" style="margin-top:12px">4</div>
             <div class="ttl">Nexus Agentic AI</div>
             <div class="sub">Multi-agent control plane for autonomous server patching.</div>
             <div class="yr">Independent — 2026</div>
@@ -1639,7 +1136,7 @@ html, body { margin: 0; padding: 0; }
           </div>
           <div>
             <div class="dir">Next Case Study →</div>
-            <div class="num" style="margin-top:12px">III.</div>
+            <div class="num" style="margin-top:12px">2</div>
             <div class="ttl">VMware Cloud on Dell</div>
             <div class="sub">A self-service portal for managed on-premises infrastructure.</div>
             <div class="yr">VMware — 2018 to 2020</div>

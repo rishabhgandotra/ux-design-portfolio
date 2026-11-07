@@ -11,164 +11,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../assets/case-study.css">
 <style>
-*, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-#root { display: flex; justify-content: center; }
 
-.cs {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
-  letter-spacing: -0.005em;
-  width: 100%;
-  max-width: 1280px;
-  border-left: 1px solid var(--hair);
-  border-right: 1px solid var(--hair);
-  box-shadow: 0 1px 3px rgba(0,0,0,.04);
-}
-.cs a { color: inherit; text-decoration: none; }
-.cs em { font-style: italic; }
-.cs .narrow { max-width: 1040px; margin: 0 auto; }
-
-/* Top nav */
-.cs .topbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 24px 80px;
-  border-bottom: 1px solid var(--hair);
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-.cs .topbar .name {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-}
-
-/* Title block */
-.cs .titleblock {
-  padding: 96px 80px 40px;
-  border-bottom: 1px solid var(--hair);
-}
-.cs .eyebrow {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 32px;
-}
-.cs .cs-title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 72px;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin: 0;
-  max-width: 22ch;
-}
-.cs .meta {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin: 64px -80px 0;
-  padding: 40px 80px 0;
-  border-top: 1px solid var(--hair);
-}
-.cs .meta > div { text-align: center; }
-.cs .meta .label {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
-.cs .meta .val {
-  font-family: var(--font-display);
-  font-size: 22px;
-  letter-spacing: -0.01em;
-}
-
-/* Hero image */
-.cs .hero-img {
-  border-bottom: 1px solid var(--hair);
-  overflow: hidden;
-  background: var(--bg);
-}
-.cs .hero-img img { display: block; width: 100%; height: auto; }
-
-/* Content blocks */
-.cs section.block { padding: 96px 80px; border-bottom: 1px solid var(--hair); }
-.cs .section-label {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 18px;
-  text-align: left;
-}
-.cs .section-title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 44px;
-  line-height: 1.1;
-  letter-spacing: -0.015em;
-  margin: 0 0 48px;
-  max-width: 22ch;
-  text-align: left;
-}
-.cs .lede {
-  font-family: var(--font-display);
-  font-size: 22px;
-  line-height: 1.55;
-  color: var(--ink-2);
-  max-width: 56ch;
-  margin: 0;
-  letter-spacing: -0.005em;
-}
-.cs .sub { margin-top: 80px; }
-.cs .sub:first-child { margin-top: 0; }
-.cs .sub h3 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 28px;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  margin: 0 0 20px;
-}
-.cs .sub p {
-  font-family: var(--font-display);
-  font-size: 18px;
-  line-height: 1.55;
-  letter-spacing: -0.005em;
-  color: var(--ink-2);
-  margin: 0 0 24px;
-  max-width: 64ch;
-}
-.cs .sub p strong { color: var(--ink); font-weight: 500; }
-.cs .figure {
-  margin-top: 32px;
-  border: 1px solid var(--hair);
-  overflow: hidden;
-}
-.cs .figure img { display: block; width: 100%; height: auto; }
-.cs .figure-caption {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-top: 14px;
-  text-align: center;
-}
 .cs .wire-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
+  gap: var(--col-gap);
 }
 .cs .wire-grid > div .figure { margin-top: 0; border: none; }
 
@@ -176,346 +25,12 @@ html, body { margin: 0; padding: 0; }
 .cs .takeaways {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 48px;
+  gap: var(--col-gap);
   margin-top: 56px;
 }
-.cs .takeaway .num {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 18px;
-  color: var(--muted);
-  margin-bottom: 20px;
-}
-.cs .takeaway h4 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-style: italic;
-  font-size: 22px;
-  line-height: 1.25;
-  margin: 0 0 14px;
-  letter-spacing: -0.01em;
-}
-.cs .takeaway p {
-  font-family: var(--font-display);
-  font-size: 17px;
-  line-height: 1.5;
-  letter-spacing: -0.005em;
-  color: var(--ink-2);
-  margin: 0;
-}
 
-/* Prev/Next cards (bottom) */
-.cs .contact {
-  padding: 88px 80px;
-  border-bottom: 1px solid var(--hair);
-  text-align: center;
-}
-.cs .contact .label {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 20px;
-}
-.cs .contact h2 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 40px;
-  line-height: 1.15;
-  letter-spacing: -0.015em;
-  color: var(--ink);
-  margin: 0 auto 36px;
-  max-width: 24ch;
-  text-wrap: balance;
-}
-.cs .contact-links {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  flex-wrap: wrap;
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-.cs .contact-links a {
-  color: var(--ink-2);
-  border-bottom: 1px solid var(--muted);
-  padding-bottom: 4px;
-}
-.cs .contact-links a:hover { color: var(--ink); border-color: var(--ink); }
-
-.cs .prevnext {
-  padding: 80px 80px 96px;
-  border-bottom: 1px solid var(--ink);
-}
-.cs .prevnext .label {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 40px;
-  text-align: center;
-}
-.cs .prevnext-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-}
-.cs .pn-card {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 28px;
-  cursor: pointer;
-  padding: 24px 0;
-}
-.cs .pn-card.prev { text-align: left; }
-.cs .pn-card.next { text-align: right; }
-.cs .pn-card .dir {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.cs .pn-card .num {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 18px;
-  color: var(--muted);
-  margin-bottom: 12px;
-}
-.cs .pn-card .ttl {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 44px;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  margin-bottom: 14px;
-  display: inline-block;
-  background-image: linear-gradient(currentColor, currentColor);
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 0% 1px;
-  transition: background-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  padding-bottom: 4px;
-}
-.cs .pn-card.next .ttl { background-position: 100% 100%; }
-.cs .pn-card:hover .ttl { background-size: 100% 1px; }
-.cs .pn-card .sub {
-  font-family: var(--font-display);
-  font-size: 17px;
-  line-height: 1.5;
-  color: var(--ink-2);
-  max-width: 42ch;
-  margin-bottom: 20px;
-}
-.cs .pn-card.next .sub { margin-left: auto; }
-.cs .pn-card .yr {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.cs .pn-card .image {
-  aspect-ratio: 4/3;
-  border: 1px solid var(--hair);
-  overflow: hidden;
-}
-.cs .pn-card .image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
-
-/* Footer */
-.cs .footer {
-  padding: 24px 80px;
-  text-align: center;
-}
-.cs .footer .colophon {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-  display: flex;
-  justify-content: space-between;
-}
-
-/* ============ TABLET (<= 1279px) ============ */
-@media (max-width: 1279px) {
-  .cs .topbar { padding: 20px 48px; }
-  .cs .titleblock { padding: 80px 48px 36px; }
-  .cs .cs-title { font-size: 56px; }
-  .cs .meta { margin: 56px -48px 0; padding: 36px 48px 0; }
-  .cs .metrics > div { padding: 44px 24px; }
-  .cs .metrics .stat { font-size: 52px; }
-  .cs section.block { padding: 72px 48px; }
-  .cs .section-title { font-size: 38px; }
-  .cs .lede { font-size: 20px; }
-  .cs .sub h3 { font-size: 24px; }
-  .cs .sub p { font-size: 17px; }
-  .cs .narrow { max-width: 100%; }
-  /* Full-bleed figures: match new padding */
-  .cs .titleblock + .hero-img,
-  .cs .hero-img img { max-width: 100%; }
-  .cs section.block div[style*="-80px"] { margin-left: -48px !important; margin-right: -48px !important; }
-  .cs .meta[style*="-80px"], .cs .validation-stats[style*="-80px"] { margin-left: -48px !important; margin-right: -48px !important; padding-left: 48px !important; padding-right: 48px !important; }
-  .cs .validation-stats { margin-left: -48px !important; margin-right: -48px !important; }
-  .cs .validation-stats .item { padding: 36px 24px; }
-  .cs .validation-stats .item .num { font-size: 44px; }
-  .cs .contact { padding: 72px 48px; }
-  .cs .contact h2 { font-size: 34px; }
-  .cs .prevnext { padding: 64px 48px 80px; }
-  .cs .pn-card .ttl { font-size: 36px; }
-  .cs .footer { padding: 20px 48px; }
-  /* Galleries */
-  .cs .gallery-3 { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .cs .gallery-2 { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  .cs .wire-grid { gap: 24px; }
-  /* Strip slides */
-  .cs .strip { padding: 0 48px 20px; }
-  .cs .strip .slide { flex-basis: 640px; }
-  /* Insights sticky-note grid 3 -> 3 (tablet still 3 cols, smaller) */
-  .cs .insights-grid .notes { grid-template-columns: repeat(3, 1fr); gap: 28px; }
-  .cs .insights-grid .notes .note { padding: 22px 18px; min-height: 120px; }
-  .cs .insights-grid .notes .note p { font-size: 14px; }
-  /* Vision grid */
-  .cs .vision-img { margin: 0 -48px; }
-  /* Toggle */
-  .cs .ba-toggle .img-frame, .cs .ba-side { /* keep as-is */ }
-}
-
-/* ============ MOBILE (<= 767px) ============ */
-@media (max-width: 767px) {
-  .cs {
-    border-left: none;
-    border-right: none;
-    box-shadow: none;
-  }
-
-  /* Top bar */
-  .cs .topbar { padding: 16px 20px; }
-  .cs .topbar .name { font-size: 14px; }
-
-  /* Title block */
-  .cs .titleblock { padding: 48px 20px 24px; }
-  .cs .eyebrow { font-size: 10px; letter-spacing: 0.16em; margin-bottom: 20px; }
-  .cs .cs-title { font-size: 32px; line-height: 1.1; }
-  .cs .meta {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin: 36px -20px 0;
-    padding: 28px 20px 0;
-  }
-  .cs .meta > div { text-align: left; }
-  .cs .meta .label { font-size: 10px; margin-bottom: 4px; }
-  .cs .meta .val { font-size: 18px; }
-
-  /* Metrics — 3-col to 1-col */
-  .cs .metrics { grid-template-columns: 1fr; }
-  .cs .metrics > div {
-    border-right: none;
-    border-bottom: 1px solid var(--hair);
-    padding: 28px 20px;
-  }
-  .cs .metrics > div:last-child { border-bottom: none; }
-  .cs .metrics .label { font-size: 10px; margin-bottom: 12px; }
-  .cs .metrics .stat { font-size: 44px; margin-bottom: 10px; }
-  .cs .metrics .caption { font-size: 14px; }
-
-  /* Sections */
-  .cs section.block { padding: 48px 20px; }
-  .cs .section-label { font-size: 10px; letter-spacing: 0.16em; margin-bottom: 14px; }
-  .cs .section-title { font-size: 26px; line-height: 1.15; margin-bottom: 28px; }
-  .cs .lede { font-size: 17px; line-height: 1.5; }
-  .cs .sub { margin-top: 48px; }
-  .cs .sub h3 { font-size: 22px; }
-  .cs .sub p { font-size: 16px; line-height: 1.55; }
-  .cs .figure-caption { font-size: 10px; }
-
-  /* Full-bleed figures: match new mobile padding */
-  .cs section.block div[style*="-80px"] { margin-left: -20px !important; margin-right: -20px !important; }
-  .cs .validation-stats { margin-left: -20px !important; margin-right: -20px !important; }
-  .cs .vision-img { margin: 0 -20px; }
-
-  /* Validation stats — 3-col to 1-col */
-  .cs .validation-stats { grid-template-columns: 1fr; }
-  .cs .validation-stats .item {
-    padding: 24px 20px;
-    border-right: none;
-    border-bottom: 1px solid var(--hair);
-  }
-  .cs .validation-stats .item:last-child { border-bottom: none; }
-  .cs .validation-stats .item .num { font-size: 38px; }
-  .cs .validation-stats .item .desc { font-size: 11px; }
-
-  /* Quotes — 2 cols to 1 */
-  .cs .quotes { grid-template-columns: 1fr; gap: 32px; }
-  .cs .quote blockquote { font-size: 19px; }
-  .cs .quote .mark { font-size: 48px; margin-bottom: 12px; }
-
-  /* Takeaways — collapse */
-  .cs .takeaways { grid-template-columns: 1fr; gap: 28px; }
-  .cs .takeaway h4 { font-size: 20px; }
-  .cs .takeaway p { font-size: 16px; }
-
-  /* Prev/next cards — stack */
-  .cs .contact { padding: 56px 20px; }
-  .cs .contact h2 { font-size: 26px; }
-  .cs .contact-links { flex-direction: column; align-items: center; gap: 14px; }
-  .cs .prevnext { padding: 48px 20px 56px; }
-  .cs .prevnext-grid { grid-template-columns: 1fr; gap: 32px; }
-  .cs .pn-card { padding: 12px 0; gap: 18px; }
-  .cs .pn-card.prev, .cs .pn-card.next { text-align: left; }
-  .cs .pn-card.next .sub { margin-left: 0; }
-  .cs .pn-card .ttl { font-size: 28px; }
-  .cs .pn-card .sub { font-size: 15px; }
-
-  /* Footer — stack colophon */
-  .cs .footer { padding: 18px 20px; }
-  .cs .footer .colophon {
-    flex-direction: column;
-    gap: 6px;
-    text-align: center;
-    align-items: center;
-    font-size: 10px;
-  }
-
-  /* Galleries — single column */
-  .cs .gallery-3, .cs .gallery-2, .cs .wire-grid { grid-template-columns: 1fr; gap: 20px; }
-
-  /* Insights sticky-note grid */
-  .cs .insights-grid { padding: 12px 0; }
-  .cs .insights-grid .category { margin-top: 36px; }
-  .cs .insights-grid .category-label { font-size: 19px; margin-bottom: 20px; }
-  .cs .insights-grid .notes { grid-template-columns: 1fr; gap: 18px; padding: 8px 0; }
-  .cs .insights-grid .notes .note { padding: 22px 20px; min-height: 0; }
-  .cs .insights-grid .notes .note:hover { transform: rotate(0deg); }
-
-  /* Vision items */
-  .cs .vision-list { margin-top: 36px; }
-  .cs .vision-item { margin-top: 56px; }
-  .cs .vision-heading { padding: 0 20px; }
-  .cs .vision-heading h3 { font-size: 24px; }
-  .cs .vision-heading p { font-size: 16px; }
-
-  /* Strip carousel — smaller slides */
-  .cs .strip { padding: 0 20px 16px; }
-  .cs .strip .slide { flex-basis: 80vw; }
-
-  /* Toggle */
-  .cs .ba-toggle .ba-toggle-bar button { padding: 10px 18px; font-size: 10px; }
-
-  /* Before/After slider — smaller knob (still finger-friendly at 36px) */
-  .cs .ba-knob { width: 40px; height: 40px; }
-  .cs .ba-label { font-size: 12px; padding: 4px 10px; top: 12px; }
-  .cs .ba-label.before { left: 12px; }
-  .cs .ba-label.after { right: 12px; }
-
-  /* Video play button */
-  .cs .video-cover .play-btn { width: 72px; height: 72px; }
-  .cs .video-cover .play-btn svg { width: 22px; height: 22px; }
-
-  /* Overview 3-col features (Nexus) */
-  .cs .overview-grid { grid-template-columns: 1fr; gap: 28px; margin-top: 36px; padding: 0 20px; }
-}
 </style>
+<link rel="stylesheet" href="../assets/case-study-responsive.css">
 </head>
 <body>
 
@@ -524,10 +39,11 @@ html, body { margin: 0; padding: 0; }
 
     <header class="topbar">
       <a class="name" href="../index.html">Rishabh Gandotra</a>
+      <span class="role">Staff Product Designer</span>
     </header>
 
     <section class="titleblock">
-      <div class="eyebrow">— Nexus Agentic AI · Independent · 2026 —</div>
+      <div class="eyebrow">Nexus Agentic AI · Independent · 2026</div>
       <h1 class="cs-title">A multi-agent control plane for <em>autonomous server patching.</em></h1>
       <div class="meta">
         <div>
@@ -552,7 +68,7 @@ html, body { margin: 0; padding: 0; }
     <!-- Context / Problem -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Context —</div>
+        <div class="section-label">Context</div>
         <h2 class="section-title">Enterprise patching is a high-stakes manual bottleneck.</h2>
         <p class="lede">Patching servers at scale forces infrastructure teams to balance critical security updates against the risk of system downtime. Operators navigate disparate tools across thousands of nodes, where failure means executing high-risk operations manually under tight maintenance windows — and diagnosing every error themselves.</p>
       </div>
@@ -561,7 +77,7 @@ html, body { margin: 0; padding: 0; }
     <!-- Approach -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Approach —</div>
+        <div class="section-label">Approach</div>
         <h2 class="section-title">From manual execution to autonomous orchestration.</h2>
         <p class="lede">Nexus reframes patching as a coordination problem solved by AI agents. Dependency mapping, staggered rollouts, and node-by-node verification run autonomously — but the operator stays in the loop at moments of real consequence, with escalation designed to surface in the UI for human review and approval.</p>
       </div>
@@ -570,14 +86,14 @@ html, body { margin: 0; padding: 0; }
         <div class="figure">
           <img loading="lazy" src="../assets/nexus-agentic-ai/nexus-flow.svg" alt="End-to-end orchestration flow across Nexus agents">
         </div>
-        <div class="figure-caption" style="margin-top:14px">— Multi-agent orchestration flow —</div>
+        <div class="figure-caption" style="margin-top:14px">Multi-agent orchestration flow</div>
       </div>
     </section>
 
     <!-- Initial Wireframes -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Initial Wireframes —</div>
+        <div class="section-label">Initial Wireframes</div>
         <h2 class="section-title">Structural skeleton, before content.</h2>
         <p class="lede">Before any visual decisions, I sketched four states as low-fidelity wireframes: the resting dashboard, the attention lane, the escalation modal, and a migration in motion. No language, no content — just where each thing lives and how state changes are depicted. These artifacts became the brief I handed to Claude Design.</p>
       </div>
@@ -588,25 +104,25 @@ html, body { margin: 0; padding: 0; }
             <div class="figure">
               <img loading="lazy" src="../assets/nexus-agentic-ai/default-dashboard.svg" alt="Low-fi wireframe — resting dashboard with topology and attention lane">
             </div>
-            <div class="figure-caption">— Resting state —</div>
+            <div class="figure-caption">Resting state</div>
           </div>
           <div>
             <div class="figure">
               <img loading="lazy" src="../assets/nexus-agentic-ai/alert.svg" alt="Low-fi wireframe — attention lane activated">
             </div>
-            <div class="figure-caption">— Attention required —</div>
+            <div class="figure-caption">Attention required</div>
           </div>
           <div>
             <div class="figure">
               <img loading="lazy" src="../assets/nexus-agentic-ai/alert-pop-up.svg" alt="Low-fi wireframe — escalation modal overlay">
             </div>
-            <div class="figure-caption">— Escalation modal —</div>
+            <div class="figure-caption">Escalation modal</div>
           </div>
           <div>
             <div class="figure">
               <img loading="lazy" src="../assets/nexus-agentic-ai/dashboard-migration.svg" alt="Low-fi wireframe — VM migration between hosts">
             </div>
-            <div class="figure-caption">— Migration —</div>
+            <div class="figure-caption">Migration</div>
           </div>
         </div>
       </div>
@@ -619,7 +135,7 @@ html, body { margin: 0; padding: 0; }
     <!-- The Control Plane -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— The Control Plane —</div>
+        <div class="section-label">The Control Plane</div>
         <h2 class="section-title">One screen. Five coordinated panels.</h2>
         <p class="lede">The operator's primary surface anchors on a central <em>Topology</em> for live host and cluster state, with the <em>Agent Roster</em>, <em>Queued Tasks</em>, <em>Live Feed</em>, and a <em>Requires Attention</em> lane along the bottom. Every signal needed to read the system sits on one screen.</p>
       </div>
@@ -628,14 +144,14 @@ html, body { margin: 0; padding: 0; }
         <div class="figure">
           <img loading="lazy" src="../assets/nexus-agentic-ai/nexus-dashboard.png" alt="The Control Plane — topology, agent roster, queued tasks, live feed, and requires attention panels">
         </div>
-        <div class="figure-caption" style="margin-top:14px">— The Control Plane —</div>
+        <div class="figure-caption" style="margin-top:14px">The Control Plane</div>
       </div>
     </section>
 
     <!-- Escalation -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Escalation —</div>
+        <div class="section-label">Escalation</div>
         <h2 class="section-title">Friction designed for moments of consequence.</h2>
         <p class="lede">When the Critic Agent detects an anomaly during the patching process, it deliberately halts. A "Requires Attention" lane lights up at the foot of the dashboard, and a modal forces explicit human authorization before any irreversible step. Friction here isn't a UX bug — it's the product.</p>
       </div>
@@ -644,21 +160,21 @@ html, body { margin: 0; padding: 0; }
         <div class="figure">
           <img loading="lazy" src="../assets/nexus-agentic-ai/nexus-attention.png" alt="Requires Attention lane lit up at the bottom of the dashboard">
         </div>
-        <div class="figure-caption" style="margin-top:14px">— Critic Agent surfaces an anomaly —</div>
+        <div class="figure-caption" style="margin-top:14px">Critic Agent surfaces an anomaly</div>
       </div>
 
       <div style="margin: 64px -80px 0;">
         <div class="figure">
           <img loading="lazy" src="../assets/nexus-agentic-ai/nexus-modal.png" alt="Escalation modal showing the workflow halted, awaiting operator authorization">
         </div>
-        <div class="figure-caption" style="margin-top:14px">— Workflow halted; authorization required —</div>
+        <div class="figure-caption" style="margin-top:14px">Workflow halted; authorization required</div>
       </div>
     </section>
 
     <!-- Migration & Patching -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Migration &amp; Patching —</div>
+        <div class="section-label">Migration &amp; Patching</div>
         <h2 class="section-title">Visible movement, host by host.</h2>
         <p class="lede">Once authorized, the orchestration proceeds visually. Workloads animate across the topology showing VM migration from host-a to host-b, so the operator can see exactly which cluster was memory-constrained, and required an explicit authorization to allow patching to proceed.</p>
       </div>
@@ -667,14 +183,14 @@ html, body { margin: 0; padding: 0; }
         <div class="figure">
           <img loading="lazy" src="../assets/nexus-agentic-ai/nexus-migration.png" alt="VM migration in progress — workloads moving from host-a to host-b in the cluster">
         </div>
-        <div class="figure-caption" style="margin-top:14px">— VM migration from host-a to host-b —</div>
+        <div class="figure-caption" style="margin-top:14px">VM migration from host-a to host-b</div>
       </div>
     </section>
 
     <!-- From Pixels to Production -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— From Pixels to Production —</div>
+        <div class="section-label">From Pixels to Production</div>
         <h2 class="section-title">From refined wireframes to a working hi-fi prototype.</h2>
         <p class="lede">With the structure resolved, I directed Claude Design through another pass — this time producing the final visual treatment and a working interactive front-end. Login, dashboard, escalation, and live migration animations all became clickable in a single environment, with motion, color, and density.</p>
       </div>
@@ -683,14 +199,14 @@ html, body { margin: 0; padding: 0; }
         <div class="figure">
           <img loading="lazy" src="../assets/nexus-agentic-ai/nexus-prototype-dashboard.png" alt="Working prototype — Operations Overview with topology, host health, agent activity, and live feed">
         </div>
-        <div class="figure-caption" style="margin-top:14px">— Operations Overview, working prototype —</div>
+        <div class="figure-caption" style="margin-top:14px">Operations Overview, working prototype</div>
       </div>
 
       <div style="margin: 64px -80px 0;">
         <div class="figure">
           <img loading="lazy" src="../assets/nexus-agentic-ai/nexus-prototype-modal.png" alt="Working prototype — Critic Agent escalation modal: Workflow Halted, Critic Agent Blocked Migration, with operator options">
         </div>
-        <div class="figure-caption" style="margin-top:14px">— Critic Agent escalation, working prototype —</div>
+        <div class="figure-caption" style="margin-top:14px">Critic Agent escalation, working prototype</div>
       </div>
 
       <div style="margin: 64px -80px 0;">
@@ -699,29 +215,29 @@ html, body { margin: 0; padding: 0; }
             Your browser does not support the video tag.
           </video>
         </div>
-        <div class="figure-caption" style="margin-top:14px">— Claude Design generating the prototype —</div>
+        <div class="figure-caption" style="margin-top:14px">Claude Design generating the prototype</div>
       </div>
     </section>
 
     <!-- Takeaways -->
     <section class="block">
       <div class="narrow">
-        <div class="section-label">— Takeaways —</div>
+        <div class="section-label">Takeaways</div>
         <h2 class="section-title">Three lessons on designing enterprise AI.</h2>
       </div>
-      <div class="takeaways" style="max-width:1040px;margin:56px auto 0">
+      <div class="takeaways" style="max-width:var(--content-max);margin:56px auto 0">
         <div class="takeaway">
-          <div class="num">i.</div>
+          <div class="num">1</div>
           <h4>Friction is a feature</h4>
           <p>Consumer design optimizes friction away. Mission-critical AI requires intentional friction — escalation modals, explicit handoffs — at the exact moments where speed would be a liability.</p>
         </div>
         <div class="takeaway">
-          <div class="num">ii.</div>
+          <div class="num">2</div>
           <h4>Transparency beats magic</h4>
           <p>Operators need spatial awareness of <em>where</em> agents are working and chronological auditing of <em>what</em> they did. Opaque automation erodes trust the moment something goes wrong.</p>
         </div>
         <div class="takeaway">
-          <div class="num">iii.</div>
+          <div class="num">3</div>
           <h4>Focus over status</h4>
           <p>Specific intents ("Evacuating Host-A") transform AI from opaque to collaborative. Status indicators tell you the system is alive; named intents tell you what it's <em>actually</em> trying to do.</p>
         </div>
@@ -730,7 +246,7 @@ html, body { margin: 0; padding: 0; }
 
     <!-- Contact -->
     <section class="contact">
-      <div class="label">— Get in touch —</div>
+      <div class="label">Get in touch</div>
       <h2>Have a role where this kind of work matters? Let’s talk.</h2>
       <div class="contact-links">
         <a href="mailto:rishabhgandotra@gmail.com">rishabhgandotra@gmail.com</a>
@@ -740,7 +256,7 @@ html, body { margin: 0; padding: 0; }
 
     <!-- Prev/Next -->
     <section class="prevnext">
-      <div class="label">— Continue Reading —</div>
+      <div class="label">Continue Reading</div>
       <div class="prevnext-grid">
         <a class="pn-card prev" href="./vcenter-high-availability.html">
           <div class="image" style="background:#fff">
@@ -748,7 +264,7 @@ html, body { margin: 0; padding: 0; }
           </div>
           <div>
             <div class="dir">← Previous Case Study</div>
-            <div class="num" style="margin-top:12px">IV.</div>
+            <div class="num" style="margin-top:12px">3</div>
             <div class="ttl">vCenter High Availability</div>
             <div class="sub">A lifecycle workflow for millions of vSphere administrators.</div>
             <div class="yr">VMware — 2016 to 2017</div>
@@ -760,7 +276,7 @@ html, body { margin: 0; padding: 0; }
           </div>
           <div>
             <div class="dir">Next Case Study →</div>
-            <div class="num" style="margin-top:12px">II.</div>
+            <div class="num" style="margin-top:12px">1</div>
             <div class="ttl">Workload Mobility</div>
             <div class="sub">Unifying legacy migration tools across the VMware Cloud Foundation portfolio.</div>
             <div class="yr">VMware — 2024 to 2026</div>

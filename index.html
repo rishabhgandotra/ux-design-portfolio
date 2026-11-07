@@ -16,9 +16,8 @@ html, body { margin: 0; padding: 0; }
 #root { display: flex; justify-content: center; }
 
 /*
-  Layout grid: content sits inside a --gutter on each side and is split into
-  12 equal columns. The faint vertical lines in the background mark those
-  columns; text and images start on a line.
+  Layout: content sits inside a --gutter on each side and is placed on
+  12 equal columns (credentials 3 cols each, case rows 5 + 7, About 4 + 7).
 */
 .qm {
   --gutter: 80px;
@@ -26,10 +25,7 @@ html, body { margin: 0; padding: 0; }
   --label-gap: 40px;    /* section label's line → the content under it */
   --item-gap: 96px;     /* between case studies */
   --section-gap: 128px; /* end of one section → next section's label */
-  background-color: var(--bg);
-  background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px);
-  background-size: calc((100% - 2 * var(--gutter)) / 12) 100%;
-  background-position: var(--gutter) 0;
+  background: var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 16px;
@@ -265,7 +261,6 @@ html, body { margin: 0; padding: 0; }
     --label-gap: 24px;
     --item-gap: 56px;
     --section-gap: 80px;
-    background-image: none;
     border-left: none;
     border-right: none;
   }
