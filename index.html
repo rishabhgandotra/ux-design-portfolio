@@ -9,22 +9,16 @@
 <link rel="icon" sizes="any" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/theme.css">
 <style>
 *, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; background: #F4F1EA; }
-body { font-family: 'Inter', system-ui, sans-serif; }
+html, body { margin: 0; padding: 0; }
 #root { display: flex; justify-content: center; }
 
 .qm {
-  --bg: #F4F1EA;
-  --ink: #181B20;
-  --ink-2: #373B41;
-  --muted: #575A60;
-  --hair: #CFC8B9;
   background: var(--bg);
   color: var(--ink);
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
   letter-spacing: -0.005em;
@@ -44,7 +38,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   border-bottom: 1px solid var(--ink);
 }
 .qm .masthead .name {
-  font-family: 'Lora', 'Times New Roman', serif;
+  font-family: var(--font-display);
   font-weight: 400;
   font-size: 32px;
   letter-spacing: 0.06em;
@@ -72,7 +66,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   margin-bottom: 40px;
 }
 .qm .display {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-weight: 400;
   font-size: 88px;
   line-height: 1.05;
@@ -83,7 +77,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 .qm .display em { font-style: italic; }
 .qm .lead {
   margin: 56px auto 0;
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-weight: 400;
   font-size: 22px;
@@ -112,7 +106,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   margin-bottom: 10px;
 }
 .qm .credentials .val {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-size: 20px;
   letter-spacing: -0.005em;
   line-height: 1.3;
@@ -148,14 +142,14 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   padding: 8px 0;
 }
 .qm .case-text .num {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 18px;
   color: var(--muted);
   margin-bottom: 16px;
 }
 .qm .case-text .ttl {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-weight: 400;
   font-size: 36px;
   line-height: 1.05;
@@ -172,7 +166,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 }
 .qm .case:hover .case-text .ttl { background-size: 100% 1px; }
 .qm .case-text .sub {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-size: 18px;
   line-height: 1.5;
   color: var(--ink-2);
@@ -181,7 +175,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   letter-spacing: -0.005em;
 }
 .qm .case-text .yr {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -189,7 +183,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   margin-bottom: 24px;
 }
 .qm .case-text .case-link {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -230,7 +224,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 }
 .qm .about-photo {
   border: 1px solid var(--hair);
-  background: #EEEAE0;
+  background: var(--bg-2);
   aspect-ratio: 4/5;
   overflow: hidden;
 }
@@ -242,7 +236,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   display: block;
 }
 .qm .about-text {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-size: 19px;
   line-height: 1.55;
   color: var(--ink-2);
@@ -257,7 +251,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   display: flex;
   gap: 32px;
   flex-wrap: wrap;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -309,7 +303,6 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 
 /* ============ MOBILE (≤ 767px) ============ */
 @media (max-width: 767px) {
-  body { background: var(--bg, #F4F1EA); }
   .qm {
     border-left: none;
     border-right: none;

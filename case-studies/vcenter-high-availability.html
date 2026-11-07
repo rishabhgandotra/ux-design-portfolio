@@ -10,22 +10,16 @@
 <link rel="icon" sizes="any" href="../favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/theme.css">
 <style>
 *, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; background: #F4F1EA; }
-body { font-family: 'Inter', system-ui, sans-serif; }
+html, body { margin: 0; padding: 0; }
 #root { display: flex; justify-content: center; }
 
 .cs {
-  --bg: #F4F1EA;
-  --ink: #181B20;
-  --ink-2: #373B41;
-  --muted: #575A60;
-  --hair: #CFC8B9;
   background: var(--bg);
   color: var(--ink);
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
   letter-spacing: -0.005em;
@@ -51,7 +45,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   text-transform: uppercase;
 }
 .cs .topbar .name {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0.06em;
@@ -70,7 +64,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   margin-bottom: 32px;
 }
 .cs .cs-title {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-weight: 400;
   font-size: 72px;
   line-height: 1.05;
@@ -95,7 +89,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   margin-bottom: 10px;
 }
 .cs .meta .val {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-size: 22px;
   letter-spacing: -0.01em;
 }
@@ -119,7 +113,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   text-align: left;
 }
 .cs .section-title {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-weight: 400;
   font-size: 44px;
   line-height: 1.1;
@@ -129,7 +123,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   text-align: left;
 }
 .cs .lede {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-size: 22px;
   line-height: 1.55;
   color: var(--ink-2);
@@ -140,7 +134,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 .cs .sub { margin-top: 80px; }
 .cs .sub:first-child { margin-top: 0; }
 .cs .sub h3 {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-weight: 400;
   font-size: 28px;
   line-height: 1.2;
@@ -148,7 +142,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   margin: 0 0 20px;
 }
 .cs .sub p {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-size: 18px;
   line-height: 1.55;
   letter-spacing: -0.005em;
@@ -203,7 +197,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 }
 .cs .insights .insight .num { display: none; }
 .cs .insights .insight p {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: -0.005em;
@@ -324,7 +318,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 }
 .cs .quote { display: flex; flex-direction: column; }
 .cs .quote .mark {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 64px;
   line-height: 0.6;
@@ -332,7 +326,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   margin-bottom: 16px;
 }
 .cs .quote blockquote {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-size: 22px;
   line-height: 1.45;
   color: var(--ink);
@@ -348,14 +342,14 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   margin-top: 56px;
 }
 .cs .takeaway .num {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 18px;
   color: var(--muted);
   margin-bottom: 20px;
 }
 .cs .takeaway h4 {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-weight: 400;
   font-style: italic;
   font-size: 22px;
@@ -364,7 +358,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   letter-spacing: -0.01em;
 }
 .cs .takeaway p {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-size: 17px;
   line-height: 1.5;
   letter-spacing: -0.005em;
@@ -386,7 +380,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   margin-bottom: 20px;
 }
 .cs .contact h2 {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-weight: 400;
   font-size: 40px;
   line-height: 1.15;
@@ -445,14 +439,14 @@ body { font-family: 'Inter', system-ui, sans-serif; }
   color: var(--muted);
 }
 .cs .pn-card .num {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-size: 18px;
   color: var(--muted);
   margin-bottom: 12px;
 }
 .cs .pn-card .ttl {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-weight: 400;
   font-size: 44px;
   line-height: 1.05;
@@ -470,7 +464,7 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 .cs .pn-card.next .ttl { background-position: 100% 100%; }
 .cs .pn-card:hover .ttl { background-size: 100% 1px; }
 .cs .pn-card .sub {
-  font-family: 'Lora', serif;
+  font-family: var(--font-display);
   font-size: 17px;
   line-height: 1.5;
   color: var(--ink-2);
@@ -555,7 +549,6 @@ body { font-family: 'Inter', system-ui, sans-serif; }
 
 /* ============ MOBILE (<= 767px) ============ */
 @media (max-width: 767px) {
-  body { background: var(--bg, #F4F1EA); }
   .cs {
     border-left: none;
     border-right: none;

@@ -1,0 +1,23 @@
+/*
+  Site theme — shared by index.html and every page in case-studies/.
+  Colors and fonts live here only. To restyle the site, change these values
+  (and the font import) instead of editing each page.
+*/
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Inter:wght@400;500&display=swap');
+
+:root {
+  /* Colors */
+  --bg: #F4F1EA;        /* page background */
+  --bg-2: #EEEAE0;      /* slightly darker panel (e.g. behind the About photo) */
+  --ink: #181B20;       /* primary text, strong rules */
+  --ink-2: #373B41;     /* secondary text */
+  --muted: #575A60;     /* labels, captions, dates */
+  --hair: #CFC8B9;      /* hairline borders */
+
+  /* Fonts */
+  --font-display: 'Lora', serif;  /* headings, titles */
+  --font-body: 'Inter', sans-serif; /* body text, labels */
+}
+
+html, body { background: var(--bg); }
+body { font-family: var(--font-body); }
