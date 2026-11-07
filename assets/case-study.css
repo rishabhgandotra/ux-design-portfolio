@@ -83,8 +83,6 @@ html, body { margin: 0; padding: 0; }
   font-family: var(--font-mono);
 }
 
-.cs .eyebrow::before,
-.cs .section-label::before { content: "/ "; color: var(--accent); }
 
 .cs .cs-title {
   font-family: var(--font-display);
