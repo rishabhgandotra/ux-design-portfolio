@@ -153,6 +153,18 @@
   margin: 0;
 }
 .cs .insights-grid .notes .note p em { font-style: italic; }
+/* Insights that directly shaped the design: outlined, with a link to the change */
+.cs .insights-key { max-width: var(--content-max); margin: 64px auto 0; font-size: 15px; line-height: 1.5; color: var(--ink-2); }
+.cs .insights-key .swatch { display: inline-block; width: 14px; height: 14px; border: 2px solid var(--accent); vertical-align: -2px; margin-right: 8px; }
+.cs .insights-key + .insights-grid { margin-top: 40px; }
+.cs .insights-grid .notes .note.shaped { outline: 2px solid var(--accent); outline-offset: 0; }
+.cs .insights-grid .notes .note .led-to {
+  margin-top: auto; padding-top: 16px;
+  font-family: var(--font-mono); font-size: 11px; line-height: 1.4; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--accent); text-decoration: none;
+}
+.cs .insights-grid .notes .note .led-to:hover { text-decoration: underline; text-underline-offset: 3px; }
+.cs [id^="wm-"] { scroll-margin-top: 32px; }
 
 /* Before/After slider */
 /* Before/After — toggle treatment */
@@ -695,10 +707,13 @@
         </div>
       </div>
 
+      <p class="insights-key"><span class="swatch" aria-hidden="true"></span>Four of these directly shaped the redesign. They're outlined, and each links to the change it led to.</p>
+
       <div class="insights-grid">
         <div class="category" data-color="blue">
           <h3 class="category-label">Network Mapping</h3>
           <div class="notes">
+            <div class="note shaped"><p>Unlikely to adopt auto-generation. Need to consider additional criteria, like destination capacity.</p><a class="led-to" href="#wm-auto-generation">Led to: Auto-generation, with manual grouping kept &rarr;</a></div>
             <div class="note"><p>Need global network mapping to avoid per-VM setup.</p></div>
             <div class="note"><p>Want mapping at site &rsaquo; group &rsaquo; VM levels.</p></div>
             <div class="note"><p>Confused by optional network mapping.</p></div>
@@ -731,6 +746,7 @@
         <div class="category" data-color="purple">
           <h3 class="category-label">Troubleshooting &amp; Ops Integration</h3>
           <div class="notes">
+            <div class="note shaped"><p>No visibility into migration activity from the planning view.</p><a class="led-to" href="#wm-landing">Led to: Landing dashboard &rarr;</a></div>
             <div class="note"><p>Validation errors should log to syslog.</p></div>
             <div class="note"><p>Need in-UI timestamps to correlate with logs.</p></div>
           </div>
@@ -738,9 +754,9 @@
         <div class="category" data-color="paleblue">
           <h3 class="category-label">Planning &amp; Capacity</h3>
           <div class="notes">
-            <div class="note"><p>Capacity &amp; cost planning from the Ops Console should carry into the migration plan.</p></div>
+            <div class="note shaped"><p>Limited visibility into capacity. Capacity &amp; cost planning from the Ops Console should carry into the migration plan.</p><a class="led-to" href="#wm-summary-widget">Led to: Persistent summary widget &rarr;</a></div>
             <div class="note"><p>Prefer integration with the Ops Console and Net&nbsp;Ops for diagnostics &amp; planning.</p></div>
-            <div class="note"><p>Users expect to start migration from the familiar inventory view.</p></div>
+            <div class="note shaped"><p>Users expect to start migration from the familiar inventory view.</p><a class="led-to" href="#wm-inventory">Led to: Scoping from the inventory &rarr;</a></div>
           </div>
         </div>
       </div>
@@ -763,7 +779,7 @@
       </div>
 
       <div style="max-width:var(--content-max);margin:0 auto">
-        <div class="sub">
+        <div class="sub" id="wm-landing">
           <h3>Global visibility at the landing page</h3>
           <p><strong>Contextualizing the global scope.</strong> The legacy planning tool forced users to start from a blind list view. I redesigned the landing experience into a data-rich dashboard, providing immediate cross-plan metrics — such as completed vs. failed waves — before the user even initiates a new migration plan.</p>
           <div class="ba-toggle">
@@ -778,7 +794,7 @@
           </div>
         </div>
 
-        <div class="sub">
+        <div class="sub" id="wm-inventory">
           <h3>Starting from the inventory</h3>
           <p><strong>Scope by object, not by list.</strong> The legacy Net&nbsp;Ops UI listed every VM up front, and users told us that wasn't useful — a migration plan starts from a use case. Retiring an old datastore or network, for example, means moving every VM on that object. Research also showed operators expected to start from the familiar inventory view, so I built scoping around the Ops inventory tree: pick a cluster or host, a datastore, or a network, see only the VMs attached to it, and add them to the plan's scope.</p>
           <div class="ba-toggle">
@@ -793,7 +809,7 @@
           </div>
         </div>
 
-        <div class="sub">
+        <div class="sub" id="wm-summary-widget">
           <h3>Persistent context during plan creation</h3>
           <p><strong>Persistent summary widget.</strong> During research, users reported limited visibility into the plan's capacity once they were deep inside the migration workflow. In direct response, I designed a sticky, collapsible summary widget that persists across every step of plan creation — ensuring operators always have real-time visibility into allocated resources without losing their place.</p>
           <div class="ba-toggle">
@@ -861,9 +877,9 @@
           <div class="figure-caption" style="margin-top:14px">Options recreated in hi-fi for this case study; originally explored as wireframes</div>
         </div>
 
-        <div class="sub">
+        <div class="sub" id="wm-auto-generation">
           <h3>Automating the tedious and error-prone</h3>
-          <p>Building migration waves by hand was tedious and error-prone. We introduced an option that analyzes network dependencies to generate migration waves and mobility groups automatically, giving operators a starting point instead of a blank plan. Once generation completes, operators can review the result and override it. Manual grouping stayed available: research later showed operators wouldn't rely on generated waves until the logic weighed more than network dependencies.</p>
+          <p>Building migration waves by hand was tedious and error-prone. We introduced an option that analyzes network dependencies to generate migration waves and mobility groups automatically, giving operators a starting point instead of a blank plan. Once generation completes, operators can review the result and override it. Manual grouping stayed available: research later showed operators wouldn't rely on generated waves until the logic also accounted for where the workloads were going, such as how much capacity each destination cluster had available. The redesign never asked for a destination, so this carried into the vision.</p>
           <div class="ba">
             <span class="ba-label before">Before</span>
             <span class="ba-label after">After</span>
@@ -1044,7 +1060,7 @@
           <div class="vision-heading">
             <span class="num">2</span>
             <h3>Destination Insights</h3>
-            <p>Closes the blind spot. Candidate clusters compared by capacity, cost, and compatibility, so operators choose a destination with the data in front of them instead of assembling it from other tools.</p>
+            <p>Closes the blind spot. Candidate clusters compared by capacity, cost, and compatibility, so operators choose a destination with the data in front of them instead of assembling it from other tools. The intended next step: the destinations operators select would feed auto-generation, so waves and groups are organized around destination capacity as well as network dependencies.</p>
           </div>
           <div class="vision-img" style="aspect-ratio: 2880/2474">
             <img loading="lazy" src="../assets/workload-mobility/destination-insights.png" alt="Destination Insights: candidate clusters compared by capacity, cost, bandwidth, and estimated duration">
